@@ -42,39 +42,63 @@ let impossible (s : string) : 'a =
 
 (* Values.
  *)
-module Value = struct
-  type t = 
-    | V_Undefined
-    | V_None
-    | V_Int of int
-    | V_Bool of bool
-    | V_Str of string
+ module Value = struct
+  (* PrimValue *)
+  type prim = 
+    | P_Undefined
+    | P_None
+    | P_Int of int
+    | P_Bool of bool
+    | P_Str of string
     [@@deriving show]
 
-  (* to_string v = a string representation of v (more human-readable than
-   * `show`.
-   *)
+  (* Labels *)
+  type label =
+    | High
+    | Low
+
+  (* New_V combines a PrimValue with a Label to form a NewVal*)
+  type t =
+    | New_V of prim * label
+
+  (* Conversion of PrimValue to string*)
+  let prim_to_string p =
+    match p with
+    | P_Undefined -> "?"
+    | P_None -> "None"
+    | P_Int n -> string_of_int n
+    | P_Bool b -> string_of_bool b
+    | P_Str s -> s
+
+  (* Conversion of Label to string *)
+  let label_to_string l =
+    match l with
+    | High -> "High"
+    | Low -> "Low"
+
+  (* Conversion of New_V to string  *)
   let to_string (v : t) : string =
     match v with
-    | V_Undefined -> "?"
-    | V_None -> "None"
-    | V_Int n -> Int.to_string n
-    | V_Bool b -> Bool.to_string b
-    | V_Str s -> s
+    | New_V (prim, label) ->
+      Printf.sprintf "%s (%s)" (prim_to_string prim) (label_to_string label)
 end
 
+
 module Frame = struct
+  (* Definitions based on the new Value module*)
   type env = Value.t IdentMap.t
   type out = Value.t list
+
+  (* Frame now includes environments paired with an output list or a return value paired with an output list. *)
   type t = Envs of env list * out | Return of Value.t * out
 
-  (* Creates an empty output list as the base output for new frames. *)
+  (* Empty output list as the base output for new frames. *)
   let empty_out : out = []
 
   (* A base environment frame with an empty output list. *)
   let base : t = Envs ([IdentMap.empty], empty_out)
 
-  (* Convert the Frame to a string. *)
+  (* Converts the Frame to a string, incorporating the new Value structure. *)
   let to_string (frame : t) : string =
     match frame with
     | Return (v, out) -> Printf.sprintf "Return: %s, Output: [%s]" (Value.to_string v) (String.concat ", " (List.map Value.to_string out))
@@ -85,7 +109,7 @@ module Frame = struct
                           |> String.concat "; "
       in Printf.sprintf "Environments: [%s], Output: [%s]" envs_str (String.concat ", " (List.map Value.to_string out))
 
-  (* Lookup function revised to consider the frame's structure. *)
+  (* Updated lookup function for the new frame structure. *)
   let lookup (frame : t) (x : Ast.Id.t) : Value.t =
     let rec lookup_in_envs envs =
       match envs with
@@ -112,7 +136,7 @@ module Frame = struct
     | Return _ -> raise (Failure "Cannot set in a return frame")
     | Envs (envs, out) -> Envs (set_in_envs envs, out)
 
-  (* Function to declare a new variable in the most recent environment. *)
+  (* Declare a new variable in the most recent environment. *)
   let declare (frame : t) (x : Ast.Id.t) (v : Value.t) : t =
     match frame with
     | Return _ -> raise (Failure "Cannot declare in a return frame")
@@ -124,19 +148,20 @@ module Frame = struct
         then raise (MultipleDeclaration x)
         else Envs (IdentMap.add x v env :: rest, out)
 
-  (* Function to push a new, empty environment to the frame. *)
+  (* Push a new empty environment to the frame. *)
   let push (frame : t) : t =
     match frame with
     | Return _ -> raise (Failure "Cannot push to a return frame")
     | Envs (envs, out) -> Envs (IdentMap.empty :: envs, out)
 
-  (* Function to pop the most recent environment from the frame. *)
+  (* Pop the most recent environment from the frame. *)
   let pop (frame : t) : t =
     match frame with
     | Return _ -> raise (Failure "Cannot pop from a return frame")
     | Envs ([], _) -> raise (Failure "Cannot pop from an empty environment stack")
     | Envs (_ :: rest, out) -> Envs (rest, out)
 end
+
 
 
 (* An implementation of the I/O API.  This is a little bit complex, because
