@@ -42,135 +42,129 @@ let impossible (s : string) : 'a =
 
 (* Values.
  *)
-module Value = struct
-  type t = 
+ module Value = struct
+  (* PrimValue *)
+  type prim = 
     | V_Undefined
-    | V_None
+    | V_None  (* Direct representation as a primitive for easier API handling *)
     | V_Int of int
     | V_Bool of bool
     | V_Str of string
     [@@deriving show]
 
-  (* to_string v = a string representation of v (more human-readable than
-   * `show`.
-   *)
-  let to_string (v : t) : string =
-    match v with
+  (* Labels *)
+  type label =
+    | H  (* High *)
+    | L  (* Low *)
+
+  (* NewVal combines a PrimValue with a Label to form a new type Value *)
+  type t =
+    | New_V of prim * label  (* Represents values with associated security labels *)
+
+  (* Conversion of PrimValue to string *)
+  let prim_to_string p =
+    match p with
     | V_Undefined -> "?"
     | V_None -> "None"
-    | V_Int n -> Int.to_string n
-    | V_Bool b -> Bool.to_string b
+    | V_Int n -> string_of_int n
+    | V_Bool b -> string_of_bool b
     | V_Str s -> s
+
+  (* Conversion of Label to string *)
+  let label_to_string l =
+    match l with
+    | H -> "High"
+    | L -> "Low"
+
+  (* Conversion of New_V to string *)
+  let to_string (v : t) : string =
+    match v with
+    | New_V (prim, label) ->
+      Printf.sprintf "%s (%s)" (prim_to_string prim) (label_to_string label)
 end
+
+
 
 module Frame = struct
-
-  (* The type of environments.
-   *)
+  (* Definitions based on the new Value module *)
   type env = Value.t IdentMap.t
+  type out = Value.t list
 
-  (* A frame is either a list of environments or a return frame with a
-   * value.
-   *)
-  type t = Envs of env list | Return of Value.t
+  (* Frame now includes environments paired with an output list or a return value paired with an output list. *)
+  type t = Envs of env list * out | Return of Value.t * out
 
-  (* A base environment frame.
-   *)
-  let base : t = Envs [IdentMap.empty]
+  (* Empty output list as the base output for new frames. *)
+  let empty_out : out = []
 
-  (* to_string η is a string representation of η.
-   *)
-  let to_string (eta : t) : string =
-    match eta with
-    | Return v -> Value.to_string v
-    | Envs sigmas ->
-      sigmas |> List.map IdentMap.to_list
-             |> List.map (
-                  fun l ->
-                    String.concat ", " (
-                      List.map (fun (id, v) -> id ^ ": " ^ Value.to_string v) l
-                    )
-                )
-             |> String.concat "; "
+  (* A base environment frame with an empty output list. *)
+  let base : t = Envs ([IdentMap.empty], empty_out)
 
-  (* lookup η x = v, where η = Envs [σ_0,...,σ_{n-1}], σ_i(x) = v, and
-   * x is not in the domain of any σ_j for j<i.
-   *
-   * Raises Failure if η is a return frame.
-   * Raises UnboundVariable if x not in dom σ_i for any i.
-   *)
-  let lookup (eta : t) (x : Ast.Id.t) : Value.t =
-    (* lookup' [σ_0,...,σ_{n-1}] = v, where σ_i(x) = v and x is not in the
-     * domain of any σ_j for j<i.
-     *
-     * Raises Failure if η is a return frame.
-     *)
-    let rec lookup' (sigmas : env list) : Value.t =
-        match sigmas with
-        | [] -> raise @@ UnboundVariable x
-        | sigma :: sigmas ->
-          try IdentMap.find x sigma with
-          | Not_found -> lookup' sigmas
-    in match eta with
-    | Envs eta -> lookup' eta
-    | Return _ -> impossible "Bad frame"
+  (* Converts the Frame to a string, incorporating the new Value structure. *)
+  let to_string (frame : t) : string =
+    match frame with
+    | Return (v, out) -> Printf.sprintf "Return: %s, Output: [%s]" (Value.to_string v) (String.concat ", " (List.map Value.to_string out))
+    | Envs (envs, out) ->
+      let envs_str = envs |> List.map IdentMap.to_list
+                          |> List.map (fun l ->
+                              String.concat ", " (List.map (fun (id, v) -> Printf.sprintf "%s: %s" id (Value.to_string v)) l))
+                          |> String.concat "; "
+      in Printf.sprintf "Environments: [%s], Output: [%s]" envs_str (String.concat ", " (List.map Value.to_string out))
 
-  (* set η  x v = Envs [σ_0,...,σ_i[x→v],...], 
-   *   where η = Envs [σ_0,...,σ_{n-1}], x ∈ dom(σ_i) and x not in dom(σ_j)
-   *   for j < i.
-   *
-   * Raises Failure if η is a return frame.
-   * Raises UnboundVariable if x not in dom σ_i for any i.
-   *)
-  let set (eta : t) (x : Ast.Id.t) (v : Value.t) : t =
-    (* set' [σ_0,...,σ_{n-1}] = [σ_0,...,σ_i[x→v],...], x ∈ dom(σ_i) and x
-     * not in dom(σ_j) for j < i.
-     *)
-    let rec set' (sigmas : env list) : env list =
-      match sigmas with
+  (* Updated lookup function for the new frame structure. *)
+  let lookup (frame : t) (x : Ast.Id.t) : Value.t =
+    let rec lookup_in_envs envs =
+      match envs with
       | [] -> raise @@ UnboundVariable x
-      | sigma :: sigmas ->
-        if IdentMap.mem x sigma
-        then IdentMap.add x v sigma :: sigmas
-        else sigma :: set' sigmas
-    in match eta with
-    | Envs sigmas -> Envs (set' sigmas)
-    | Return _ -> impossible "Bad frame"
+      | env :: rest ->
+        try IdentMap.find x env
+        with Not_found -> lookup_in_envs rest
+    in
+    match frame with
+    | Return _ -> raise @@ Failure "Cannot lookup in a return frame"
+    | Envs (envs, _) -> lookup_in_envs envs
 
+  (* Set function updated for the new frame structure. *)
+  let set (frame : t) (x : Ast.Id.t) (v : Value.t) : t =
+    let rec set_in_envs envs =
+      match envs with
+      | [] -> raise @@ UnboundVariable x
+      | env :: rest ->
+        if IdentMap.mem x env
+        then IdentMap.add x v env :: rest
+        else env :: set_in_envs rest
+    in
+    match frame with
+    | Return _ -> raise @@ Failure "Cannot set in a return frame"
+    | Envs (envs, out) -> Envs (set_in_envs envs, out)
 
-  (* declare η x v = Envs [σ₀[x→v],σ₁,...], where η = Envs [σ₀,σ₁,...].
-   *
-   * Raises Failure if η a return frame and or Envs [].
-   * Raises MultipleDeclaration if x ∈ dom σ₀.
-   *)
-  let declare (eta : t) (x : Ast.Id.t) (v : Value.t) : t =
-    match eta with
-    | Envs [] -> impossible "declaration with empty frame."
-    | Envs (sigma :: sigmas) ->
-      if IdentMap.mem x sigma
-      then raise @@ MultipleDeclaration x
-      else Envs (IdentMap.add x v sigma :: sigmas)
-    | Return _ -> impossible "declaration with Return frame."
+  (* Declare a new variable in the most recent environment. *)
+  let declare (frame : t) (x : Ast.Id.t) (v : Value.t) : t =
+    match frame with
+    | Return _ -> raise @@ Failure "Cannot declare in a return frame"
+    | Envs (envs, out) ->
+      match envs with
+      | [] -> raise @@ Failure "Cannot declare in an empty frame"
+      | env :: rest ->
+        if IdentMap.mem x env
+        then raise @@ MultipleDeclaration x
+        else Envs (IdentMap.add x v env :: rest, out)
 
-  (* push (Envs σs) = Envs ({} :: σs).
-   * push (Return _): raises Failure.
-   *)
-  let push (eta : t) : t =
-    match eta with
-    | Envs sigmas -> Envs (IdentMap.empty :: sigmas)
-    | Return _ -> impossible "Bad frame"
+  (* Push a new empty environment to the frame. *)
+  let push (frame : t) : t =
+    match frame with
+    | Return _ -> raise @@ Failure "Cannot push to a return frame"
+    | Envs (envs, out) -> Envs (IdentMap.empty :: envs, out)
 
-  (* pop (Envs σ :: σs) = Envs (σs).
-   * pop (Envs []): raises Failure
-   * pop (Return _):  raises Failure
-   *)
-  let pop (eta : t) : t =
-    match eta with
-    | Envs [] -> impossible "Frame.pop on empty frame"
-    | Envs (_ :: sigmas) -> Envs sigmas
-    | Return _ -> impossible "Bad frame"
-
+  (* Pop the most recent environment from the frame. *)
+  let pop (frame : t) : t =
+    match frame with
+    | Return _ -> raise @@ Failure "Cannot pop from a return frame"
+    | Envs ([], _) -> raise @@ Failure "Cannot pop from an empty environment stack"
+    | Envs (_ :: rest, out) -> Envs (rest, out)
 end
+
+
+
 
 (* An implementation of the I/O API.  This is a little bit complex, because
  * this one implementation allows for a few variations:
@@ -349,24 +343,47 @@ end
 (* binop op v v' = the result of applying the metalanguage operation
  * corresponding to `op` to v and v'.
  *)
-let binop (op : E.binop) (v : Value.t) (v' : Value.t) : Value.t =
+ let binop (context : Value.label) (op : E.binop) (v : Value.t) (v' : Value.t) : Value.t =
+  let error_message = "Can't operate with two different labels under high security context." in
+
+  let combine_labels l1 l2 =
+    match context with
+    | Value.High ->
+      if l1 <> l2 then raise (TypeError error_message)
+      else Value.High
+    | Value.Low ->
+      if l1 = Value.High || l2 = Value.High then Value.High
+      else Value.Low
+  in
+
   match (op, v, v') with
-  | (E.Plus, Value.V_Int n, Value.V_Int n') -> Value.V_Int (n + n')
-  | (E.Minus, Value.V_Int n, Value.V_Int n') -> Value.V_Int (n - n')
-  | (E.Times, Value.V_Int n, Value.V_Int n') -> Value.V_Int (n * n')
-  | (E.Div, Value.V_Int n, Value.V_Int n') -> Value.V_Int (n / n')
-  | (E.Mod, Value.V_Int n, Value.V_Int n') -> Value.V_Int (n mod n')
-  | (E.And, Value.V_Bool b, Value.V_Bool b') -> Value.V_Bool (b && b')
-  | (E.Or, Value.V_Bool b, Value.V_Bool b') -> Value.V_Bool (b || b')
-  | (E.Eq, v, v') -> Value.V_Bool (v = v')
-  | (E.Ne, v, v') -> Value.V_Bool (v <> v')
-  | (E.Lt, Value.V_Int n, Value.V_Int n') -> Value.V_Bool (n < n')
-  | (E.Le, Value.V_Int n, Value.V_Int n') -> Value.V_Bool (n <= n')
-  | (E.Gt, Value.V_Int n, Value.V_Int n') -> Value.V_Bool (n > n')
-  | (E.Ge, Value.V_Int n, Value.V_Int n') -> Value.V_Bool (n >= n')
+  | (E.Plus, Value.V_Prim (Value.P_Int n, l), Value.V_Prim (Value.P_Int n', l')) ->
+      Value.V_Prim (Value.P_Int (n + n'), combine_labels l l')
+  | (E.Minus, Value.V_Prim (Value.P_Int n, l), Value.V_Prim (Value.P_Int n', l')) ->
+      Value.V_Prim (Value.P_Int (n - n'), combine_labels l l')
+  | (E.Times, Value.V_Prim (Value.P_Int n, l), Value.V_Prim (Value.P_Int n', l')) ->
+      Value.V_Prim (Value.P_Int (n * n'), combine_labels l l')
+  | (E.Div, Value.V_Prim (Value.P_Int n, l), Value.V_Prim (Value.P_Int n', l')) when n' != 0 ->
+      Value.V_Prim (Value.P_Int (n / n'), combine_labels l l')
+  | (E.Mod, Value.V_Prim (Value.P_Int n, l), Value.V_Prim (Value.P_Int n', l')) when n' != 0 ->
+      Value.V_Prim (Value.P_Int (n mod n'), combine_labels l l')
+  | (E.And, Value.V_Prim (Value.P_Bool b, l), Value.V_Prim (Value.P_Bool b', l')) ->
+      Value.V_Prim (Value.P_Bool (b && b'), combine_labels l l')
+  | (E.Or, Value.V_Prim (Value.P_Bool b, l), Value.V_Prim (Value.P_Bool b', l')) ->
+      Value.V_Prim (Value.P_Bool (b || b'), combine_labels l l')
+  | (E.Eq, v, v') -> Value.V_Prim (Value.P_Bool (v = v'), combine_labels (Value.label_of v) (Value.label_of v'))
+  | (E.Ne, v, v') -> Value.V_Prim (Value.P_Bool (v <> v'), combine_labels (Value.label_of v) (Value.label_of v'))
+  | (E.Lt, Value.V_Prim (Value.P_Int n, l), Value.V_Prim (Value.P_Int n', l')) ->
+      Value.V_Prim (Value.P_Bool (n < n'), combine_labels l l')
+  | (E.Le, Value.V_Prim (Value.P_Int n, l), Value.V_Prim (Value.P_Int n', l')) ->
+      Value.V_Prim (Value.P_Bool (n <= n'), combine_labels l l')
+  | (E.Gt, Value.V_Prim (Value.P_Int n, l), Value.V_Prim (Value.P_Int n', l')) ->
+      Value.V_Prim (Value.P_Bool (n > n'), combine_labels l l')
+  | (E.Ge, Value.V_Prim (Value.P_Int n, l), Value.V_Prim (Value.P_Int n', l')) ->
+      Value.V_Prim (Value.P_Bool (n >= n'), combine_labels l l')
   | _ -> raise @@
          TypeError (
-           Printf.sprintf "Bad operand types: %s %s %s"
+           Printf.sprintf "Bad operand types or division by zero: %s %s %s"
              (Value.to_string v) (E.show_binop op) (Value.to_string v')
          )
 
