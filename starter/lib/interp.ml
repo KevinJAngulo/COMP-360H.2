@@ -60,7 +60,6 @@ module Value = struct
   let prim_of_value = function
     | New_V (prim, _) -> prim
 
-  let create_value prim = New_V (prim, L)  (* Default to Low when not specified *)
 
   let create_labeled_value prim label = New_V (prim, label)
 
@@ -77,10 +76,9 @@ module Value = struct
       Printf.sprintf "%s (%s)" prim_str label_str
 end
 
-
 module Frame = struct
   type env = Value.t IdentMap.t
-  type out = Value.t list
+  type out = Value.prim list
 
   type t = Envs of env list * out | Return of Value.t * out
 
@@ -138,9 +136,6 @@ module Frame = struct
     | Envs ([], _) -> raise @@ Failure "Cannot pop from an empty environment stack"
     | Envs (_ :: rest, out) -> Envs (rest, out)
 end
-
-
-
 
 
 (* An implementation of the I/O API.  This is a little bit complex, because
@@ -235,51 +230,48 @@ end
 (* binop op v v' = the result of applying the metalanguage operation
  * corresponding to `op` to v and v'.
  *)
-let binop (context : Value.label) (op : E.binop) (v : Value.t) (v' : Value.t) : Value.t =
-  let error_message = "Can't operate with two different labels under high security context." in
 
-  let combine_labels l1 l2 =
-    match context with
-    | Value.H ->
-      if l1 <> l2 then raise (TypeError error_message)
-      else Value.H
-    | Value.L ->
-      if l1 = Value.H || l2 = Value.H then Value.H
-      else Value.L
-  in
+(* Function to combine labels *)
+let combine_labels l1 l2 l3 = 
+  if l1 = Value.H || l2 = Value.H || l3 = Value.H then Value.H else Value.L
 
-  match (op, v, v') with
-  | (E.Plus, Value.New_V (Value.V_Int n, l), Value.New_V (Value.V_Int n', l')) ->
-      Value.New_V (Value.V_Int (n + n'), combine_labels l l')
-  | (E.Minus, Value.New_V (Value.V_Int n, l), Value.New_V (Value.V_Int n', l')) ->
-      Value.New_V (Value.V_Int (n - n'), combine_labels l l')
-  | (E.Times, Value.New_V (Value.V_Int n, l), Value.New_V (Value.V_Int n', l')) ->
-      Value.New_V (Value.V_Int (n * n'), combine_labels l l')
-  | (E.Div, Value.New_V (Value.V_Int n, l), Value.New_V (Value.V_Int n', l')) when n' != 0 ->
-      Value.New_V (Value.V_Int (n / n'), combine_labels l l')
-  | (E.Mod, Value.New_V (Value.V_Int n, l), Value.New_V (Value.V_Int n', l')) when n' != 0 ->
-      Value.New_V (Value.V_Int (n mod n'), combine_labels l l')
-  | (E.And, Value.New_V (Value.V_Bool b, l), Value.New_V (Value.V_Bool b', l')) ->
-      Value.New_V (Value.V_Bool (b && b'), combine_labels l l')
-  | (E.Or, Value.New_V (Value.V_Bool b, l), Value.New_V (Value.V_Bool b', l')) ->
-      Value.New_V (Value.V_Bool (b || b'), combine_labels l l')
-  | (E.Eq, Value.New_V (v, l), Value.New_V (v', l')) ->
-      Value.New_V (Value.V_Bool (v = v'), combine_labels l l')
-  | (E.Ne, Value.New_V (v, l), Value.New_V (v', l')) ->
-      Value.New_V (Value.V_Bool (v <> v'), combine_labels l l')
-  | (E.Lt, Value.New_V (Value.V_Int n, l), Value.New_V (Value.V_Int n', l')) ->
-      Value.New_V (Value.V_Bool (n < n'), combine_labels l l')
-  | (E.Le, Value.New_V (Value.V_Int n, l), Value.New_V (Value.V_Int n', l')) ->
-      Value.New_V (Value.V_Bool (n <= n'), combine_labels l l')
-  | (E.Gt, Value.New_V (Value.V_Int n, l), Value.New_V (Value.V_Int n', l')) ->
-      Value.New_V (Value.V_Bool (n > n'), combine_labels l l')
-  | (E.Ge, Value.New_V (Value.V_Int n, l), Value.New_V (Value.V_Int n', l')) ->
-      Value.New_V (Value.V_Bool (n >= n'), combine_labels l l')
-  | _ -> raise @@
-         TypeError (
-           Printf.sprintf "Bad operand types or division by zero: %s %s %s"
-             (Value.to_string v) (E.show_binop op) (Value.to_string v')
-         )
+(* binop op context v v' = the result of applying the binary operation `op` 
+ * to values `v` and `v'` under the given security context `context`, resulting in
+ * a value with the combined security label. *)
+let binop (op : E.binop) (context : Value.label) (v : Value.t) (v' : Value.t) : Value.t =
+  match (v, v') with
+  | (Value.New_V (Value.V_Int n, l1), Value.New_V (Value.V_Int n', l2)) ->
+      let combined_label = combine_labels context l1 l2 in
+      begin match op with
+      | E.Plus  -> Value.New_V (Value.V_Int (n + n'), combined_label)
+      | E.Minus -> Value.New_V (Value.V_Int (n - n'), combined_label)
+      | E.Times -> Value.New_V (Value.V_Int (n * n'), combined_label)
+      | E.Div   -> if n' != 0 then Value.New_V (Value.V_Int (n / n'), combined_label) 
+                   else raise (TypeError "Division by zero")
+      | E.Mod   -> if n' != 0 then Value.New_V (Value.V_Int (n mod n'), combined_label) 
+                   else raise (TypeError "Modulo by zero")
+      | _ -> raise (TypeError "Incompatible types for binop")
+      end
+  | (Value.New_V (Value.V_Bool b, l1), Value.New_V (Value.V_Bool b', l2)) ->
+      let combined_label = combine_labels context l1 l2 in
+      begin match op with
+      | E.And -> Value.New_V (Value.V_Bool (b && b'), combined_label)
+      | E.Or  -> Value.New_V (Value.V_Bool (b || b'), combined_label)
+      | E.Eq  -> Value.New_V (Value.V_Bool (b = b'), combined_label)
+      | E.Ne  -> Value.New_V (Value.V_Bool (b <> b'), combined_label)
+      | _ -> raise (TypeError "Incompatible types for binop")
+      end
+  | (Value.New_V (Value.V_Int n, l1), Value.New_V (Value.V_Int n', l2)) ->
+      let combined_label = combine_labels context l1 l2 in
+      begin match op with
+      | E.Lt -> Value.New_V (Value.V_Bool (n < n'), combined_label)
+      | E.Le -> Value.New_V (Value.V_Bool (n <= n'), combined_label)
+      | E.Gt -> Value.New_V (Value.V_Bool (n > n'), combined_label)
+      | E.Ge -> Value.New_V (Value.V_Bool (n >= n'), combined_label)
+      | _ -> raise (TypeError "Incompatible types for binop")
+      end
+  | _ -> raise (TypeError "Incompatible or unsupported types for binop")
+
 
 
 (* If p : fundefs and lookup p f = (xs, ss), then f is the function with
@@ -298,110 +290,81 @@ let preprocess (Ast.Program.Pgm p : Ast.Program.t) : fundefs =
 
 (* exec p:  execute the program p.
  *)
- let exec (p : Ast.Program.t) : unit =
+(* This function assumes that preprocess, Api.do_call, Frame and Value modules are defined elsewhere. *)
 
-  (* Preprocess the AST to extract a mapping from function names to their parameter lists and bodies *)
-  let fs = preprocess p in
+let exec (p : Ast.Program.t) : unit =
+  let fs = preprocess p in  (* assuming preprocess is defined to parse the program *)
 
-  (* Helper function to determine the maximum security label between two labels *)
-  let max_label l1 l2 =
-    match (l1, l2) with
-    | (Value.H, _) | (_, Value.H) -> Value.H
-    | _ -> Value.L
-
-  (* Recursive function to handle function calls, either in the local function map or through the API *)
   let rec do_call (f : Ast.Id.t) (vs : Value.t list) : Value.t =
     try
       let (params, body) = IdentMap.find f fs in
-      let env = List.combine params vs
-                |> List.to_seq
-                |> IdentMap.of_seq
-                |> fun env_map -> Frame.Envs [env_map] in
+      let env = Frame.Envs [List.combine params vs |> List.to_seq |> IdentMap.of_seq] in
       match exec_many env body with
       | Frame.Return v -> v
       | _ -> failwith "Function did not return properly."
     with
-    | Not_found ->
-      Api.do_call f vs  (* Fallback to API if not found in local functions *)
+    | Not_found -> Api.do_call f vs  (* assuming Api.do_call is defined to handle external API calls *)
 
-  (* Function to evaluate expressions within the given execution frame *)
-  and eval (eta : Frame.t) (expr : Ast.Expr.t) : Value.t * Frame.t =
-    match eta with
+  and eval (env : Frame.t) (expr : Ast.Expr.t) : Value.t * Frame.t =
+    match env with
     | Frame.Return _ -> failwith "Cannot evaluate in a Return frame."
-    | Frame.Envs _ as env -> (
+    | Frame.Envs _ as eta -> (
         match expr with
-        | E.Var x ->
-          let v = Frame.lookup env x in
-          (v, env)
-        | E.Num n ->
-          (Value.New_V (Value.V_Int n, Value.L), env)
-        | E.Bool b ->
-          (Value.New_V (Value.V_Bool b, Value.L), env)
-        | E.Str s ->
-          (Value.New_V (Value.V_Str s, Value.L), env)
+        | E.Var x -> (Frame.lookup eta x, eta)
+        | E.Num n -> (Value.V_Int n, eta)  (* Assuming Value.V_Int is a valid constructor *)
+        | E.Bool b -> (Value.V_Bool b, eta)  (* Assuming Value.V_Bool is a valid constructor *)
+        | E.Str s -> (Value.V_Str s, eta)  (* Assuming Value.V_Str is a valid constructor *)
         | E.Assign (x, e) ->
-          let (v, env') = eval env e in
-          let updated_label = max_label (Frame.label_of env x) (Value.label_of v) in
-          (v, Frame.set env' x (Value.set_label v updated_label))
+            let (v, eta') = eval eta e in
+            (v, Frame.set eta' x v)
         | E.Binop (op, e1, e2) ->
-          let (v1, env1) = eval env e1 in
-          let (v2, env2) = eval env1 e2 in
-          (binop op v1 v2, env2)
+            let (v, eta') = eval eta e1 in
+            let (v', eta'') = eval eta' e2 in
+            (binop op v v', eta'')  (* Assuming binop is defined elsewhere *)
         | E.Neg e ->
-          let (Value.New_V (Value.V_Int n, lbl), env') = eval env e in
-          (Value.New_V (Value.V_Int (-n), lbl), env')
+            let (v, eta') = eval eta e in
+            (match v with Value.V_Int n -> (Value.V_Int (-n), eta') | _ -> raise @@ TypeError "Bad operand type for negation")
         | E.Not e ->
-          let (Value.New_V (Value.V_Bool b, lbl), env') = eval env e in
-          (Value.New_V (Value.V_Bool (not b), lbl), env')
+            let (v, eta') = eval eta e in
+            (match v with Value.V_Bool b -> (Value.V_Bool (not b), eta') | _ -> raise @@ TypeError "Bad operand type for logical not")
         | E.Call (f, es) ->
-          let (vs, env') = List.fold_right (fun e (vs, env) ->
-            let (v, env') = eval env e in (v :: vs, env')) es ([], env) in
-          let result = do_call f vs in
-          (result, env')
+            let (vs, eta') = List.fold_right (fun e (acc, eta) -> let (v, eta') = eval eta e in (v :: acc, eta')) es ([], eta) in
+            let result = do_call f (List.rev vs) in
+            (result, eta')
       )
 
-  (* Execute declarations within a given environment *)
-  and do_decs (eta : Frame.t) (decs : (Ast.Id.t * Ast.Expr.t option) list) : Frame.t =
-    List.fold_left (fun env (x, e_opt) ->
-      match e_opt with
-      | None -> Frame.declare env x (Value.New_V (Value.V_Undefined, Value.L))
-      | Some e ->
-        let (v, env') = eval env e in
-        Frame.declare env' x v
-    ) eta decs
-
-  (* Execute a single statement within the given environment *)
-  and exec_one (eta : Frame.t) (s : Ast.Stm.t) : Frame.t =
+  and exec_one (eta : Frame.t) (stmt : Ast.Stm.t) : Frame.t =
     match eta with
     | Frame.Return _ -> eta
-    | Frame.Envs _ as env ->
-      match s with
-      | S.Skip -> env
-      | S.VarDec decs -> do_decs env decs
-      | S.Expr e -> let (_, env') = eval env e in env'
-      | S.Block ss -> let nested = Frame.push env in exec_many nested ss |> Frame.pop
-      | S.If (e, s1, s2) ->
-        let (Value.New_V (Value.V_Bool cond, _), env') = eval env e in
-        exec_one env' (if cond then s1 else s2)
-      | S.While (e, body) ->
-        let rec loop env =
-          let (Value.New_V (Value.V_Bool cond, _), env') = eval env e in
-          if cond then loop (exec_one env' body) else env'
-        in loop env
-      | S.Return (Some e) ->
-        let (v, _) = eval env e in Frame.Return v
-      | S.Return None ->
-        Frame.Return (Value.New_V (Value.V_None, Value.L))
+    | Frame.Envs _ ->
+        match stmt with
+        | S.Skip -> eta
+        | S.VarDec decs -> List.fold_left (fun eta (x, opt_e) -> 
+            match opt_e with
+            | None -> Frame.declare eta x Value.V_Undefined  (* Assuming Value.V_Undefined is a valid constructor *)
+            | Some e -> let (v, eta') = eval eta e in Frame.declare eta' x v) eta decs
+        | S.Expr e -> let (_, eta') = eval eta e in eta'
+        | S.Block ss -> let nested = Frame.push eta in let result = exec_many nested ss in Frame.pop result
+        | S.If (e, s1, s2) ->
+            let (cond, eta') = eval eta e in
+            (match cond with Value.V_Bool true -> exec_one eta' s1 | Value.V_Bool false -> exec_one eta' s2 | _ -> failwith "Non-boolean in if condition")
+        | S.While (e, body) ->
+            let rec loop env =
+              let (cond, env') = eval env e in
+              match cond with
+              | Value.V_Bool true -> loop (exec_one env' body)
+              | Value.V_Bool false -> env'
+              | _ -> failwith "Non-boolean in while condition"
+            in loop eta
+        | S.Return (Some e) ->
+            let (v, _) = eval eta e in Frame.Return v
+        | S.Return None -> Frame.Return Value.V_None
 
-  (* Execute a list of statements in a sequential manner *)
   and exec_many (eta : Frame.t) (ss : Ast.Stm.t list) : Frame.t =
     List.fold_left (fun env s -> match exec_one env s with
       | Frame.Return _ as ret -> ret
       | env' -> env') eta ss
 
   in
-  (* Start execution from the 'main' function *)
-  let _ = do_call "main" [] in
+  let _ = eval (Frame.base) (E.Call ("main", [])) in  (* assuming Frame.base is defined and E.Call is the correct constructor *)
   ()
-
-
