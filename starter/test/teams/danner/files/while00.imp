@@ -1,0 +1,9 @@
+function main() {
+    while false do {
+        print_int(0) ;
+    }
+
+    print_int(1) ;
+
+    return ;
+}

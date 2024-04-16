@@ -1,0 +1,12 @@
+function f(x)  {
+    print_int(y) ;
+
+    return ;
+}
+
+function main() {
+    var y = 3 ;
+    f(y) ;
+
+    return ;
+}

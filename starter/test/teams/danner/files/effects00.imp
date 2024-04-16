@@ -1,0 +1,14 @@
+function main() {
+    var x = 0 ;
+    var y = 1 ;
+
+    print_int(x) ;
+    print_int(y) ;
+
+    x = y ;
+
+    print_int(x) ;
+    print_int(y) ;
+
+    return ;
+}

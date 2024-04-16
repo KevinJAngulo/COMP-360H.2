@@ -1,0 +1,30 @@
+{
+    "file" : "decs00.imp",
+    "input" : [],
+    "output" : []
+}
+
+{
+    "file" : "decs05.imp",
+    "input" : [],
+    "output" : ["5"]
+}
+
+{
+    "file" : "decs10.imp",
+    "input" : [],
+    "output" : ["5", "true"]
+}
+
+{
+    "file" : "decs15.imp",
+    "input" : [],
+    "output" : ["5", "true"]
+}
+
+{
+    "file" : "decs20.imp",
+    "input" : [],
+    "output" : ["5", "true"]
+}
+

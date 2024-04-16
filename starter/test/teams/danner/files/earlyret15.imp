@@ -1,0 +1,17 @@
+function f() {
+    if true then return true ;
+
+    return false ;
+}
+
+function g() {
+    var b = f() ;
+
+    return !b ;
+}
+
+function main() {
+    print_bool(g()) ;
+
+    return ;
+}

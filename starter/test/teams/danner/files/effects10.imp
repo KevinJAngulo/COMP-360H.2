@@ -1,0 +1,9 @@
+function main() {
+    var x = 0 ;
+
+    while ((x = x + 1) < 4) do print_int(x) ;
+
+    print_int(10) ;
+
+    return ;
+}

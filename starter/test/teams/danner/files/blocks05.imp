@@ -1,0 +1,19 @@
+function main() {
+  var a ;
+  var b ;
+
+  a = 5 ;
+  b = 7 ;
+
+  {
+    var a ;
+    a = 9 ;
+    print_int(a) ;
+    print_int(b) ;
+  }
+
+  print_int(a) ;
+  print_int(b) ;
+
+  return ;
+}

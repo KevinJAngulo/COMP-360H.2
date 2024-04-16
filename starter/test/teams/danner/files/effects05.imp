@@ -1,0 +1,16 @@
+function main() {
+    var x = false ;
+    var y = true ;
+
+    if x = y then {
+        print_str("SUCCESS") ;
+        print_bool(x) ;
+        print_bool(y) ;
+    } else {
+        print_str("FAILED") ;
+        print_bool(x) ;
+        print_bool(y) ;
+    }
+
+    return ;
+}

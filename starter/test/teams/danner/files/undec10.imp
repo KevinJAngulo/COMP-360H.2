@@ -1,0 +1,8 @@
+function main() {
+    {
+        var x = 0 ;
+    }
+    print_int(x) ;
+
+    return ;
+}

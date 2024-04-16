@@ -1,0 +1,21 @@
+function main() {
+
+    var b = true ;
+
+    var n = 0 ;
+
+    while b do {
+        print_int(0) ;
+        b = false ;
+    }
+
+    print_int(1) ;
+
+    while n < 3 do {
+        print_int(n+2) ;
+        n = n + 1 ;
+    }
+    print_int(n+2) ;
+
+    return ;
+}
