@@ -156,7 +156,7 @@ end
  * A client makes changes to the defaults by setting `in_channel`,
  * `out_channel`, and `show_prompts`.
  *)
- module Api = struct
+module Api = struct
   exception ApiError of string
 
   let in_channel : Scanf.Scanning.in_channel ref = ref Scanf.Scanning.stdin
@@ -298,183 +298,110 @@ let preprocess (Ast.Program.Pgm p : Ast.Program.t) : fundefs =
 
 (* exec p:  execute the program p.
  *)
-let exec (p : Ast.Program.t) : unit =
+ let exec (p : Ast.Program.t) : unit =
 
-  (* fs[f] = ([x_0,...,x_{n-1}], ss), where the program has a function
-   * definition of the form
-   *   function f(x_0,...,x_{n-1}) {
-   *     ss
-   *   }
-   *)
+  (* Preprocess the AST to extract a mapping from function names to their parameter lists and bodies *)
   let fs = preprocess p in
 
-  (*  do_call f [v_0,...,v_{n-1}] = v, where
-   *    exec_many η body = Return v, where
-   *    η = Env [{...,x_i → v_i,...}], where
-   *    fs[f] = ([x_0,...,x_{n-1}], body),     if f ∈ dom fs
-   *  = Api.do_call f vs,                      otherwise
-   *)
+  (* Helper function to determine the maximum security label between two labels *)
+  let max_label l1 l2 =
+    match (l1, l2) with
+    | (Value.H, _) | (_, Value.H) -> Value.H
+    | _ -> Value.L
+
+  (* Recursive function to handle function calls, either in the local function map or through the API *)
   let rec do_call (f : Ast.Id.t) (vs : Value.t list) : Value.t =
     try
       let (params, body) = IdentMap.find f fs in
-      let eta = Frame.Envs [
-        List.combine params vs |> List.to_seq |> IdentMap.of_seq
-      ] in
-      let eta' = exec_many eta body in
-      begin
-        match eta' with
-        | Frame.Return v -> v
-        | _ -> impossible "function returned with non-Return frame."
-      end
+      let env = List.combine params vs
+                |> List.to_seq
+                |> IdentMap.of_seq
+                |> fun env_map -> Frame.Envs [env_map] in
+      match exec_many env body with
+      | Frame.Return v -> v
+      | _ -> failwith "Function did not return properly."
     with
-    | Not_found -> 
-      try Api.do_call f vs with
-      | Api.ApiError _ -> raise @@ UndefinedFunction f
+    | Not_found ->
+      Api.do_call f vs  (* Fallback to API if not found in local functions *)
 
-  (* eval η e = (v, η'), where η ├ e ↓ (v, η').
-   *
-   * Raises:  Failure if η is a return frame or empty environment frame.
-   *)
-  and eval = function
-    | Frame.Return _ -> fun _ -> impossible "eval with Return frame."
-    | Frame.Envs [] -> fun _ -> impossible "exec with empty environment frame."
-    | eta -> function
-      | E.Var x -> (Frame.lookup eta x, eta)
-      | E.Num n -> (Value.V_Int n, eta)
-      | E.Bool b -> (Value.V_Bool b, eta)
-      | E.Str s -> (Value.V_Str s, eta)
-      | E.Assign (x, e) ->
-        let (v, eta') = eval eta e
-        in (v, Frame.set eta' x v)
-      | E.Binop (op, e, e') ->
-        let (v, eta') = eval eta e in
-        let (v', eta'') = eval eta' e' in
-        (binop op v v', eta'')
-      | E.Neg e ->
-        let (v, eta') = eval eta e in
-        (
-          match v with
-          | Value.V_Int n -> (Value.V_Int (-n), eta')
-          | _ -> raise @@
-                 TypeError (
-                   Printf.sprintf "Bad operand type: -%s" 
-                     (Value.to_string v)
-                 )
-        )
-      | E.Not e ->
-        let (v, eta') = eval eta e in
-        (
-          match v with
-          | Value.V_Bool b -> (Value.V_Bool (not b), eta')
-          | _ -> raise @@
-                 TypeError (
-                   Printf.sprintf "Bad operand type: !%s" 
-                     (Value.to_string v)
-                 )
-        )
-      | E.Call(f, es) ->
-        let (vs, eta') =
-          List.fold_left
-            (fun (vs, eta) e -> let (v, eta') = eval eta e in (v :: vs, eta'))
-            ([], eta)
-            es
-        in (do_call f (List.rev vs), eta')
+  (* Function to evaluate expressions within the given execution frame *)
+  and eval (eta : Frame.t) (expr : Ast.Expr.t) : Value.t * Frame.t =
+    match eta with
+    | Frame.Return _ -> failwith "Cannot evaluate in a Return frame."
+    | Frame.Envs _ as env -> (
+        match expr with
+        | E.Var x ->
+          let v = Frame.lookup env x in
+          (v, env)
+        | E.Num n ->
+          (Value.New_V (Value.V_Int n, Value.L), env)
+        | E.Bool b ->
+          (Value.New_V (Value.V_Bool b, Value.L), env)
+        | E.Str s ->
+          (Value.New_V (Value.V_Str s, Value.L), env)
+        | E.Assign (x, e) ->
+          let (v, env') = eval env e in
+          let updated_label = max_label (Frame.label_of env x) (Value.label_of v) in
+          (v, Frame.set env' x (Value.set_label v updated_label))
+        | E.Binop (op, e1, e2) ->
+          let (v1, env1) = eval env e1 in
+          let (v2, env2) = eval env1 e2 in
+          (binop op v1 v2, env2)
+        | E.Neg e ->
+          let (Value.New_V (Value.V_Int n, lbl), env') = eval env e in
+          (Value.New_V (Value.V_Int (-n), lbl), env')
+        | E.Not e ->
+          let (Value.New_V (Value.V_Bool b, lbl), env') = eval env e in
+          (Value.New_V (Value.V_Bool (not b), lbl), env')
+        | E.Call (f, es) ->
+          let (vs, env') = List.fold_right (fun e (vs, env) ->
+            let (v, env') = eval env e in (v :: vs, env')) es ([], env) in
+          let result = do_call f vs in
+          (result, env')
+      )
 
-  (* do_decs η [..., (x, Some e), ...] = η'', where η'' is obtained by adding
-   * x → v to η', where η ├ e ↓ (v, η').
-   * do_decs η [..., (x, None), ...] = η'', where η'' is obtained by adding
-   * x → ? to η.
-   *)
-  and do_decs 
-      (eta : Frame.t) 
-      (decs : (Ast.Id.t * Ast.Expression.t option) list) : Frame.t =
-    match decs with
-    | [] -> eta
-    | (x, None) :: decs -> 
-      let eta' = Frame.declare eta x V_Undefined in
-      do_decs eta' decs
-    | (x, Some e) :: decs ->
-      let (v, eta') = eval eta e in 
-      let eta'' = Frame.declare eta' x v in
-      do_decs eta'' decs
+  (* Execute declarations within a given environment *)
+  and do_decs (eta : Frame.t) (decs : (Ast.Id.t * Ast.Expr.t option) list) : Frame.t =
+    List.fold_left (fun env (x, e_opt) ->
+      match e_opt with
+      | None -> Frame.declare env x (Value.New_V (Value.V_Undefined, Value.L))
+      | Some e ->
+        let (v, env') = eval env e in
+        Frame.declare env' x v
+    ) eta decs
 
-  (* exec_one η s = η', where s ├ η → η'.
-   *)
-  and exec_one = function
-    | Frame.Return _ -> fun _ -> impossible "exec with Return frame."
-    | Frame.Envs [] -> fun _ -> impossible "exec with empty environment frame."
-    | eta -> function
-      | S.Skip -> eta
-      | S.VarDec decs -> do_decs eta decs
-      | S.Expr e ->
-        let (_, eta') = eval eta e in
-        eta'
-      | S.Block ss ->
-        let eta' = Frame.push eta in
-        begin
-          match exec_many eta' ss with
-          | Return v -> Return v
-          | eta'' -> Frame.pop eta''
-        end
-      | S.If(e, s0, s1) ->
-        let (v, eta') = eval eta e in
-        begin
-          match v with
-          | Value.V_Bool true -> exec_one eta' s0
-          | Value.V_Bool false -> exec_one eta' s1
-          | _ -> raise @@ TypeError (
-                   "Conditional test not a boolean value:  " ^ Value.to_string v
-                 )
-        end
-      | S.While(e, body) ->
-        (* dowhile η = η', where while e do body ├ η → η'.
-         *)
-        let rec dowhile (eta : Frame.t) : Frame.t =
-          let (v, eta') = eval eta e in
-          match v with
-          | Value.V_Bool false -> eta'
-          | Value.V_Bool true ->
-            begin
-              match exec_one eta' body with
-              | Frame.Return v -> Frame.Return v
-              | eta'' -> dowhile eta''
-            end
-          | _ -> raise @@ TypeError (
-                   "While test not a boolean value:  " ^ Value.to_string v
-                 )
-        in
-        dowhile eta
+  (* Execute a single statement within the given environment *)
+  and exec_one (eta : Frame.t) (s : Ast.Stm.t) : Frame.t =
+    match eta with
+    | Frame.Return _ -> eta
+    | Frame.Envs _ as env ->
+      match s with
+      | S.Skip -> env
+      | S.VarDec decs -> do_decs env decs
+      | S.Expr e -> let (_, env') = eval env e in env'
+      | S.Block ss -> let nested = Frame.push env in exec_many nested ss |> Frame.pop
+      | S.If (e, s1, s2) ->
+        let (Value.New_V (Value.V_Bool cond, _), env') = eval env e in
+        exec_one env' (if cond then s1 else s2)
+      | S.While (e, body) ->
+        let rec loop env =
+          let (Value.New_V (Value.V_Bool cond, _), env') = eval env e in
+          if cond then loop (exec_one env' body) else env'
+        in loop env
       | S.Return (Some e) ->
-        let (v, _) = eval eta e in
-        Frame.Return v
+        let (v, _) = eval env e in Frame.Return v
       | S.Return None ->
-        Frame.Return Value.V_None
+        Frame.Return (Value.New_V (Value.V_None, Value.L))
 
-  (* exec_many η₀ [s_0,...,s_{n-1}] = η',
-   *   if s_0 ├ η₀ → η₁
-   *      s_1 ├ η₁ → η₂
-   *      ...
-   *      s_{n-1} ├ η_{n-1} → η'
-   *      and η_i is not a return frame for any i;
-   * exec_many η₀ [s_0,...,s_{n-1}] = η',
-   *   if s_0 ├ η₀ → η₁
-   *      s_1 ├ η₁ → η₂
-   *      ...
-   *      s_{j-1} ├ η_{j-1} → η'
-   *      and η_i is not a return frame for any i<j and η' is a return
-   *      frame.
-   *)
+  (* Execute a list of statements in a sequential manner *)
   and exec_many (eta : Frame.t) (ss : Ast.Stm.t list) : Frame.t =
-    match ss with
-        | [] -> eta
-        | s :: ss ->
-          begin
-            match exec_one eta s with
-            | Frame.Return v -> Frame.Return v
-            | eta' -> exec_many eta' ss
-          end
+    List.fold_left (fun env s -> match exec_one env s with
+      | Frame.Return _ as ret -> ret
+      | env' -> env') eta ss
 
   in
-    let _ = eval Frame.base (E.Call ("main", [])) in
-    ()
+  (* Start execution from the 'main' function *)
+  let _ = do_call "main" [] in
+  ()
+
 
