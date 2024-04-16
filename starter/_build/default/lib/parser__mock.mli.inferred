@@ -1,0 +1,104 @@
+type token =
+    WHILE
+  | VAR
+  | TIMES
+  | THEN
+  | STRING of string
+  | SKIP
+  | SEMI
+  | RPAREN
+  | RETURN
+  | RBRACE
+  | PLUS
+  | OR
+  | NUM of int
+  | NOT
+  | NE
+  | MOD
+  | MINUS
+  | LT
+  | LPAREN
+  | LE
+  | LBRACE
+  | IF
+  | ID of string
+  | GT
+  | GE
+  | FUNCTION
+  | EQ
+  | EOF
+  | ELSE
+  | DO
+  | DIV
+  | COMMA
+  | BOOL of bool
+  | ASSIGN
+  | AND
+val left_assoc :
+  Ast.Expression.t ->
+  (Ast.Expression.binop * Ast.Expression.t) list -> Ast.Expression.t
+val menhir_begin_marker : int
+val xv_terminated_stm : Ast.Stm.t
+val xv_terminated_pgm : Ast.Program.t
+val xv_terminated_exp : Ast.Expression.t
+val xv_terminated_prim_stm_SEMI_ : Ast.Stm.t
+val xv_stm : Ast.Stm.t
+val xv_separated_nonempty_list_COMMA_exp_ : Ast.Expression.t list
+val xv_separated_nonempty_list_COMMA_assign_ :
+  (string * Ast.Expression.t option) list
+val xv_separated_nonempty_list_COMMA_ID_ : string list
+val xv_separated_list_COMMA_exp_ : Ast.Expression.t list
+val xv_separated_list_COMMA_ID_ : string list
+val xv_prim_stm_term : Ast.Stm.t
+val xv_prim_stm : Ast.Stm.t
+val xv_pmops : Ast.Expression.binop
+val xv_pmexp : Ast.Expression.t
+val xv_pgm : Ast.Program.t
+val xv_orop : Ast.Expression.binop
+val xv_orexp : Ast.Expression.t
+val xv_option_init_ : Ast.Expression.t option
+val xv_option_exp_ : Ast.Expression.t option
+val xv_operator_separated_list_pmops_mdexp_ :
+  Ast.Expression.t * (Ast.Expression.binop * Ast.Expression.t) list
+val xv_operator_separated_list_orop_andexp_ :
+  Ast.Expression.t * (Ast.Expression.binop * Ast.Expression.t) list
+val xv_operator_separated_list_mdops_nexp_ :
+  Ast.Expression.t * (Ast.Expression.binop * Ast.Expression.t) list
+val xv_operator_separated_list_andop_compexp_ :
+  Ast.Expression.t * (Ast.Expression.binop * Ast.Expression.t) list
+val xv_op_sep_list_rest_pmops_mdexp_ :
+  Ast.Expression.binop * Ast.Expression.t
+val xv_op_sep_list_rest_orop_andexp_ :
+  Ast.Expression.binop * Ast.Expression.t
+val xv_op_sep_list_rest_mdops_nexp_ : Ast.Expression.binop * Ast.Expression.t
+val xv_op_sep_list_rest_andop_compexp_ :
+  Ast.Expression.binop * Ast.Expression.t
+val xv_nonempty_list_stm_ : Ast.Stm.t list
+val xv_nonempty_list_fundef_ : Ast.Program.fundef list
+val xv_nexp : Ast.Expression.t
+val xv_mdops : Ast.Expression.binop
+val xv_mdexp : Ast.Expression.t
+val xv_loption_separated_nonempty_list_COMMA_exp__ : Ast.Expression.t list
+val xv_loption_separated_nonempty_list_COMMA_ID__ : string list
+val xv_list_op_sep_list_rest_pmops_mdexp__ :
+  (Ast.Expression.binop * Ast.Expression.t) list
+val xv_list_op_sep_list_rest_orop_andexp__ :
+  (Ast.Expression.binop * Ast.Expression.t) list
+val xv_list_op_sep_list_rest_mdops_nexp__ :
+  (Ast.Expression.binop * Ast.Expression.t) list
+val xv_list_op_sep_list_rest_andop_compexp__ :
+  (Ast.Expression.binop * Ast.Expression.t) list
+val xv_init : Ast.Expression.t
+val xv_fundef : Ast.Program.fundef
+val xv_exp : Ast.Expression.t
+val xv_compound_stm : Ast.Stm.t
+val xv_compop : Ast.Expression.binop
+val xv_compexp : Ast.Expression.t
+val xv_body_stm : Ast.Stm.t
+val xv_block_stm : Ast.Stm.t
+val xv_assignexp : Ast.Expression.t
+val xv_assign : string * Ast.Expression.t option
+val xv_andop : Ast.Expression.binop
+val xv_andexp : Ast.Expression.t
+val xv_aexp : Ast.Expression.t
+val menhir_end_marker : int

@@ -1,0 +1,25 @@
+function main() {
+  var a ;
+  var b ;
+
+  a = prompt_int("Enter a: ") ;
+  b = prompt_int("Enter b: ") ;
+
+  if b < a then {
+    var t ;
+    t = b ;
+    b = a ; 
+    a = t ;
+  }
+
+  while b%a != 0 do {
+    var r ;
+    r = b%a ;
+    b = a ;
+    a = r ;
+  }
+
+  print_int(a) ;
+
+  return ;
+}

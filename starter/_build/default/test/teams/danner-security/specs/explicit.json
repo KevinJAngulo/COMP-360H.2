@@ -1,0 +1,13 @@
+{
+    "file":     "expl00.imp",
+    "input":    ["0"],
+    "except":   "SecurityError"
+}
+
+{
+    "file":     "expl05.imp",
+    "input":    ["0"],
+    "except":   "SecurityError"
+}
+
+

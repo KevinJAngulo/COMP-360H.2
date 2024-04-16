@@ -64,113 +64,80 @@ module Value = struct
 end
 
 module Frame = struct
-
-  (* The type of environments.
-   *)
   type env = Value.t IdentMap.t
+  type out = Value.t list
+  type t = Envs of env list * out | Return of Value.t * out
 
-  (* A frame is either a list of environments or a return frame with a
-   * value.
-   *)
-  type t = Envs of env list | Return of Value.t
+  (* Creates an empty output list as the base output for new frames. *)
+  let empty_out : out = []
 
-  (* A base environment frame.
-   *)
-  let base : t = Envs [IdentMap.empty]
+  (* A base environment frame with an empty output list. *)
+  let base : t = Envs ([IdentMap.empty], empty_out)
 
-  (* to_string η is a string representation of η.
-   *)
-  let to_string (eta : t) : string =
-    match eta with
-    | Return v -> Value.to_string v
-    | Envs sigmas ->
-      sigmas |> List.map IdentMap.to_list
-             |> List.map (
-                  fun l ->
-                    String.concat ", " (
-                      List.map (fun (id, v) -> id ^ ": " ^ Value.to_string v) l
-                    )
-                )
-             |> String.concat "; "
+  (* Convert the Frame to a string. *)
+  let to_string (frame : t) : string =
+    match frame with
+    | Return (v, out) -> Printf.sprintf "Return: %s, Output: [%s]" (Value.to_string v) (String.concat ", " (List.map Value.to_string out))
+    | Envs (envs, out) ->
+      let envs_str = envs |> List.map IdentMap.to_list
+                          |> List.map (fun l ->
+                              String.concat ", " (List.map (fun (id, v) -> Printf.sprintf "%s: %s" id (Value.to_string v)) l))
+                          |> String.concat "; "
+      in Printf.sprintf "Environments: [%s], Output: [%s]" envs_str (String.concat ", " (List.map Value.to_string out))
 
-  (* lookup η x = v, where η = Envs [σ_0,...,σ_{n-1}], σ_i(x) = v, and
-   * x is not in the domain of any σ_j for j<i.
-   *
-   * Raises Failure if η is a return frame.
-   * Raises UnboundVariable if x not in dom σ_i for any i.
-   *)
-  let lookup (eta : t) (x : Ast.Id.t) : Value.t =
-    (* lookup' [σ_0,...,σ_{n-1}] = v, where σ_i(x) = v and x is not in the
-     * domain of any σ_j for j<i.
-     *
-     * Raises Failure if η is a return frame.
-     *)
-    let rec lookup' (sigmas : env list) : Value.t =
-        match sigmas with
-        | [] -> raise @@ UnboundVariable x
-        | sigma :: sigmas ->
-          try IdentMap.find x sigma with
-          | Not_found -> lookup' sigmas
-    in match eta with
-    | Envs eta -> lookup' eta
-    | Return _ -> impossible "Bad frame"
+  (* Lookup function revised to consider the frame's structure. *)
+  let lookup (frame : t) (x : Ast.Id.t) : Value.t =
+    let rec lookup_in_envs envs =
+      match envs with
+      | [] -> raise (UnboundVariable x)
+      | env :: rest ->
+        try IdentMap.find x env
+        with Not_found -> lookup_in_envs rest
+    in
+    match frame with
+    | Return _ -> raise (Failure "Cannot lookup in a return frame")
+    | Envs (envs, _) -> lookup_in_envs envs
 
-  (* set η  x v = Envs [σ_0,...,σ_i[x→v],...], 
-   *   where η = Envs [σ_0,...,σ_{n-1}], x ∈ dom(σ_i) and x not in dom(σ_j)
-   *   for j < i.
-   *
-   * Raises Failure if η is a return frame.
-   * Raises UnboundVariable if x not in dom σ_i for any i.
-   *)
-  let set (eta : t) (x : Ast.Id.t) (v : Value.t) : t =
-    (* set' [σ_0,...,σ_{n-1}] = [σ_0,...,σ_i[x→v],...], x ∈ dom(σ_i) and x
-     * not in dom(σ_j) for j < i.
-     *)
-    let rec set' (sigmas : env list) : env list =
-      match sigmas with
-      | [] -> raise @@ UnboundVariable x
-      | sigma :: sigmas ->
-        if IdentMap.mem x sigma
-        then IdentMap.add x v sigma :: sigmas
-        else sigma :: set' sigmas
-    in match eta with
-    | Envs sigmas -> Envs (set' sigmas)
-    | Return _ -> impossible "Bad frame"
+  (* Set function updated for the new frame structure. *)
+  let set (frame : t) (x : Ast.Id.t) (v : Value.t) : t =
+    let rec set_in_envs envs =
+      match envs with
+      | [] -> raise (UnboundVariable x)
+      | env :: rest ->
+        if IdentMap.mem x env
+        then IdentMap.add x v env :: rest
+        else env :: set_in_envs rest
+    in
+    match frame with
+    | Return _ -> raise (Failure "Cannot set in a return frame")
+    | Envs (envs, out) -> Envs (set_in_envs envs, out)
 
+  (* Function to declare a new variable in the most recent environment. *)
+  let declare (frame : t) (x : Ast.Id.t) (v : Value.t) : t =
+    match frame with
+    | Return _ -> raise (Failure "Cannot declare in a return frame")
+    | Envs (envs, out) ->
+      match envs with
+      | [] -> raise (Failure "Cannot declare in an empty frame")
+      | env :: rest ->
+        if IdentMap.mem x env
+        then raise (MultipleDeclaration x)
+        else Envs (IdentMap.add x v env :: rest, out)
 
-  (* declare η x v = Envs [σ₀[x→v],σ₁,...], where η = Envs [σ₀,σ₁,...].
-   *
-   * Raises Failure if η a return frame and or Envs [].
-   * Raises MultipleDeclaration if x ∈ dom σ₀.
-   *)
-  let declare (eta : t) (x : Ast.Id.t) (v : Value.t) : t =
-    match eta with
-    | Envs [] -> impossible "declaration with empty frame."
-    | Envs (sigma :: sigmas) ->
-      if IdentMap.mem x sigma
-      then raise @@ MultipleDeclaration x
-      else Envs (IdentMap.add x v sigma :: sigmas)
-    | Return _ -> impossible "declaration with Return frame."
+  (* Function to push a new, empty environment to the frame. *)
+  let push (frame : t) : t =
+    match frame with
+    | Return _ -> raise (Failure "Cannot push to a return frame")
+    | Envs (envs, out) -> Envs (IdentMap.empty :: envs, out)
 
-  (* push (Envs σs) = Envs ({} :: σs).
-   * push (Return _): raises Failure.
-   *)
-  let push (eta : t) : t =
-    match eta with
-    | Envs sigmas -> Envs (IdentMap.empty :: sigmas)
-    | Return _ -> impossible "Bad frame"
-
-  (* pop (Envs σ :: σs) = Envs (σs).
-   * pop (Envs []): raises Failure
-   * pop (Return _):  raises Failure
-   *)
-  let pop (eta : t) : t =
-    match eta with
-    | Envs [] -> impossible "Frame.pop on empty frame"
-    | Envs (_ :: sigmas) -> Envs sigmas
-    | Return _ -> impossible "Bad frame"
-
+  (* Function to pop the most recent environment from the frame. *)
+  let pop (frame : t) : t =
+    match frame with
+    | Return _ -> raise (Failure "Cannot pop from a return frame")
+    | Envs ([], _) -> raise (Failure "Cannot pop from an empty environment stack")
+    | Envs (_ :: rest, out) -> Envs (rest, out)
 end
+
 
 (* An implementation of the I/O API.  This is a little bit complex, because
  * this one implementation allows for a few variations:

@@ -1,0 +1,47 @@
+function is_prime(n) {
+    var i = 2 ;
+
+    while i < n do {
+        if n % i == 0 then return false ;
+        i = i + 1 ;
+    }
+
+    return true ;
+
+}
+
+function power(n, i) {
+    var q = 0 ;
+
+    var c = i ;
+
+    while (n % c == 0) do {
+        q = q + 1 ;
+        c = c * i ;
+    }
+
+    return q ;
+}
+
+function factor (n) {
+
+    var i = 2 ;
+
+    while i <= n do {
+        if (is_prime(i)) then {
+            if n % i == 0 then {
+                print_int(i) ;
+                print_int(power(n, i)) ;
+            }
+        }
+
+        i = i + 1 ;
+    }
+
+    return ;
+}
+
+function main() {
+    factor(18252) ;
+    return ;
+}
