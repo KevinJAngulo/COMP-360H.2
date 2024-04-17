@@ -40,8 +40,18 @@ exception SecurityError
 let impossible (s : string) : 'a =
   failwith @@ "Impossible: " ^ s
 
-(* Values.
- *)
+(* Label *)
+module Label = struct
+  type t = H | L
+
+  let to_string = function
+    | H -> "High"
+    | L -> "Low"
+end
+
+
+(* Values. *)
+
 module Value = struct
   type prim = 
     | V_Undefined
@@ -50,37 +60,32 @@ module Value = struct
     | V_Bool of bool
     | V_Str of string
 
-  type label = H | L
-
-  type t = New_V of prim * label
-
-  let label_of_value = function
-    | New_V (_, label) -> label
-
-  let prim_of_value = function
-    | New_V (prim, _) -> prim
-
+  type t = New_V of prim * Label.t  (* Use Label.t instead of defining it here *)
 
   let create_labeled_value prim label = New_V (prim, label)
 
-  let to_string = function
-    | New_V (prim, label) ->
-      let label_str = match label with H -> "High" | L -> "Low" in
-      let prim_str = match prim with
-        | V_Undefined -> "?"
-        | V_None -> "None"
-        | V_Int n -> string_of_int n
-        | V_Bool b -> string_of_bool b
-        | V_Str s -> s
-      in
-      Printf.sprintf "%s (%s)" prim_str label_str
+  let label_of_value (New_V (_, label)) = label
+  let prim_of_value (New_V (prim, _)) = prim
+
+  let to_string (New_V (prim, label)) =
+    let label_str = Label.to_string label in
+    let prim_str = match prim with
+      | V_Undefined -> "?"
+      | V_None -> "None"
+      | V_Int n -> string_of_int n
+      | V_Bool b -> string_of_bool b
+      | V_Str s -> s
+    in
+    Printf.sprintf "%s (%s)" prim_str label_str
 end
 
 module Frame = struct
   type env = Value.t IdentMap.t
   type out = Value.prim list
 
-  type t = Envs of env list * out | Return of Value.t * out
+  type t = 
+  | Envs of env list * out 
+  | Return of Value.t * out
 
   let empty_out : out = []
 
@@ -232,46 +237,44 @@ end
  *)
 
 (* Function to combine labels *)
-let combine_labels l1 l2 l3 = 
-  if l1 = Value.H || l2 = Value.H || l3 = Value.H then Value.H else Value.L
+let combine_labels l1 l2 = 
+  if l1 = Label.H || l2 = Label.H then Label.H else Label.L
 
-(* binop op context v v' = the result of applying the binary operation `op` 
- * to values `v` and `v'` under the given security context `context`, resulting in
- * a value with the combined security label. *)
-let binop (op : E.binop) (context : Value.label) (v : Value.t) (v' : Value.t) : Value.t =
-  match (v, v') with
-  | (Value.New_V (Value.V_Int n, l1), Value.New_V (Value.V_Int n', l2)) ->
-      let combined_label = combine_labels context l1 l2 in
-      begin match op with
-      | E.Plus  -> Value.New_V (Value.V_Int (n + n'), combined_label)
-      | E.Minus -> Value.New_V (Value.V_Int (n - n'), combined_label)
-      | E.Times -> Value.New_V (Value.V_Int (n * n'), combined_label)
-      | E.Div   -> if n' != 0 then Value.New_V (Value.V_Int (n / n'), combined_label) 
-                   else raise (TypeError "Division by zero")
-      | E.Mod   -> if n' != 0 then Value.New_V (Value.V_Int (n mod n'), combined_label) 
-                   else raise (TypeError "Modulo by zero")
-      | _ -> raise (TypeError "Incompatible types for binop")
-      end
-  | (Value.New_V (Value.V_Bool b, l1), Value.New_V (Value.V_Bool b', l2)) ->
-      let combined_label = combine_labels context l1 l2 in
-      begin match op with
-      | E.And -> Value.New_V (Value.V_Bool (b && b'), combined_label)
-      | E.Or  -> Value.New_V (Value.V_Bool (b || b'), combined_label)
-      | E.Eq  -> Value.New_V (Value.V_Bool (b = b'), combined_label)
-      | E.Ne  -> Value.New_V (Value.V_Bool (b <> b'), combined_label)
-      | _ -> raise (TypeError "Incompatible types for binop")
-      end
-  | (Value.New_V (Value.V_Int n, l1), Value.New_V (Value.V_Int n', l2)) ->
-      let combined_label = combine_labels context l1 l2 in
-      begin match op with
-      | E.Lt -> Value.New_V (Value.V_Bool (n < n'), combined_label)
-      | E.Le -> Value.New_V (Value.V_Bool (n <= n'), combined_label)
-      | E.Gt -> Value.New_V (Value.V_Bool (n > n'), combined_label)
-      | E.Ge -> Value.New_V (Value.V_Bool (n >= n'), combined_label)
-      | _ -> raise (TypeError "Incompatible types for binop")
-      end
-  | _ -> raise (TypeError "Incompatible or unsupported types for binop")
-
+(* binop op v v' = the result of applying the binary operation `op` 
+ * to values `v` and `v'`, resulting in a value with the combined security label. *)
+let binop (op : E.binop) (v : Value.t) (v' : Value.t) : Value.t =
+  let Value.New_V (p1, l1) = v in
+  let Value.New_V (p2, l2) = v' in
+  let combined_label = combine_labels l1 l2 in
+  
+  match (op, p1, p2) with
+  | (E.Plus, Value.V_Int n, Value.V_Int n') ->
+      Value.New_V (Value.V_Int (n + n'), combined_label)
+  | (E.Minus, Value.V_Int n, Value.V_Int n') ->
+      Value.New_V (Value.V_Int (n - n'), combined_label)
+  | (E.Times, Value.V_Int n, Value.V_Int n') ->
+      Value.New_V (Value.V_Int (n * n'), combined_label)
+  | (E.Div, Value.V_Int n, Value.V_Int n') when n' != 0 ->
+      Value.New_V (Value.V_Int (n / n'), combined_label)
+  | (E.Mod, Value.V_Int n, Value.V_Int n') when n' != 0 ->
+      Value.New_V (Value.V_Int (n mod n'), combined_label)
+  | (E.And, Value.V_Bool b, Value.V_Bool b') ->
+      Value.New_V (Value.V_Bool (b && b'), combined_label)
+  | (E.Or, Value.V_Bool b, Value.V_Bool b') ->
+      Value.New_V (Value.V_Bool (b || b'), combined_label)
+  | (E.Eq, _, _) ->
+      Value.New_V (Value.V_Bool (Value.prim_of_value v = Value.prim_of_value v'), combined_label)
+  | (E.Ne, _, _) ->
+      Value.New_V (Value.V_Bool (Value.prim_of_value v <> Value.prim_of_value v'), combined_label)
+  | (E.Lt, Value.V_Int n, Value.V_Int n') ->
+      Value.New_V (Value.V_Bool (n < n'), combined_label)
+  | (E.Le, Value.V_Int n, Value.V_Int n') ->
+      Value.New_V (Value.V_Bool (n <= n'), combined_label)
+  | (E.Gt, Value.V_Int n, Value.V_Int n') ->
+      Value.New_V (Value.V_Bool (n > n'), combined_label)
+  | (E.Ge, Value.V_Int n, Value.V_Int n') ->
+      Value.New_V (Value.V_Bool (n >= n'), combined_label)
+  | _ -> raise (TypeError "Incompatible operand types for binary operation")
 
 
 (* If p : fundefs and lookup p f = (xs, ss), then f is the function with
