@@ -91,15 +91,6 @@ module Frame = struct
 
   let base : t = Envs ([IdentMap.empty], empty_out)
 
-  let to_string (frame : t) : string =
-    match frame with
-    | Return (v, out) -> Printf.sprintf "Return: %s, Output: [%s]" (Value.to_string v) (String.concat ", " (List.map Value.to_string out))
-    | Envs (envs, out) ->
-      let envs_str = envs |> List.map IdentMap.to_list
-                          |> List.map (fun l -> String.concat ", " (List.map (fun (id, v) -> Printf.sprintf "%s: %s" id (Value.to_string v)) l))
-                          |> String.concat "; "
-      in Printf.sprintf "Environments: [%s], Output: [%s]" envs_str (String.concat ", " (List.map Value.to_string out))
-
   let lookup (frame : t) (x : Ast.Id.t) : Value.t =
     let rec lookup_in_envs envs =
       match envs with
@@ -305,7 +296,7 @@ let exec (p : Ast.Program.t) : unit =
       with
       | Api.ApiError _ -> raise (UndefinedFunction f)
 
-  and eval (context : Label.t) (env : Frame.t) (expr : Ast.Expr.t) : Value.t * Frame.t =
+  and eval (context : Label.t) (env : Frame.t) (expr : Ast.Expression.t) : Value.t * Frame.t =
     match env with
     | Frame.Return _ -> failwith "Cannot evaluate in a Return frame."
     | Frame.Envs _ as eta ->

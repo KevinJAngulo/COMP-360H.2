@@ -40,8 +40,18 @@ exception SecurityError
 let impossible (s : string) : 'a =
   failwith @@ "Impossible: " ^ s
 
-(* Values.
- *)
+(* Label *)
+module Label = struct
+  type t = H | L
+
+  let to_string = function
+    | H -> "High"
+    | L -> "Low"
+end
+
+
+(* Values. *)
+
 module Value = struct
   type prim = 
     | V_Undefined
@@ -50,50 +60,57 @@ module Value = struct
     | V_Bool of bool
     | V_Str of string
 
-  type label = H | L
-
-  type t = New_V of prim * label
-
-  let label_of_value = function
-    | New_V (_, label) -> label
-
-  let prim_of_value = function
-    | New_V (prim, _) -> prim
-
+  type t = New_V of prim * Label.t  (* Use Label.t instead of defining it here *)
 
   let create_labeled_value prim label = New_V (prim, label)
 
-  let to_string = function
-    | New_V (prim, label) ->
-      let label_str = match label with H -> "High" | L -> "Low" in
-      let prim_str = match prim with
-        | V_Undefined -> "?"
-        | V_None -> "None"
-        | V_Int n -> string_of_int n
-        | V_Bool b -> string_of_bool b
-        | V_Str s -> s
-      in
-      Printf.sprintf "%s (%s)" prim_str label_str
+  let label_of_value (New_V (_, label)) = label
+  let prim_of_value (New_V (prim, _)) = prim
+
+  let to_string (New_V (prim, label)) =
+    let label_str = Label.to_string label in
+    let prim_str = match prim with
+      | V_Undefined -> "?"
+      | V_None -> "None"
+      | V_Int n -> string_of_int n
+      | V_Bool b -> string_of_bool b
+      | V_Str s -> s
+    in
+    Printf.sprintf "%s (%s)" prim_str label_str
 end
 
 module Frame = struct
   type env = Value.t IdentMap.t
   type out = Value.prim list
 
-  type t = Envs of env list * out | Return of Value.t * out
+  type t = 
+  | Envs of env list * out 
+  | Return of Value.t * out
 
   let empty_out : out = []
 
   let base : t = Envs ([IdentMap.empty], empty_out)
 
-  let to_string (frame : t) : string =
+  (* let to_string (frame : Frame.t) : string =
     match frame with
-    | Return (v, out) -> Printf.sprintf "Return: %s, Output: [%s]" (Value.to_string v) (String.concat ", " (List.map Value.to_string out))
-    | Envs (envs, out) ->
-      let envs_str = envs |> List.map IdentMap.to_list
-                          |> List.map (fun l -> String.concat ", " (List.map (fun (id, v) -> Printf.sprintf "%s: %s" id (Value.to_string v)) l))
-                          |> String.concat "; "
-      in Printf.sprintf "Environments: [%s], Output: [%s]" envs_str (String.concat ", " (List.map Value.to_string out))
+    | Frame.Return (v, out) ->
+        let out_str = out 
+          |> List.map (fun p -> Value.to_string (Value.create_labeled_value p Label.L)) (* Assuming default label L for output purposes *)
+          |> String.concat ", "
+        in
+        Printf.sprintf "Return: %s, Output: [%s]" (Value.to_string v) out_str
+    | Frame.Envs (envs, out) ->
+        let envs_str = envs 
+          |> List.map IdentMap.to_list
+          |> List.map (fun l -> 
+              String.concat ", " (List.map (fun (id, v) -> Printf.sprintf "%s: %s" id (Value.to_string v)) l))
+          |> String.concat "; "
+        let out_str = out 
+          |> List.map (fun p -> Value.to_string (Value.create_labeled_value p Label.L))
+          |> String.concat ", "
+        in
+        Printf.sprintf "Environments: [%s], Output: [%s]" envs_str out_str *)
+  
 
   let lookup (frame : t) (x : Ast.Id.t) : Value.t =
     let rec lookup_in_envs envs =
@@ -151,80 +168,73 @@ end
  * A client makes changes to the defaults by setting `in_channel`,
  * `out_channel`, and `show_prompts`.
  *)
-module Api = struct
+ module Api = struct
   exception ApiError of string
+  exception SecurityError
 
   let in_channel : Scanf.Scanning.in_channel ref = ref Scanf.Scanning.stdin
   let out_channel : Out_channel.t ref = ref Out_channel.stdout
   let show_prompts : bool ref = ref true
 
   let output (oc : Out_channel.t) (s : string) : unit =
-    Out_channel.output_string oc s;
+    Out_channel.output_string oc s ; 
     Out_channel.flush oc
 
   let outputnl (oc : Out_channel.t) (s : string) : unit =
     output oc (s ^ "\n")
 
-  (* Define the map type properly: a map from string to functions that take a list of Value.t and return Value.t *)
+  let mk_value prim label = Value.New_V (prim, label)
+  let mk_none = mk_value Value.V_None Label.L
+
   let api : (Value.t list -> Value.t) IdentMap.t =
-    let add_func map (key, func) = IdentMap.add key func map in
-    List.fold_left add_func IdentMap.empty [
-      ("print_bool", fun vs ->
-        match vs with
-        | [Value.New_V (Value.V_Bool n, _)] ->
-          outputnl (!out_channel) (Bool.to_string n); Value.New_V (Value.V_None, Value.L)
-        | _ -> raise @@ TypeError "Bad argument type for print_bool"
-      );
-      ("get_bool", fun vs ->
-        match vs with
-        | [] -> Value.New_V (Value.V_Bool (Scanf.bscanf !in_channel " %B" (fun b -> b)), Value.L)
-        | _ -> raise @@ TypeError "Bad argument type for get_bool"
-      );
-      ("prompt_bool", fun vs ->
-        match vs with
-        | [Value.New_V (Value.V_Str s, _)] ->
-          if !show_prompts then output (!out_channel) s else ();
-          Value.New_V (Value.V_Bool (Scanf.bscanf !in_channel " %B" (fun b -> b)), Value.L)
-        | _ -> raise @@ TypeError "Bad argument type for prompt_bool"
-      );
-      ("print_int", fun vs ->
-        match vs with
-        | [Value.New_V (Value.V_Int n, _)] ->
-          outputnl (!out_channel) (Int.to_string n); Value.New_V (Value.V_None, Value.L)
-        | _ -> raise @@ TypeError "Bad argument type for print_int"
-      );
-      ("get_int", fun vs ->
-        match vs with
-        | [] -> Value.New_V (Value.V_Int (Scanf.bscanf !in_channel " %d" (fun n -> n)), Value.L)
-        | _ -> raise @@ TypeError "Bad argument type for get_int"
-      );
-      ("print_str", fun vs ->
-        match vs with
-        | [Value.New_V (Value.V_Str s, _)] ->
-          outputnl (!out_channel) s; Value.New_V (Value.V_None, Value.L)
-        | _ -> raise @@ TypeError "Bad argument type for print_str"
-      );
-      ("get_str", fun vs ->
-        match vs with
-        | [] -> Value.New_V (Value.V_Str (Scanf.bscanf !in_channel "%s" (fun s -> s)), Value.L)
-        | _ -> raise @@ TypeError "Bad argument type for get_str"
-      );
-      ("prompt_str", fun vs ->
-        match vs with
-        | [Value.New_V (Value.V_Str s, _)] ->
-          if !show_prompts then output (!out_channel) s else ();
-          Value.New_V (Value.V_Str (Scanf.bscanf !in_channel " %s" (fun s -> s)), Value.L)
-        | _ -> raise @@ TypeError "Bad argument type for prompt_str"
+    IdentMap.empty
+    |> IdentMap.add "print_bool" (fun vs ->
+      match vs with
+      | [Value.New_V (Value.V_Bool b, _)] ->  (* Prints regardless of label *)
+          outputnl !out_channel (Bool.to_string b); mk_none
+      | _ -> raise (TypeError "Bad argument type for print_bool")
       )
-    ]
+    |> IdentMap.add "print_bool_s" (fun vs ->
+      match vs with
+      | [Value.New_V (Value.V_Bool b, Label.H)] ->
+          outputnl !out_channel (Bool.to_string b); mk_none
+      | [Value.New_V (_, Label.L)] -> raise SecurityError
+      | _ -> raise (TypeError "Bad argument type for print_bool_s")
+      )
+    (* Similar implementations for `print_int`, `print_str`, `get_int`, `get_bool`, etc. *)
+    |> IdentMap.add "print_int" (fun vs ->
+      match vs with
+      | [Value.New_V (Value.V_Int n, _)] ->
+          outputnl !out_channel (Int.to_string n); mk_none
+      | _ -> raise (TypeError "Bad argument type for print_int")
+      )
+    |> IdentMap.add "print_int_s" (fun vs ->
+      match vs with
+      | [Value.New_V (Value.V_Int n, Label.H)] ->
+          outputnl !out_channel (Int.to_string n); mk_none
+      | [Value.New_V (_, Label.L)] -> raise SecurityError
+      | _ -> raise (TypeError "Bad argument type for print_int_s")
+      )
+    |> IdentMap.add "print_str" (fun vs ->
+      match vs with
+      | [Value.New_V (Value.V_Str s, _)] ->
+          outputnl !out_channel s; mk_none
+      | _ -> raise (TypeError "Bad argument type for print_str")
+      )
+    |> IdentMap.add "print_str_s" (fun vs ->
+      match vs with
+      | [Value.New_V (Value.V_Str s, Label.H)] ->
+          outputnl !out_channel s; mk_none
+      | [Value.New_V (_, Label.L)] -> raise SecurityError
+      | _ -> raise (TypeError "Bad argument type for print_str_s")
+      )
 
   let do_call (f : string) (vs : Value.t list) : Value.t =
     try
       IdentMap.find f api vs
     with
-    | Not_found -> raise @@ ApiError f
+    | Not_found -> raise (ApiError f)
 end
-
 
 
 (* binop op v v' = the result of applying the metalanguage operation
@@ -232,46 +242,43 @@ end
  *)
 
 (* Function to combine labels *)
-let combine_labels l1 l2 l3 = 
-  if l1 = Value.H || l2 = Value.H || l3 = Value.H then Value.H else Value.L
+let combine_labels l1 l2 = 
+  if l1 = Label.H || l2 = Label.H then Label.H else Label.L
 
-(* binop op context v v' = the result of applying the binary operation `op` 
- * to values `v` and `v'` under the given security context `context`, resulting in
- * a value with the combined security label. *)
-let binop (op : E.binop) (context : Value.label) (v : Value.t) (v' : Value.t) : Value.t =
-  match (v, v') with
-  | (Value.New_V (Value.V_Int n, l1), Value.New_V (Value.V_Int n', l2)) ->
-      let combined_label = combine_labels context l1 l2 in
-      begin match op with
-      | E.Plus  -> Value.New_V (Value.V_Int (n + n'), combined_label)
-      | E.Minus -> Value.New_V (Value.V_Int (n - n'), combined_label)
-      | E.Times -> Value.New_V (Value.V_Int (n * n'), combined_label)
-      | E.Div   -> if n' != 0 then Value.New_V (Value.V_Int (n / n'), combined_label) 
-                   else raise (TypeError "Division by zero")
-      | E.Mod   -> if n' != 0 then Value.New_V (Value.V_Int (n mod n'), combined_label) 
-                   else raise (TypeError "Modulo by zero")
-      | _ -> raise (TypeError "Incompatible types for binop")
-      end
-  | (Value.New_V (Value.V_Bool b, l1), Value.New_V (Value.V_Bool b', l2)) ->
-      let combined_label = combine_labels context l1 l2 in
-      begin match op with
-      | E.And -> Value.New_V (Value.V_Bool (b && b'), combined_label)
-      | E.Or  -> Value.New_V (Value.V_Bool (b || b'), combined_label)
-      | E.Eq  -> Value.New_V (Value.V_Bool (b = b'), combined_label)
-      | E.Ne  -> Value.New_V (Value.V_Bool (b <> b'), combined_label)
-      | _ -> raise (TypeError "Incompatible types for binop")
-      end
-  | (Value.New_V (Value.V_Int n, l1), Value.New_V (Value.V_Int n', l2)) ->
-      let combined_label = combine_labels context l1 l2 in
-      begin match op with
-      | E.Lt -> Value.New_V (Value.V_Bool (n < n'), combined_label)
-      | E.Le -> Value.New_V (Value.V_Bool (n <= n'), combined_label)
-      | E.Gt -> Value.New_V (Value.V_Bool (n > n'), combined_label)
-      | E.Ge -> Value.New_V (Value.V_Bool (n >= n'), combined_label)
-      | _ -> raise (TypeError "Incompatible types for binop")
-      end
-  | _ -> raise (TypeError "Incompatible or unsupported types for binop")
-
+(* binop op v v' = the result of applying the binary operation `op` 
+ * to values `v` and `v'`, resulting in a value with the combined security label. *)
+let binop (op : E.binop) (v : Value.t) (v' : Value.t) : Value.t =
+  let Value.New_V (p1, l1) = v in
+  let Value.New_V (p2, l2) = v' in
+  let combined_label = combine_labels l1 l2 in 
+  match (op, p1, p2) with
+  | (E.Plus, Value.V_Int n, Value.V_Int n') ->
+      Value.New_V (Value.V_Int (n + n'), combined_label)
+  | (E.Minus, Value.V_Int n, Value.V_Int n') ->
+      Value.New_V (Value.V_Int (n - n'), combined_label)
+  | (E.Times, Value.V_Int n, Value.V_Int n') ->
+      Value.New_V (Value.V_Int (n * n'), combined_label)
+  | (E.Div, Value.V_Int n, Value.V_Int n') when n' != 0 ->
+      Value.New_V (Value.V_Int (n / n'), combined_label)
+  | (E.Mod, Value.V_Int n, Value.V_Int n') when n' != 0 ->
+      Value.New_V (Value.V_Int (n mod n'), combined_label)
+  | (E.And, Value.V_Bool b, Value.V_Bool b') ->
+      Value.New_V (Value.V_Bool (b && b'), combined_label)
+  | (E.Or, Value.V_Bool b, Value.V_Bool b') ->
+      Value.New_V (Value.V_Bool (b || b'), combined_label)
+  | (E.Eq, _, _) ->
+      Value.New_V (Value.V_Bool (Value.prim_of_value v = Value.prim_of_value v'), combined_label)
+  | (E.Ne, _, _) ->
+      Value.New_V (Value.V_Bool (Value.prim_of_value v <> Value.prim_of_value v'), combined_label)
+  | (E.Lt, Value.V_Int n, Value.V_Int n') ->
+      Value.New_V (Value.V_Bool (n < n'), combined_label)
+  | (E.Le, Value.V_Int n, Value.V_Int n') ->
+      Value.New_V (Value.V_Bool (n <= n'), combined_label)
+  | (E.Gt, Value.V_Int n, Value.V_Int n') ->
+      Value.New_V (Value.V_Bool (n > n'), combined_label)
+  | (E.Ge, Value.V_Int n, Value.V_Int n') ->
+      Value.New_V (Value.V_Bool (n >= n'), combined_label)
+  | _ -> raise (TypeError "Incompatible operand types for binary operation")
 
 
 (* If p : fundefs and lookup p f = (xs, ss), then f is the function with
@@ -291,49 +298,62 @@ let preprocess (Ast.Program.Pgm p : Ast.Program.t) : fundefs =
 (* exec p:  execute the program p.
  *)
 (* This function assumes that preprocess, Api.do_call, Frame and Value modules are defined elsewhere. *)
-
 let exec (p : Ast.Program.t) : unit =
-  let fs = preprocess p in  (* assuming preprocess is defined to parse the program *)
+  (* Assuming preprocess is defined to parse the program *)
+  let fs = preprocess p in
 
-  let rec do_call (f : Ast.Id.t) (vs : Value.t list) : Value.t =
+  let rec do_call (f : Ast.Id.t) (vs : Value.t list) (context : Label.t) : Value.t =
     try
       let (params, body) = IdentMap.find f fs in
-      let env = Frame.Envs [List.combine params vs |> List.to_seq |> IdentMap.of_seq] in
-      match exec_many env body with
-      | Frame.Return v -> v
-      | _ -> failwith "Function did not return properly."
+      let initial_env = List.combine params vs |> List.to_seq |> IdentMap.of_seq in
+      let eta = Frame.Envs ([initial_env], Frame.empty_out) in
+      let eta' = exec_many context eta body in
+      match eta' with
+      | Frame.Return (v, _) -> v
+      | _ -> impossible "Function returned with non-Return frame."
     with
-    | Not_found -> Api.do_call f vs  (* assuming Api.do_call is defined to handle external API calls *)
+    | Not_found -> 
+      try Api.do_call f vs
+      with
+      | Api.ApiError _ -> raise (UndefinedFunction f)
 
-  and eval (env : Frame.t) (expr : Ast.Expr.t) : Value.t * Frame.t =
+  and eval (context : Label.t) (env : Frame.t) (expr : Ast.Expression.t) : Value.t * Frame.t =
     match env with
     | Frame.Return _ -> failwith "Cannot evaluate in a Return frame."
-    | Frame.Envs _ as eta -> (
+    | Frame.Envs _ as eta ->
         match expr with
         | E.Var x -> (Frame.lookup eta x, eta)
-        | E.Num n -> (Value.V_Int n, eta)  (* Assuming Value.V_Int is a valid constructor *)
-        | E.Bool b -> (Value.V_Bool b, eta)  (* Assuming Value.V_Bool is a valid constructor *)
-        | E.Str s -> (Value.V_Str s, eta)  (* Assuming Value.V_Str is a valid constructor *)
+        | E.Num n -> (Value.create_labeled_value (Value.V_Int n) context, eta)
+        | E.Bool b -> (Value.create_labeled_value (Value.V_Bool b) context, eta)
+        | E.Str s -> (Value.create_labeled_value (Value.V_Str s) context, eta)
         | E.Assign (x, e) ->
-            let (v, eta') = eval eta e in
+            let (v, eta') = eval context eta e in
             (v, Frame.set eta' x v)
         | E.Binop (op, e1, e2) ->
-            let (v, eta') = eval eta e1 in
-            let (v', eta'') = eval eta' e2 in
-            (binop op v v', eta'')  (* Assuming binop is defined elsewhere *)
+            let (v, eta') = eval context eta e1 in
+            let (v', eta'') = eval context eta' e2 in
+            (binop op v v', eta'')
         | E.Neg e ->
-            let (v, eta') = eval eta e in
-            (match v with Value.V_Int n -> (Value.V_Int (-n), eta') | _ -> raise @@ TypeError "Bad operand type for negation")
+            let (v, eta') = eval context eta e in
+            (match v with
+             | Value.New_V (Value.V_Int n, lbl) -> (Value.create_labeled_value (Value.V_Int (-n)) lbl, eta')
+             | _ -> raise (TypeError "Bad operand type for negation"))
         | E.Not e ->
-            let (v, eta') = eval eta e in
-            (match v with Value.V_Bool b -> (Value.V_Bool (not b), eta') | _ -> raise @@ TypeError "Bad operand type for logical not")
+            let (v, eta') = eval context eta e in
+            (match v with
+             | Value.New_V (Value.V_Bool b, lbl) -> (Value.create_labeled_value (Value.V_Bool (not b)) lbl, eta')
+             | _ -> raise (TypeError "Bad operand type for logical not"))
         | E.Call (f, es) ->
-            let (vs, eta') = List.fold_right (fun e (acc, eta) -> let (v, eta') = eval eta e in (v :: acc, eta')) es ([], eta) in
-            let result = do_call f (List.rev vs) in
+            let (vs, eta') = List.fold_right (fun e (acc, eta) -> let (v, eta') = eval context eta e in (v :: acc, eta')) es ([], eta) in
+            let result = do_call f vs context in
             (result, eta')
-      )
 
-  and exec_one (eta : Frame.t) (stmt : Ast.Stm.t) : Frame.t =
+  and exec_many (context : Label.t) (eta : Frame.t) (ss : Ast.Stm.t list) : Frame.t =
+    List.fold_left (fun env s -> match exec_one context env s with
+      | Frame.Return _ as ret -> ret
+      | env' -> env') eta ss
+
+  and exec_one (context : Label.t) (eta : Frame.t) (stmt : Ast.Stm.t) : Frame.t =
     match eta with
     | Frame.Return _ -> eta
     | Frame.Envs _ ->
@@ -341,30 +361,31 @@ let exec (p : Ast.Program.t) : unit =
         | S.Skip -> eta
         | S.VarDec decs -> List.fold_left (fun eta (x, opt_e) -> 
             match opt_e with
-            | None -> Frame.declare eta x Value.V_Undefined  (* Assuming Value.V_Undefined is a valid constructor *)
-            | Some e -> let (v, eta') = eval eta e in Frame.declare eta' x v) eta decs
-        | S.Expr e -> let (_, eta') = eval eta e in eta'
-        | S.Block ss -> let nested = Frame.push eta in let result = exec_many nested ss in Frame.pop result
+            | None -> Frame.declare eta x (Value.create_labeled_value Value.V_Undefined Label.L)
+            | Some e -> let (v, eta') = eval context eta e in Frame.declare eta' x v) eta decs
+        | S.Expr e -> let (_, eta') = eval context eta e in eta'
+        | S.Block ss -> let nested = Frame.push eta in let result = exec_many context nested ss in Frame.pop result
         | S.If (e, s1, s2) ->
-            let (cond, eta') = eval eta e in
-            (match cond with Value.V_Bool true -> exec_one eta' s1 | Value.V_Bool false -> exec_one eta' s2 | _ -> failwith "Non-boolean in if condition")
+            let (cond, eta') = eval context eta e in
+            (match cond with
+             | Value.New_V (Value.V_Bool true, _) -> exec_one context eta' s1
+             | Value.New_V (Value.V_Bool false, _) -> exec_one context eta' s2
+             | _ -> failwith "Non-boolean in if condition")
         | S.While (e, body) ->
             let rec loop env =
-              let (cond, env') = eval env e in
+              let (cond, env') = eval context env e in
               match cond with
-              | Value.V_Bool true -> loop (exec_one env' body)
-              | Value.V_Bool false -> env'
+              | Value.New_V (Value.V_Bool true, _) -> loop (exec_one context env' body)
+              | Value.New_V (Value.V_Bool false, _) -> env'
               | _ -> failwith "Non-boolean in while condition"
             in loop eta
         | S.Return (Some e) ->
-            let (v, _) = eval eta e in Frame.Return v
-        | S.Return None -> Frame.Return Value.V_None
-
-  and exec_many (eta : Frame.t) (ss : Ast.Stm.t list) : Frame.t =
-    List.fold_left (fun env s -> match exec_one env s with
-      | Frame.Return _ as ret -> ret
-      | env' -> env') eta ss
+            let (v, _) = eval context eta e in Frame.Return (v, Frame.empty_out)
+        | S.Return None -> Frame.Return (Value.create_labeled_value Value.V_None Label.L, Frame.empty_out)
 
   in
-  let _ = eval (Frame.base) (E.Call ("main", [])) in  (* assuming Frame.base is defined and E.Call is the correct constructor *)
+  let main_context = Label.L  (* Initialize the main program with a Low security context *)
+  in
+  let _ = do_call "main" [] main_context  (* Call main with no arguments and Low context *)
+  in
   ()
