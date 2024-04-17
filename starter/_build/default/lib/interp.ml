@@ -91,27 +91,6 @@ module Frame = struct
 
   let base : t = Envs ([IdentMap.empty], empty_out)
 
-  (* let to_string (frame : Frame.t) : string =
-    match frame with
-    | Frame.Return (v, out) ->
-        let out_str = out 
-          |> List.map (fun p -> Value.to_string (Value.create_labeled_value p Label.L)) (* Assuming default label L for output purposes *)
-          |> String.concat ", "
-        in
-        Printf.sprintf "Return: %s, Output: [%s]" (Value.to_string v) out_str
-    | Frame.Envs (envs, out) ->
-        let envs_str = envs 
-          |> List.map IdentMap.to_list
-          |> List.map (fun l -> 
-              String.concat ", " (List.map (fun (id, v) -> Printf.sprintf "%s: %s" id (Value.to_string v)) l))
-          |> String.concat "; "
-        let out_str = out 
-          |> List.map (fun p -> Value.to_string (Value.create_labeled_value p Label.L))
-          |> String.concat ", "
-        in
-        Printf.sprintf "Environments: [%s], Output: [%s]" envs_str out_str *)
-  
-
   let lookup (frame : t) (x : Ast.Id.t) : Value.t =
     let rec lookup_in_envs envs =
       match envs with
@@ -168,73 +147,154 @@ end
  * A client makes changes to the defaults by setting `in_channel`,
  * `out_channel`, and `show_prompts`.
  *)
- module Api = struct
-  exception ApiError of string
-  exception SecurityError
+ 
+module Api = struct
+   exception ApiError of string
+   exception SecurityError
+ 
+   let in_channel : Scanf.Scanning.in_channel ref = ref Scanf.Scanning.stdin
+   let out_channel : Out_channel.t ref = ref Out_channel.stdout
+   let show_prompts : bool ref = ref true
+ 
+   let output (oc : Out_channel.t) (s : string) : unit =
+     Out_channel.output_string oc s ;
+     Out_channel.flush oc
+ 
+   let outputnl (oc : Out_channel.t) (s : string) : unit =
+     output oc (s ^ "\n")
+ 
+   let mk_value prim label = Value.New_V (prim, label)
+   let mk_none = mk_value Value.V_None Label.L
+ 
+   let api_functions = [
+     ("print_bool", fun vs ->
+       match vs with
+       | [Value.New_V (Value.V_Bool b, _)] ->
+           outputnl !out_channel (Bool.to_string b); mk_none
+       | _ -> raise (TypeError "Bad argument type for print_bool")
+     );
+     ("get_bool", fun vs ->
+       match vs with
+       | [] -> mk_value (Value.V_Bool (Scanf.bscanf !in_channel " %B" Fun.id)) Label.L
+       | _ -> raise (TypeError "Bad argument type for get_bool")
+     );
+     ("prompt_bool", fun vs ->
+       match vs with
+       | [Value.New_V (Value.V_Str s, _)] ->
+           if !show_prompts then output !out_channel s;
+           mk_value (Value.V_Bool (Scanf.bscanf !in_channel " %B" Fun.id)) Label.L
+       | _ -> raise (TypeError "Bad argument type for prompt_bool")
+     );
+     ("print_int", fun vs ->
+       match vs with
+       | [Value.New_V (Value.V_Int n, _)] ->
+           outputnl !out_channel (Int.to_string n); mk_none
+       | _ -> raise (TypeError "Bad argument type for print_int")
+     );
+     ("get_int", fun vs ->
+       match vs with
+       | [] -> mk_value (Value.V_Int (Scanf.bscanf !in_channel " %d" Fun.id)) Label.L
+       | _ -> raise (TypeError "Bad argument type for get_int")
+     );
+     ("prompt_int", fun vs ->
+       match vs with
+       | [Value.New_V (Value.V_Str s, _)] ->
+           if !show_prompts then output !out_channel s;
+           mk_value (Value.V_Int (Scanf.bscanf !in_channel " %d" Fun.id)) Label.L
+       | _ -> raise (TypeError "Bad argument type for prompt_int")
+     );
+     ("print_str", fun vs ->
+       match vs with
+       | [Value.New_V (Value.V_Str s, _)] ->
+           outputnl !out_channel s; mk_none
+       | _ -> raise (TypeError "Bad argument type for print_str")
+     );
+     ("get_str", fun vs ->
+       match vs with
+       | [] -> mk_value (Value.V_Str (Scanf.bscanf !in_channel "%s" Fun.id)) Label.L
+       | _ -> raise (TypeError "Bad argument type for get_str")
+     );
+     ("prompt_str", fun vs ->
+       match vs with
+       | [Value.New_V (Value.V_Str s, _)] ->
+           if !show_prompts then output !out_channel s;
+           mk_value (Value.V_Str (Scanf.bscanf !in_channel "%s" Fun.id)) Label.L
+       | _ -> raise (TypeError "Bad argument type for prompt_str")
+     );
+     ("print_bool_s", fun vs ->
+       match vs with
+       | [Value.New_V (Value.V_Bool b, Label.H)] ->
+           outputnl !out_channel (Bool.to_string b); mk_none
+       | [Value.New_V (_, Label.L)] -> raise SecurityError
+       | _ -> raise (TypeError "Bad argument type for print_bool_s")
+     );
+     ("get_bool_s", fun vs ->
+       match vs with
+       | [] -> mk_value (Value.V_Bool (Scanf.bscanf !in_channel " %B" Fun.id)) Label.H
+       | _ -> raise (TypeError "Bad argument type for get_bool_s")
+     );
+     ("prompt_bool_s", fun vs ->
+       match vs with
+       | [Value.New_V (Value.V_Str s, Label.H)] ->
+           if !show_prompts then output !out_channel s;
+           mk_value (Value.V_Bool (Scanf.bscanf !in_channel " %B" Fun.id
+ 
+ )) Label.H
+       | [Value.New_V (_, Label.L)] -> raise SecurityError
+       | _ -> raise (TypeError "Bad argument type for prompt_bool_s")
+     );
+     ("print_int_s", fun vs ->
+       match vs with
+       | [Value.New_V (Value.V_Int n, Label.H)] ->
+           outputnl !out_channel (Int.to_string n); mk_none
+       | [Value.New_V (_, Label.L)] -> raise SecurityError
+       | _ -> raise (TypeError "Bad argument type for print_int_s")
+     );
+     ("get_int_s", fun vs ->
+       match vs with
+       | [] -> mk_value (Value.V_Int (Scanf.bscanf !in_channel " %d" Fun.id)) Label.H
+       | _ -> raise (TypeError "Bad argument type for get_int_s")
+     );
+     ("prompt_int_s", fun vs ->
+       match vs with
+       | [Value.New_V (Value.V_Str s, Label.H)] ->
+           if !show_prompts then output !out_channel s;
+           mk_value (Value.V_Int (Scanf.bscanf !in_channel " %d" Fun.id)) Label.H
+       | [Value.New_V (_, Label.L)] -> raise SecurityError
+       | _ -> raise (TypeError "Bad argument type for prompt_int_s")
+     );
+     ("print_str_s", fun vs ->
+       match vs with
+       | [Value.New_V (Value.V_Str s, Label.H)] ->
+           outputnl !out_channel s; mk_none
+       | [Value.New_V (_, Label.L)] -> raise SecurityError
+       | _ -> raise (TypeError "Bad argument type for print_str_s")
+     );
+     ("get_str_s", fun vs ->
+       match vs with
+       | [] -> mk_value (Value.V_Str (Scanf.bscanf !in_channel "%s" Fun.id)) Label.H
+       | _ -> raise (TypeError "Bad argument type for get_str_s")
+     );
+     ("prompt_str_s", fun vs ->
+       match vs with
+       | [Value.New_V (Value.V_Str s, Label.H)] ->
+           if !show_prompts then output !out_channel s;
+           mk_value (Value.V_Str (Scanf.bscanf !in_channel "%s" Fun.id)) Label.H
+       | [Value.New_V (_, Label.L)] -> raise SecurityError
+       | _ -> raise (TypeError "Bad argument type for prompt_str_s")
+     )
+   ]
+ 
+   let api : (Value.t list -> Value.t) IdentMap.t =
+     List.to_seq api_functions |> IdentMap.of_seq
+ 
+   let do_call (f : string) (vs : Value.t list) : Value.t =
+     try
+       IdentMap.find f api vs
+     with
+     | Not_found -> raise (ApiError f)
+ end
 
-  let in_channel : Scanf.Scanning.in_channel ref = ref Scanf.Scanning.stdin
-  let out_channel : Out_channel.t ref = ref Out_channel.stdout
-  let show_prompts : bool ref = ref true
-
-  let output (oc : Out_channel.t) (s : string) : unit =
-    Out_channel.output_string oc s ; 
-    Out_channel.flush oc
-
-  let outputnl (oc : Out_channel.t) (s : string) : unit =
-    output oc (s ^ "\n")
-
-  let mk_value prim label = Value.New_V (prim, label)
-  let mk_none = mk_value Value.V_None Label.L
-
-  let api : (Value.t list -> Value.t) IdentMap.t =
-    IdentMap.empty
-    |> IdentMap.add "print_bool" (fun vs ->
-      match vs with
-      | [Value.New_V (Value.V_Bool b, _)] ->  (* Prints regardless of label *)
-          outputnl !out_channel (Bool.to_string b); mk_none
-      | _ -> raise (TypeError "Bad argument type for print_bool")
-      )
-    |> IdentMap.add "print_bool_s" (fun vs ->
-      match vs with
-      | [Value.New_V (Value.V_Bool b, Label.H)] ->
-          outputnl !out_channel (Bool.to_string b); mk_none
-      | [Value.New_V (_, Label.L)] -> raise SecurityError
-      | _ -> raise (TypeError "Bad argument type for print_bool_s")
-      )
-    (* Similar implementations for `print_int`, `print_str`, `get_int`, `get_bool`, etc. *)
-    |> IdentMap.add "print_int" (fun vs ->
-      match vs with
-      | [Value.New_V (Value.V_Int n, _)] ->
-          outputnl !out_channel (Int.to_string n); mk_none
-      | _ -> raise (TypeError "Bad argument type for print_int")
-      )
-    |> IdentMap.add "print_int_s" (fun vs ->
-      match vs with
-      | [Value.New_V (Value.V_Int n, Label.H)] ->
-          outputnl !out_channel (Int.to_string n); mk_none
-      | [Value.New_V (_, Label.L)] -> raise SecurityError
-      | _ -> raise (TypeError "Bad argument type for print_int_s")
-      )
-    |> IdentMap.add "print_str" (fun vs ->
-      match vs with
-      | [Value.New_V (Value.V_Str s, _)] ->
-          outputnl !out_channel s; mk_none
-      | _ -> raise (TypeError "Bad argument type for print_str")
-      )
-    |> IdentMap.add "print_str_s" (fun vs ->
-      match vs with
-      | [Value.New_V (Value.V_Str s, Label.H)] ->
-          outputnl !out_channel s; mk_none
-      | [Value.New_V (_, Label.L)] -> raise SecurityError
-      | _ -> raise (TypeError "Bad argument type for print_str_s")
-      )
-
-  let do_call (f : string) (vs : Value.t list) : Value.t =
-    try
-      IdentMap.find f api vs
-    with
-    | Not_found -> raise (ApiError f)
-end
 
 
 (* binop op v v' = the result of applying the metalanguage operation
