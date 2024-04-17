@@ -225,8 +225,6 @@ end
 end
 
 
-
-
 (* binop op v v' = the result of applying the metalanguage operation
  * corresponding to `op` to v and v'.
  *)
@@ -288,50 +286,62 @@ let preprocess (Ast.Program.Pgm p : Ast.Program.t) : fundefs =
 (* exec p:  execute the program p.
  *)
 (* This function assumes that preprocess, Api.do_call, Frame and Value modules are defined elsewhere. *)
-
 let exec (p : Ast.Program.t) : unit =
-  
-  let fs = preprocess p in  (* assuming preprocess is defined to parse the program *)
+  (* Assuming preprocess is defined to parse the program *)
+  let fs = preprocess p in
 
-  let rec do_call (f : Ast.Id.t) (vs : Value.t list) : Value.t =
+  let rec do_call (f : Ast.Id.t) (vs : Value.t list) (context : Label.t) : Value.t =
     try
       let (params, body) = IdentMap.find f fs in
-      let env = Frame.Envs [List.combine params vs |> List.to_seq |> IdentMap.of_seq] in
-      match exec_many env body with
-      | Frame.Return v -> v
-      | _ -> failwith "Function did not return properly."
+      let initial_env = List.combine params vs |> List.to_seq |> IdentMap.of_seq in
+      let eta = Frame.Envs ([initial_env], Frame.empty_out) in
+      let eta' = exec_many context eta body in
+      match eta' with
+      | Frame.Return (v, _) -> v
+      | _ -> impossible "Function returned with non-Return frame."
     with
-    | Not_found -> Api.do_call f vs  (* assuming Api.do_call is defined to handle external API calls *)
+    | Not_found -> 
+      try Api.do_call f vs
+      with
+      | Api.ApiError _ -> raise (UndefinedFunction f)
 
-  and eval (env : Frame.t) (expr : Ast.Expr.t) : Value.t * Frame.t =
+  and eval (context : Label.t) (env : Frame.t) (expr : Ast.Expr.t) : Value.t * Frame.t =
     match env with
     | Frame.Return _ -> failwith "Cannot evaluate in a Return frame."
-    | Frame.Envs _ as eta -> (
+    | Frame.Envs _ as eta ->
         match expr with
         | E.Var x -> (Frame.lookup eta x, eta)
-        | E.Num n -> (Value.V_Int n, eta)  (* Assuming Value.V_Int is a valid constructor *)
-        | E.Bool b -> (Value.V_Bool b, eta)  (* Assuming Value.V_Bool is a valid constructor *)
-        | E.Str s -> (Value.V_Str s, eta)  (* Assuming Value.V_Str is a valid constructor *)
+        | E.Num n -> (Value.create_labeled_value (Value.V_Int n) context, eta)
+        | E.Bool b -> (Value.create_labeled_value (Value.V_Bool b) context, eta)
+        | E.Str s -> (Value.create_labeled_value (Value.V_Str s) context, eta)
         | E.Assign (x, e) ->
-            let (v, eta') = eval eta e in
+            let (v, eta') = eval context eta e in
             (v, Frame.set eta' x v)
         | E.Binop (op, e1, e2) ->
-            let (v, eta') = eval eta e1 in
-            let (v', eta'') = eval eta' e2 in
-            (binop op v v', eta'')  (* Assuming binop is defined elsewhere *)
+            let (v, eta') = eval context eta e1 in
+            let (v', eta'') = eval context eta' e2 in
+            (binop op v v', eta'')
         | E.Neg e ->
-            let (v, eta') = eval eta e in
-            (match v with Value.V_Int n -> (Value.V_Int (-n), eta') | _ -> raise @@ TypeError "Bad operand type for negation")
+            let (v, eta') = eval context eta e in
+            (match v with
+             | Value.New_V (Value.V_Int n, lbl) -> (Value.create_labeled_value (Value.V_Int (-n)) lbl, eta')
+             | _ -> raise (TypeError "Bad operand type for negation"))
         | E.Not e ->
-            let (v, eta') = eval eta e in
-            (match v with Value.V_Bool b -> (Value.V_Bool (not b), eta') | _ -> raise @@ TypeError "Bad operand type for logical not")
+            let (v, eta') = eval context eta e in
+            (match v with
+             | Value.New_V (Value.V_Bool b, lbl) -> (Value.create_labeled_value (Value.V_Bool (not b)) lbl, eta')
+             | _ -> raise (TypeError "Bad operand type for logical not"))
         | E.Call (f, es) ->
-            let (vs, eta') = List.fold_right (fun e (acc, eta) -> let (v, eta') = eval eta e in (v :: acc, eta')) es ([], eta) in
-            let result = do_call f (List.rev vs) in
+            let (vs, eta') = List.fold_right (fun e (acc, eta) -> let (v, eta') = eval context eta e in (v :: acc, eta')) es ([], eta) in
+            let result = do_call f vs context in
             (result, eta')
-      )
 
-  and exec_one (eta : Frame.t) (stmt : Ast.Stm.t) : Frame.t =
+  and exec_many (context : Label.t) (eta : Frame.t) (ss : Ast.Stm.t list) : Frame.t =
+    List.fold_left (fun env s -> match exec_one context env s with
+      | Frame.Return _ as ret -> ret
+      | env' -> env') eta ss
+
+  and exec_one (context : Label.t) (eta : Frame.t) (stmt : Ast.Stm.t) : Frame.t =
     match eta with
     | Frame.Return _ -> eta
     | Frame.Envs _ ->
@@ -339,30 +349,31 @@ let exec (p : Ast.Program.t) : unit =
         | S.Skip -> eta
         | S.VarDec decs -> List.fold_left (fun eta (x, opt_e) -> 
             match opt_e with
-            | None -> Frame.declare eta x Value.V_Undefined  (* Assuming Value.V_Undefined is a valid constructor *)
-            | Some e -> let (v, eta') = eval eta e in Frame.declare eta' x v) eta decs
-        | S.Expr e -> let (_, eta') = eval eta e in eta'
-        | S.Block ss -> let nested = Frame.push eta in let result = exec_many nested ss in Frame.pop result
+            | None -> Frame.declare eta x (Value.create_labeled_value Value.V_Undefined Label.L)
+            | Some e -> let (v, eta') = eval context eta e in Frame.declare eta' x v) eta decs
+        | S.Expr e -> let (_, eta') = eval context eta e in eta'
+        | S.Block ss -> let nested = Frame.push eta in let result = exec_many context nested ss in Frame.pop result
         | S.If (e, s1, s2) ->
-            let (cond, eta') = eval eta e in
-            (match cond with Value.V_Bool true -> exec_one eta' s1 | Value.V_Bool false -> exec_one eta' s2 | _ -> failwith "Non-boolean in if condition")
+            let (cond, eta') = eval context eta e in
+            (match cond with
+             | Value.New_V (Value.V_Bool true, _) -> exec_one context eta' s1
+             | Value.New_V (Value.V_Bool false, _) -> exec_one context eta' s2
+             | _ -> failwith "Non-boolean in if condition")
         | S.While (e, body) ->
             let rec loop env =
-              let (cond, env') = eval env e in
+              let (cond, env') = eval context env e in
               match cond with
-              | Value.V_Bool true -> loop (exec_one env' body)
-              | Value.V_Bool false -> env'
+              | Value.New_V (Value.V_Bool true, _) -> loop (exec_one context env' body)
+              | Value.New_V (Value.V_Bool false, _) -> env'
               | _ -> failwith "Non-boolean in while condition"
             in loop eta
         | S.Return (Some e) ->
-            let (v, _) = eval eta e in Frame.Return v
-        | S.Return None -> Frame.Return Value.V_None
-
-  and exec_many (eta : Frame.t) (ss : Ast.Stm.t list) : Frame.t =
-    List.fold_left (fun env s -> match exec_one env s with
-      | Frame.Return _ as ret -> ret
-      | env' -> env') eta ss
+            let (v, _) = eval context eta e in Frame.Return (v, Frame.empty_out)
+        | S.Return None -> Frame.Return (Value.create_labeled_value Value.V_None Label.L, Frame.empty_out)
 
   in
-  let _ = eval (Frame.base) (E.Call ("main", [])) in  (* assuming Frame.base is defined and E.Call is the correct constructor *)
+  let main_context = Label.L  (* Initialize the main program with a Low security context *)
+  in
+  let _ = do_call "main" [] main_context  (* Call main with no arguments and Low context *)
+  in
   ()
