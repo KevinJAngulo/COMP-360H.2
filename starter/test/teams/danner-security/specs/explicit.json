@@ -7,7 +7,7 @@
 {
     "file":     "expl05.imp",
     "input":    ["0"],
-    "except":   "0"
+    "output":   ["0"]
 }
 
 

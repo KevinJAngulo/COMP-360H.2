@@ -21,21 +21,4 @@
 #        }
 #  ; instrument_with = []
 #  }
-$ /Users/kevinj_angulo/.opam/5.1.1/bin/ocamlc.opt -config > /var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/dune_79c70a_output
-$ (cd _build/default/test && ./test_interp.exe)
-> Printing: 0 with label High
-> F
-> ==============================================================================
-> Error: all tests:0:teams/danner-security:0:explicit.json:0:0.
->
-> File "/Users/kevinj_angulo/Documents/Comp360H/Assignment 2/COMP-360H.2/starter/_build/default/test/oUnit-all tests-Kevins-MacBook-Pro-2.local#01.log", line 5, characters 1-1:
-> Error: all tests:0:teams/danner-security:0:explicit.json:0:0 (in the log).
->
-> Raised at OUnitAssert.assert_failure in file "src/lib/ounit2/advanced/oUnitAssert.ml", line 45, characters 2-27
-> Called from OUnitRunner.run_one_test.(fun) in file "src/lib/ounit2/advanced/oUnitRunner.ml", line 83, characters 13-26
->
-> expected: 0 but got: No exception raised
-> ------------------------------------------------------------------------------
-> Ran: 1 tests in: 0.11 seconds.
-> FAILED: Cases: 1 Tried: 1 Errors: 0 Failures: 1 Skip:  0 Todo: 0 Timeouts: 0.
-[1]
+$ /Users/kevinj_angulo/.opam/5.1.1/bin/ocamlc.opt -config > /var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/dune_56b3c1_output
