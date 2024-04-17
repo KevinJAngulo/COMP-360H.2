@@ -1,6 +1,0 @@
-function main() {
-    var n ;
-    n = prompt_int("Enter an integer: ") ;
-    print_int(n) ;
-    return ;
-}

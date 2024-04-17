@@ -1,7 +1,0 @@
-function main() {
-    var x ;
-
-    y = x ;
-
-    return ;
-}

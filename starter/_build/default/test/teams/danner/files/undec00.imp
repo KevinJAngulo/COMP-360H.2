@@ -1,4 +1,0 @@
-function main() {
-    print_int(x) ;
-    return ;
-}

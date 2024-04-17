@@ -147,153 +147,146 @@ end
  * A client makes changes to the defaults by setting `in_channel`,
  * `out_channel`, and `show_prompts`.
  *)
- 
 module Api = struct
-   exception ApiError of string
-   exception SecurityError
- 
-   let in_channel : Scanf.Scanning.in_channel ref = ref Scanf.Scanning.stdin
-   let out_channel : Out_channel.t ref = ref Out_channel.stdout
-   let show_prompts : bool ref = ref true
- 
-   let output (oc : Out_channel.t) (s : string) : unit =
-     Out_channel.output_string oc s ;
-     Out_channel.flush oc
- 
-   let outputnl (oc : Out_channel.t) (s : string) : unit =
-     output oc (s ^ "\n")
- 
-   let mk_value prim label = Value.New_V (prim, label)
-   let mk_none = mk_value Value.V_None Label.L
- 
-   let api_functions = [
-     ("print_bool", fun vs ->
-       match vs with
-       | [Value.New_V (Value.V_Bool b, _)] ->
-           outputnl !out_channel (Bool.to_string b); mk_none
-       | _ -> raise (TypeError "Bad argument type for print_bool")
-     );
-     ("get_bool", fun vs ->
-       match vs with
-       | [] -> mk_value (Value.V_Bool (Scanf.bscanf !in_channel " %B" Fun.id)) Label.L
-       | _ -> raise (TypeError "Bad argument type for get_bool")
-     );
-     ("prompt_bool", fun vs ->
-       match vs with
-       | [Value.New_V (Value.V_Str s, _)] ->
-           if !show_prompts then output !out_channel s;
-           mk_value (Value.V_Bool (Scanf.bscanf !in_channel " %B" Fun.id)) Label.L
-       | _ -> raise (TypeError "Bad argument type for prompt_bool")
-     );
-     ("print_int", fun vs ->
-       match vs with
-       | [Value.New_V (Value.V_Int n, _)] ->
-           outputnl !out_channel (Int.to_string n); mk_none
-       | _ -> raise (TypeError "Bad argument type for print_int")
-     );
-     ("get_int", fun vs ->
-       match vs with
-       | [] -> mk_value (Value.V_Int (Scanf.bscanf !in_channel " %d" Fun.id)) Label.L
-       | _ -> raise (TypeError "Bad argument type for get_int")
-     );
-     ("prompt_int", fun vs ->
-       match vs with
-       | [Value.New_V (Value.V_Str s, _)] ->
-           if !show_prompts then output !out_channel s;
-           mk_value (Value.V_Int (Scanf.bscanf !in_channel " %d" Fun.id)) Label.L
-       | _ -> raise (TypeError "Bad argument type for prompt_int")
-     );
-     ("print_str", fun vs ->
-       match vs with
-       | [Value.New_V (Value.V_Str s, _)] ->
-           outputnl !out_channel s; mk_none
-       | _ -> raise (TypeError "Bad argument type for print_str")
-     );
-     ("get_str", fun vs ->
-       match vs with
-       | [] -> mk_value (Value.V_Str (Scanf.bscanf !in_channel "%s" Fun.id)) Label.L
-       | _ -> raise (TypeError "Bad argument type for get_str")
-     );
-     ("prompt_str", fun vs ->
-       match vs with
-       | [Value.New_V (Value.V_Str s, _)] ->
-           if !show_prompts then output !out_channel s;
-           mk_value (Value.V_Str (Scanf.bscanf !in_channel "%s" Fun.id)) Label.L
-       | _ -> raise (TypeError "Bad argument type for prompt_str")
-     );
-     ("print_bool_s", fun vs ->
-       match vs with
-       | [Value.New_V (Value.V_Bool b, Label.H)] ->
-           outputnl !out_channel (Bool.to_string b); mk_none
-       | [Value.New_V (_, Label.L)] -> raise SecurityError
-       | _ -> raise (TypeError "Bad argument type for print_bool_s")
-     );
-     ("get_bool_s", fun vs ->
-       match vs with
-       | [] -> mk_value (Value.V_Bool (Scanf.bscanf !in_channel " %B" Fun.id)) Label.H
-       | _ -> raise (TypeError "Bad argument type for get_bool_s")
-     );
-     ("prompt_bool_s", fun vs ->
-       match vs with
-       | [Value.New_V (Value.V_Str s, Label.H)] ->
-           if !show_prompts then output !out_channel s;
-           mk_value (Value.V_Bool (Scanf.bscanf !in_channel " %B" Fun.id
- 
- )) Label.H
-       | [Value.New_V (_, Label.L)] -> raise SecurityError
-       | _ -> raise (TypeError "Bad argument type for prompt_bool_s")
-     );
-     ("print_int_s", fun vs ->
-       match vs with
-       | [Value.New_V (Value.V_Int n, Label.H)] ->
-           outputnl !out_channel (Int.to_string n); mk_none
-       | [Value.New_V (_, Label.L)] -> raise SecurityError
-       | _ -> raise (TypeError "Bad argument type for print_int_s")
-     );
-     ("get_int_s", fun vs ->
-       match vs with
-       | [] -> mk_value (Value.V_Int (Scanf.bscanf !in_channel " %d" Fun.id)) Label.H
-       | _ -> raise (TypeError "Bad argument type for get_int_s")
-     );
-     ("prompt_int_s", fun vs ->
-       match vs with
-       | [Value.New_V (Value.V_Str s, Label.H)] ->
-           if !show_prompts then output !out_channel s;
-           mk_value (Value.V_Int (Scanf.bscanf !in_channel " %d" Fun.id)) Label.H
-       | [Value.New_V (_, Label.L)] -> raise SecurityError
-       | _ -> raise (TypeError "Bad argument type for prompt_int_s")
-     );
-     ("print_str_s", fun vs ->
-       match vs with
-       | [Value.New_V (Value.V_Str s, Label.H)] ->
-           outputnl !out_channel s; mk_none
-       | [Value.New_V (_, Label.L)] -> raise SecurityError
-       | _ -> raise (TypeError "Bad argument type for print_str_s")
-     );
-     ("get_str_s", fun vs ->
-       match vs with
-       | [] -> mk_value (Value.V_Str (Scanf.bscanf !in_channel "%s" Fun.id)) Label.H
-       | _ -> raise (TypeError "Bad argument type for get_str_s")
-     );
-     ("prompt_str_s", fun vs ->
-       match vs with
-       | [Value.New_V (Value.V_Str s, Label.H)] ->
-           if !show_prompts then output !out_channel s;
-           mk_value (Value.V_Str (Scanf.bscanf !in_channel "%s" Fun.id)) Label.H
-       | [Value.New_V (_, Label.L)] -> raise SecurityError
-       | _ -> raise (TypeError "Bad argument type for prompt_str_s")
-     )
-   ]
- 
-   let api : (Value.t list -> Value.t) IdentMap.t =
-     List.to_seq api_functions |> IdentMap.of_seq
- 
-   let do_call (f : string) (vs : Value.t list) : Value.t =
-     try
-       IdentMap.find f api vs
-     with
-     | Not_found -> raise (ApiError f)
- end
+  exception ApiError of string
+  exception SecurityError
+
+  let in_channel : Scanf.Scanning.in_channel ref = ref Scanf.Scanning.stdin
+  let out_channel : Out_channel.t ref = ref Out_channel.stdout
+  let show_prompts : bool ref = ref true
+
+  let output (oc : Out_channel.t) (s : string) : unit =
+    Out_channel.output_string oc s;
+    Out_channel.flush oc
+
+  let outputnl (oc : Out_channel.t) (s : string) : unit =
+    output oc (s ^ "\n")
+
+  let api = [
+    ("print_bool", fun vs ->
+      match vs with
+      | [Value.New_V (Value.V_Bool b, _)] -> 
+        outputnl !out_channel (Bool.to_string b); Value.New_V (Value.V_None, Label.L)
+      | _ -> raise (TypeError "Bad argument type for print_bool")
+    );
+    ("get_bool", fun vs ->
+      match vs with
+      | [] -> Value.New_V (Value.V_Bool (Scanf.bscanf !in_channel " %B" Fun.id), Label.L)
+      | _ -> raise (TypeError "Bad argument type for get_bool")
+    );
+    ("prompt_bool", fun vs ->
+      match vs with
+      | [Value.New_V (Value.V_Str s, _)] ->
+        if !show_prompts then output !out_channel s;
+        Value.New_V (Value.V_Bool (Scanf.bscanf !in_channel " %B" Fun.id), Label.L)
+      | _ -> raise (TypeError "Bad argument type for prompt_bool")
+    );
+    ("print_int", fun vs ->
+      match vs with
+      | [Value.New_V (Value.V_Int n, label)] -> 
+        print_endline ("Printing: " ^ Int.to_string n ^ " with label " ^ Label.to_string label);
+        outputnl !out_channel (Int.to_string n); Value.New_V (Value.V_None, Label.L)
+        
+      | _ -> raise (TypeError "Bad argument type for print_int")
+    );
+    ("get_int", fun vs ->
+      match vs with
+      | [] -> Value.New_V (Value.V_Int (Scanf.bscanf !in_channel " %d" Fun.id), Label.L)
+      | _ -> raise (TypeError "Bad argument type for get_int")
+    );
+    ("prompt_int", fun vs ->
+      match vs with
+      | [Value.New_V (Value.V_Str s, _)] ->
+        if !show_prompts then output !out_channel s;
+        Value.New_V (Value.V_Int (Scanf.bscanf !in_channel " %d" Fun.id), Label.L)
+      | _ -> raise (TypeError "Bad argument type for prompt_int")
+    );
+    ("print_str", fun vs ->
+      match vs with
+      | [Value.New_V (Value.V_Str s, _)] -> 
+        outputnl !out_channel s; Value.New_V (Value.V_None, Label.L)
+      | _ -> raise (TypeError "Bad argument type for print_str")
+    );
+    ("get_str", fun vs ->
+      match vs with
+      | [] -> Value.New_V (Value.V_Str (Scanf.bscanf !in_channel "%s" Fun.id), Label.L)
+      | _ -> raise (TypeError "Bad argument type for get_str")
+    );
+    ("prompt_str", fun vs ->
+      match vs with
+      | [Value.New_V (Value.V_Str s, _)] ->
+        if !show_prompts then output !out_channel s;
+        Value.New_V (Value.V_Str (Scanf.bscanf !in_channel "%s" Fun.id), Label.L)
+      | _ -> raise (TypeError "Bad argument type for prompt_str")
+    );
+    ("print_bool_s", fun vs ->
+      match vs with
+      | [Value.New_V (Value.V_Bool b, Label.H)] -> 
+        outputnl !out_channel (Bool.to_string b); Value.New_V (Value.V_None, Label.H)
+      | [Value.New_V (_, Label.L)] -> raise SecurityError
+      | _ -> raise (TypeError "Bad argument type for print_bool_s")
+    );
+    ("get_bool_s", fun vs ->
+      match vs with
+      | [] -> Value.New_V (Value.V_Bool (Scanf.bscanf !in_channel " %B" Fun.id), Label.H)
+      | _ -> raise (TypeError "Bad argument type for get_bool_s")
+    );
+    ("prompt_bool_s", fun vs ->
+      match vs with
+      | [Value.New_V (Value.V_Str s, Label.H)] ->
+        if !show_prompts then output !out_channel s;
+        Value.New_V (Value.V_Bool (Scanf.bscanf !in_channel " %B" Fun.id), Label.H)
+      | [Value.New_V (_, Label.L)] -> raise SecurityError
+      | _ -> raise (TypeError "Bad argument type for prompt_bool_s")
+    );
+    ("print_int_s", fun vs ->
+      match vs with
+      | [Value.New_V (Value.V_Int n, Label.H)] -> 
+        outputnl !out_channel (Int.to_string n); Value.New_V (Value.V_None, Label.H)
+      | [Value.New_V (_, Label.L)] -> raise SecurityError
+      | _ -> raise (TypeError "Bad argument type for print_int_s")
+    );
+    ("get_int_s", fun vs ->
+      match vs with
+      | [] -> Value.New_V (Value.V_Int (Scanf.bscanf !in_channel " %d" Fun.id), Label.H)
+      | _ -> raise (TypeError "Bad argument type for get_int_s")
+    );
+    ("prompt_int_s", fun vs ->
+      match vs with
+      | [Value.New_V (Value.V_Str s, Label.H)] ->
+        if !show_prompts then output !out_channel s;
+        Value.New_V (Value.V_Int (Scanf.bscanf !in_channel " %d" Fun.id), Label.H)
+      | [Value.New_V (_, Label.L)] -> raise SecurityError
+      | _ -> raise (TypeError "Bad argument type for prompt_int_s")
+    );
+    ("print_str_s", fun vs ->
+      match vs with
+      | [Value.New_V (Value.V_Str s, Label.H)] -> 
+        outputnl !out_channel s; Value.New_V (Value.V_None, Label.H)
+      | [Value.New_V (_, Label.L)] -> raise SecurityError
+      | _ -> raise (TypeError "Bad argument type for print_str_s")
+    );
+    ("get_str_s", fun vs ->
+      match vs with
+      | [] -> Value.New_V (Value.V_Str (Scanf.bscanf !in_channel "%s" Fun.id), Label.H)
+      | _ -> raise (TypeError "Bad argument type for get_str_s")
+    );
+    ("prompt_str_s", fun vs ->
+      match vs with
+      | [Value.New_V (Value.V_Str s, Label.H)] ->
+        if !show_prompts then output !out_channel s;
+        Value.New_V (Value.V_Str (Scanf.bscanf !in_channel "%s" Fun.id), Label.H)
+      | [Value.New_V (_, Label.L)] -> raise SecurityError
+      | _ -> raise (TypeError "Bad argument type for prompt_str_s")
+    )
+  ] |> List.to_seq |> IdentMap.of_seq
+
+  let do_call (f : string) (vs : Value.t list) : Value.t =
+    try
+      IdentMap.find f api vs
+    with
+    | Not_found -> raise (ApiError f)
+end
 
 
 
@@ -359,8 +352,7 @@ let preprocess (Ast.Program.Pgm p : Ast.Program.t) : fundefs =
  *)
 (* This function assumes that preprocess, Api.do_call, Frame and Value modules are defined elsewhere. *)
 let exec (p : Ast.Program.t) : unit =
-  (* Assuming preprocess is defined to parse the program *)
-  let fs = preprocess p in
+  let fs = preprocess p in  (* Assuming preprocess is defined to parse the program *)
 
   let rec do_call (f : Ast.Id.t) (vs : Value.t list) (context : Label.t) : Value.t =
     try
@@ -377,41 +369,49 @@ let exec (p : Ast.Program.t) : unit =
       with
       | Api.ApiError _ -> raise (UndefinedFunction f)
 
-  and eval (context : Label.t) (env : Frame.t) (expr : Ast.Expression.t) : Value.t * Frame.t =
-    match env with
-    | Frame.Return _ -> failwith "Cannot evaluate in a Return frame."
-    | Frame.Envs _ as eta ->
-        match expr with
-        | E.Var x -> (Frame.lookup eta x, eta)
-        | E.Num n -> (Value.create_labeled_value (Value.V_Int n) context, eta)
-        | E.Bool b -> (Value.create_labeled_value (Value.V_Bool b) context, eta)
-        | E.Str s -> (Value.create_labeled_value (Value.V_Str s) context, eta)
-        | E.Assign (x, e) ->
-            let (v, eta') = eval context eta e in
-            (v, Frame.set eta' x v)
-        | E.Binop (op, e1, e2) ->
-            let (v, eta') = eval context eta e1 in
-            let (v', eta'') = eval context eta' e2 in
-            (binop op v v', eta'')
-        | E.Neg e ->
-            let (v, eta') = eval context eta e in
-            (match v with
-             | Value.New_V (Value.V_Int n, lbl) -> (Value.create_labeled_value (Value.V_Int (-n)) lbl, eta')
-             | _ -> raise (TypeError "Bad operand type for negation"))
-        | E.Not e ->
-            let (v, eta') = eval context eta e in
-            (match v with
-             | Value.New_V (Value.V_Bool b, lbl) -> (Value.create_labeled_value (Value.V_Bool (not b)) lbl, eta')
-             | _ -> raise (TypeError "Bad operand type for logical not"))
-        | E.Call (f, es) ->
-            let (vs, eta') = List.fold_right (fun e (acc, eta) -> let (v, eta') = eval context eta e in (v :: acc, eta')) es ([], eta) in
-            let result = do_call f vs context in
-            (result, eta')
+and eval (context : Label.t) (eta : Frame.t) (expr : Ast.Expression.t) : Value.t * Frame.t =
+  match eta with
+  | Frame.Return _ -> failwith "Cannot evaluate in a Return frame."
+  | Frame.Envs _ ->
+      match expr with
+      | E.Var x -> (Frame.lookup eta x, eta)
+      | E.Num n -> (Value.create_labeled_value (Value.V_Int n) context, eta)
+      | E.Bool b -> (Value.create_labeled_value (Value.V_Bool b) context, eta)
+      | E.Str s -> (Value.create_labeled_value (Value.V_Str s) context, eta)
+      | E.Assign (x, e) ->
+        let (v, eta') = eval context eta e in
+        (match v with
+        | Value.New_V (prim, lbl) ->
+            let new_val = Value.create_labeled_value prim lbl in
+            (new_val, Frame.set eta' x new_val))
+      | E.Binop (op, e1, e2) ->
+          let (v, eta') = eval context eta e1 in
+          let (v', eta'') = eval context eta' e2 in
+          (binop op v v', eta'')
+      | E.Neg e ->
+          let (v, eta') = eval context eta e in
+          (match v with
+            | Value.New_V (Value.V_Int n, lbl) -> (Value.create_labeled_value (Value.V_Int (-n)) lbl, eta')
+            | _ -> raise (TypeError "Bad operand type for negation"))
+      | E.Not e ->
+          let (v, eta') = eval context eta e in
+          (match v with
+            | Value.New_V (Value.V_Bool b, lbl) -> (Value.create_labeled_value (Value.V_Bool (not b)) lbl, eta')
+            | _ -> raise (TypeError "Bad operand type for logical not"))
+      | E.Call (f, es) ->
+          let (vs, eta') = List.fold_right (fun e (acc, eta) -> let (v, eta') = eval context eta e in (v :: acc, eta')) es ([], eta) in
+          let result = do_call f vs context in
+          (result, eta')
+    
 
-  and exec_many (context : Label.t) (eta : Frame.t) (ss : Ast.Stm.t list) : Frame.t =
-    List.fold_left (fun env s -> match exec_one context env s with
-      | Frame.Return _ as ret -> ret
-      | env' -> env') eta ss
+  and do_decs (context : Label.t) (eta : Frame.t) (decs : (Ast.Id.t * Ast.Expression.t option) list) : Frame.t =
+    List.fold_left (fun e (x, maybe_expr) ->
+      match maybe_expr with
+      | None -> 
+        Frame.declare e x (Value.create_labeled_value Value.V_Undefined context)  (* Using context to set label *)
+      | Some expr ->
+        let (v, e') = eval context e expr in
+        Frame.declare e' x v) eta decs
 
   and exec_one (context : Label.t) (eta : Frame.t) (stmt : Ast.Stm.t) : Frame.t =
     match eta with
@@ -419,10 +419,7 @@ let exec (p : Ast.Program.t) : unit =
     | Frame.Envs _ ->
         match stmt with
         | S.Skip -> eta
-        | S.VarDec decs -> List.fold_left (fun eta (x, opt_e) -> 
-            match opt_e with
-            | None -> Frame.declare eta x (Value.create_labeled_value Value.V_Undefined Label.L)
-            | Some e -> let (v, eta') = eval context eta e in Frame.declare eta' x v) eta decs
+        | S.VarDec decs -> do_decs context eta decs
         | S.Expr e -> let (_, eta') = eval context eta e in eta'
         | S.Block ss -> let nested = Frame.push eta in let result = exec_many context nested ss in Frame.pop result
         | S.If (e, s1, s2) ->
@@ -441,7 +438,12 @@ let exec (p : Ast.Program.t) : unit =
             in loop eta
         | S.Return (Some e) ->
             let (v, _) = eval context eta e in Frame.Return (v, Frame.empty_out)
-        | S.Return None -> Frame.Return (Value.create_labeled_value Value.V_None Label.L, Frame.empty_out)
+        | S.Return None -> Frame.Return (Value.create_labeled_value Value.V_None context, Frame.empty_out)
+
+  and exec_many (context : Label.t) (eta : Frame.t) (ss : Ast.Stm.t list) : Frame.t =
+    List.fold_left (fun env s -> match exec_one context env s with
+      | Frame.Return _ as ret -> ret
+      | env' -> env') eta ss
 
   in
   let main_context = Label.L  (* Initialize the main program with a Low security context *)
