@@ -1,0 +1,62 @@
+2024-04-18T00:18:47+00:00 kevins-mbp-2.wireless.wesleyan.edu#00 I: Runner: processes
+2024-04-18T00:18:47+00:00 kevins-mbp-2.wireless.wesleyan.edu#00 I: Chooser: simple
+2024-04-18T00:18:47+00:00 kevins-mbp-2.wireless.wesleyan.edu#00 I: Configuration suite_name = "all tests"
+2024-04-18T00:18:47+00:00 kevins-mbp-2.wireless.wesleyan.edu#00 I: Configuration cache_filename = "/Users/kevinj_angulo/Documents/Comp360H/Assignment 2/COMP-360H.2/starter/_build/default/test/oUnit-$(suite_name).cache"
+2024-04-18T00:18:47+00:00 kevins-mbp-2.wireless.wesleyan.edu#00 I: Configuration run_gc_full_major = "true"
+2024-04-18T00:18:47+00:00 kevins-mbp-2.wireless.wesleyan.edu#00 I: Configuration display = "true"
+2024-04-18T00:18:47+00:00 kevins-mbp-2.wireless.wesleyan.edu#00 I: Configuration results_style_1_X = "false"
+2024-04-18T00:18:47+00:00 kevins-mbp-2.wireless.wesleyan.edu#00 I: Configuration testdata_dir = "none"
+2024-04-18T00:18:47+00:00 kevins-mbp-2.wireless.wesleyan.edu#00 I: Configuration health_check_interval = "1."
+2024-04-18T00:18:47+00:00 kevins-mbp-2.wireless.wesleyan.edu#00 I: Configuration verbose = "false"
+2024-04-18T00:18:47+00:00 kevins-mbp-2.wireless.wesleyan.edu#00 I: Configuration chooser = "simple"
+2024-04-18T00:18:47+00:00 kevins-mbp-2.wireless.wesleyan.edu#00 I: Configuration output_html_dir = "none"
+2024-04-18T00:18:47+00:00 kevins-mbp-2.wireless.wesleyan.edu#00 I: Configuration processes_kill_period = "5."
+2024-04-18T00:18:47+00:00 kevins-mbp-2.wireless.wesleyan.edu#00 I: Configuration runner = "processes"
+2024-04-18T00:18:47+00:00 kevins-mbp-2.wireless.wesleyan.edu#00 I: Configuration shards = "2"
+2024-04-18T00:18:47+00:00 kevins-mbp-2.wireless.wesleyan.edu#00 I: Configuration processes_grace_period = "5."
+2024-04-18T00:18:47+00:00 kevins-mbp-2.wireless.wesleyan.edu#00 I: Configuration log_encoding = "utf-8"
+2024-04-18T00:18:47+00:00 kevins-mbp-2.wireless.wesleyan.edu#00 I: Configuration output_junit_file = "none"
+2024-04-18T00:18:47+00:00 kevins-mbp-2.wireless.wesleyan.edu#00 I: Configuration ci = "false"
+2024-04-18T00:18:47+00:00 kevins-mbp-2.wireless.wesleyan.edu#00 I: Configuration output_file = "/Users/kevinj_angulo/Documents/Comp360H/Assignment 2/COMP-360H.2/starter/_build/default/test/oUnit-$(suite_name)-$(shard_id).log"
+2024-04-18T00:18:47+00:00 kevins-mbp-2.wireless.wesleyan.edu#00 I: Using 2 workers maximum.
+2024-04-18T00:18:47+00:00 kevins-mbp-2.wireless.wesleyan.edu#00 I: Starting worker number kevins-mbp-2.wireless.wesleyan.edu#01.
+2024-04-18T00:18:47+00:00 kevins-mbp-2.wireless.wesleyan.edu#00 I: Worker kevins-mbp-2.wireless.wesleyan.edu#01 started.
+2024-04-18T00:18:47+00:00 kevins-mbp-2.wireless.wesleyan.edu#00 I: Still 1 tests running : all tests:0:teams/danner-security:0:explicit.json:0:0.
+2024-04-18T00:18:47+00:00 kevins-mbp-2.wireless.wesleyan.edu#00 I: 1 tests running: all tests:0:teams/danner-security:0:explicit.json:0:0.
+2024-04-18T00:18:47+00:00 kevins-mbp-2.wireless.wesleyan.edu#01 I: Start test all tests:0:teams/danner-security:0:explicit.json:0:0.
+2024-04-18T00:18:47+00:00 kevins-mbp-2.wireless.wesleyan.edu#00 I: Still 1 tests running : all tests:0:teams/danner-security:0:explicit.json:0:0.
+2024-04-18T00:18:47+00:00 kevins-mbp-2.wireless.wesleyan.edu#00 I: 1 tests running: all tests:0:teams/danner-security:0:explicit.json:0:0.
+2024-04-18T00:18:47+00:00 kevins-mbp-2.wireless.wesleyan.edu#01 I: Created a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_d2cc6a_dune/ounit-cda93d-kevins-mbp-2.wireless.wesleyan.edu#01.txt".
+2024-04-18T00:18:47+00:00 kevins-mbp-2.wireless.wesleyan.edu#00 I: Still 1 tests running : all tests:0:teams/danner-security:0:explicit.json:0:0.
+2024-04-18T00:18:47+00:00 kevins-mbp-2.wireless.wesleyan.edu#00 I: 1 tests running: all tests:0:teams/danner-security:0:explicit.json:0:0.
+2024-04-18T00:18:47+00:00 kevins-mbp-2.wireless.wesleyan.edu#01 I: Expected: SecurityError
+2024-04-18T00:18:47+00:00 kevins-mbp-2.wireless.wesleyan.edu#00 I: Still 1 tests running : all tests:0:teams/danner-security:0:explicit.json:0:0.
+2024-04-18T00:18:47+00:00 kevins-mbp-2.wireless.wesleyan.edu#00 I: 1 tests running: all tests:0:teams/danner-security:0:explicit.json:0:0.
+2024-04-18T00:18:47+00:00 kevins-mbp-2.wireless.wesleyan.edu#01 I: Actual: SecurityError
+2024-04-18T00:18:47+00:00 kevins-mbp-2.wireless.wesleyan.edu#00 I: Still 1 tests running : all tests:0:teams/danner-security:0:explicit.json:0:0.
+2024-04-18T00:18:47+00:00 kevins-mbp-2.wireless.wesleyan.edu#00 I: 1 tests running: all tests:0:teams/danner-security:0:explicit.json:0:0.
+2024-04-18T00:18:47+00:00 kevins-mbp-2.wireless.wesleyan.edu#01 I: Test all tests:0:teams/danner-security:0:explicit.json:0:0 is successful.
+2024-04-18T00:18:47+00:00 kevins-mbp-2.wireless.wesleyan.edu#00 I: Still 1 tests running : all tests:0:teams/danner-security:0:explicit.json:0:0.
+2024-04-18T00:18:47+00:00 kevins-mbp-2.wireless.wesleyan.edu#00 I: 1 tests running: all tests:0:teams/danner-security:0:explicit.json:0:0.
+2024-04-18T00:18:47+00:00 kevins-mbp-2.wireless.wesleyan.edu#01 I: Removed a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_d2cc6a_dune/ounit-cda93d-kevins-mbp-2.wireless.wesleyan.edu#01.txt".
+2024-04-18T00:18:47+00:00 kevins-mbp-2.wireless.wesleyan.edu#00 I: Still 1 tests running : all tests:0:teams/danner-security:0:explicit.json:0:0.
+2024-04-18T00:18:47+00:00 kevins-mbp-2.wireless.wesleyan.edu#00 I: 1 tests running: all tests:0:teams/danner-security:0:explicit.json:0:0.
+2024-04-18T00:18:47+00:00 kevins-mbp-2.wireless.wesleyan.edu#01 I: End test all tests:0:teams/danner-security:0:explicit.json:0:0.
+2024-04-18T00:18:47+00:00 kevins-mbp-2.wireless.wesleyan.edu#00 I: Still 1 tests running : all tests:0:teams/danner-security:0:explicit.json:0:0.
+2024-04-18T00:18:47+00:00 kevins-mbp-2.wireless.wesleyan.edu#00 I: 1 tests running: all tests:0:teams/danner-security:0:explicit.json:0:0.
+2024-04-18T00:18:47+00:00 kevins-mbp-2.wireless.wesleyan.edu#00 I: 0 tests running: .
+2024-04-18T00:18:47+00:00 kevins-mbp-2.wireless.wesleyan.edu#00 I: Worker kevins-mbp-2.wireless.wesleyan.edu#01 has ended.
+2024-04-18T00:18:47+00:00 kevins-mbp-2.wireless.wesleyan.edu#00 I: Used 1 worker during test execution.
+2024-04-18T00:18:47+00:00 kevins-mbp-2.wireless.wesleyan.edu#00 I: Run 1 tests with shard kevins-mbp-2.wireless.wesleyan.edu#01.
+2024-04-18T00:18:47+00:00 kevins-mbp-2.wireless.wesleyan.edu#00 I: Check health of shard kevins-mbp-2.wireless.wesleyan.edu#01, 1 times.
+2024-04-18T00:18:47+00:00 kevins-mbp-2.wireless.wesleyan.edu#00 I: ==============
+2024-04-18T00:18:47+00:00 kevins-mbp-2.wireless.wesleyan.edu#00 I: Summary:
+2024-04-18T00:18:47+00:00 kevins-mbp-2.wireless.wesleyan.edu#00 I: Test all tests:0:teams/danner-security:0:explicit.json:0:0 is successful.
+2024-04-18T00:18:47+00:00 kevins-mbp-2.wireless.wesleyan.edu#00 I: Ran: 1 tests in: 0.11 seconds.
+2024-04-18T00:18:47+00:00 kevins-mbp-2.wireless.wesleyan.edu#00 I: Cases: 1.
+2024-04-18T00:18:47+00:00 kevins-mbp-2.wireless.wesleyan.edu#00 I: Tried: 1.
+2024-04-18T00:18:47+00:00 kevins-mbp-2.wireless.wesleyan.edu#00 I: Errors: 0.
+2024-04-18T00:18:47+00:00 kevins-mbp-2.wireless.wesleyan.edu#00 I: Failures: 0.
+2024-04-18T00:18:47+00:00 kevins-mbp-2.wireless.wesleyan.edu#00 I: Skip: 0.
+2024-04-18T00:18:47+00:00 kevins-mbp-2.wireless.wesleyan.edu#00 I: Todo: 0.
+2024-04-18T00:18:47+00:00 kevins-mbp-2.wireless.wesleyan.edu#00 I: Timeout: 0.

@@ -1,7 +1,0 @@
-2024-04-17T23:57:44+00:00 Kevins-MacBook-Pro-2.local#01 I: Start test all tests:0:teams/danner-security:0:explicit.json:0:0.
-2024-04-17T23:57:44+00:00 Kevins-MacBook-Pro-2.local#01 I: Created a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_e9367a_dune/ounit-3c403e-Kevins-MacBook-Pro-2.local#01.txt".
-2024-04-17T23:57:44+00:00 Kevins-MacBook-Pro-2.local#01 I: Expected: 2
-2024-04-17T23:57:44+00:00 Kevins-MacBook-Pro-2.local#01 I: Actual: 2
-2024-04-17T23:57:44+00:00 Kevins-MacBook-Pro-2.local#01 I: Test all tests:0:teams/danner-security:0:explicit.json:0:0 is successful.
-2024-04-17T23:57:44+00:00 Kevins-MacBook-Pro-2.local#01 I: Removed a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_e9367a_dune/ounit-3c403e-Kevins-MacBook-Pro-2.local#01.txt".
-2024-04-17T23:57:44+00:00 Kevins-MacBook-Pro-2.local#01 I: End test all tests:0:teams/danner-security:0:explicit.json:0:0.

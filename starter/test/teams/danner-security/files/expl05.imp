@@ -2,7 +2,7 @@ function main() {
   var x ;
 
   x = get_int_s();
-  print_int_s(x);
+  print_int(x);
 
   return ;
 }

@@ -1,10 +1,8 @@
 function main() {
   var x ;
-  var y;
 
   x = get_int_s();
-  y = x+2;
-  print_int_s(2);
+  print_int(x);
 
   return ;
 }

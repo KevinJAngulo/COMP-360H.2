@@ -149,7 +149,6 @@ end
  *)
 module Api = struct
   exception ApiError of string
-  exception SecurityError
 
   let in_channel : Scanf.Scanning.in_channel ref = ref Scanf.Scanning.stdin
   let out_channel : Out_channel.t ref = ref Out_channel.stdout

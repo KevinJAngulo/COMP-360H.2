@@ -13,7 +13,7 @@
 {
     "file":     "expl05.imp",
     "input":    ["0"],
-    "output": ["2"]
+    "except": "SecurityError"
 }
 
 
