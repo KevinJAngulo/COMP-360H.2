@@ -1,0 +1,14 @@
+function main() {
+  var x = 2 ;
+  var y = 3;
+
+  print_int(y+x) ;
+ moreprints(x);
+  return ;
+}
+
+function moreprints(x){
+    var z = 7;
+    print_int(z+x);
+    return;
+}

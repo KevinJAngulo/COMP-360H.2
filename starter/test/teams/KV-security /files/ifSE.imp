@@ -1,0 +1,14 @@
+function main() {
+    var y = false;
+    var z = true;
+    var x = get_bool_s();
+
+    if x then {
+        y = true;
+    }
+    else{
+        z = false;
+    }
+    print_bool(z);
+    return;
+}

@@ -1,0 +1,16 @@
+function main() {
+  var x ;
+  x = get_int_s();
+  switch(x);
+}
+
+function switch(i){
+    var z;
+    var y = i;
+    z =  3 + y;
+
+    print_int(z);
+
+
+}
+

@@ -1,0 +1,10 @@
+{
+    "file":     "ifSE.imp",
+    "input":    ["true"],
+    "except":   "SecurityError"
+}
+{
+    "file":     "ifSE.imp",
+    "input":    ["false"],
+    "except":   "SecurityError"
+}

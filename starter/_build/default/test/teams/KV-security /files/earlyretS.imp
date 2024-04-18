@@ -3,7 +3,7 @@ function f() {
     i = get_int_s();
 
     while 9 % i != 0 do {
-        return i ;
+        return true ;
         i = i + 1 ;
     }
 
@@ -13,7 +13,7 @@ function f() {
 function g() {
     var b = f() ;
 
-    return b + 5 ;
+    return !b ;
 }
 
 function main() {

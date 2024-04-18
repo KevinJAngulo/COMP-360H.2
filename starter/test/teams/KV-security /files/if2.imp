@@ -1,0 +1,13 @@
+function main() {
+    var y;
+    var x = get_bool_s();
+
+    if x then {
+        y = true;
+    }
+    else{
+        y = false;
+    }
+    print_bool(y);
+    return;
+}

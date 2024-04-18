@@ -1,5 +1,5 @@
 {
-    "file":     "whileS.imp",
-    "input":    ["true"],
+    "file":     "2funcs.imp",
+    "input":    ["2"],
     "except":   "SecurityError"
 }

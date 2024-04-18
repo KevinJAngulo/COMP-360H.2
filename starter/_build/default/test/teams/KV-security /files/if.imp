@@ -4,9 +4,10 @@ function main() {
   if x then{
    print_int(5) ;
   } 
-  else{
+else{
    print_int(3) ;
-  }
+}
+
 
   return ;
 }
