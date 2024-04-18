@@ -1,0 +1,25 @@
+{
+    "file":     "earlyret05.imp",
+    "input":    [],
+    "output":   ["true"]
+}
+
+{
+    "file":     "earlyret10.imp",
+    "input":    [],
+    "output":   ["true"]
+}
+
+{
+    "file":     "earlyret15.imp",
+    "input":    [],
+    "output":   ["false"]
+}
+
+{
+    "file":     "earlyret20.imp",
+    "input":    [],
+    "output":   ["false"]
+}
+
+

@@ -1,0 +1,10 @@
+function main() {
+    if true then print_str("0") ;
+    else print_str("1") ;
+
+    if true then print_str("2") ;
+
+    if false then print_str("3") ;
+
+    return ;
+}

@@ -1,0 +1,11 @@
+{
+    "file":     "blocks00.imp",
+    "input": [],
+    "output": ["9", "7", "9", "7"]
+}
+
+{
+    "file": "blocks05.imp",
+    "input": [],
+    "output": ["9", "7", "5", "7"]
+}

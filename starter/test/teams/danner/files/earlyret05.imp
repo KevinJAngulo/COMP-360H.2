@@ -1,0 +1,13 @@
+function f() {
+    if true then return true ;
+
+    return false ;
+}
+
+function main() {
+    var b = f() ;
+
+    print_bool(b) ;
+
+    return ;
+}

@@ -1,0 +1,18 @@
+{
+    "file":     "while00.imp",
+    "input":    [],
+    "output":   ["1"]
+}
+
+{
+    "file":     "while05.imp",
+    "input":    [],
+    "output":   ["0", "1", "2", "3", "4", "5"]
+}
+
+{
+    "file":     "while10.imp",
+    "input":    [],
+    "output":   ["1", "2", "3", "2", "3", "3", "Finished."]
+}
+
