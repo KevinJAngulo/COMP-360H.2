@@ -1,0 +1,11 @@
+{
+    "file":     "primes.imp",
+    "input":    ["12"],
+    "output":   ["5"]
+}
+
+{
+    "file":     "primes-earlyret.imp",
+    "input":    ["12"],
+    "output":   ["5"]
+}

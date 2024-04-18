@@ -1,0 +1,22 @@
+function f() {
+    var i = 2 ;
+
+    while 9 % i != 0 do {
+        return true ;
+        i = i + 1 ;
+    }
+
+    return false ;
+}
+
+function g() {
+    var b = f() ;
+
+    return !b ;
+}
+
+function main() {
+    print_bool(g()) ;
+
+    return ;
+}
