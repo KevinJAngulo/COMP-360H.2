@@ -426,7 +426,7 @@ let exec (p : Ast.Program.t) : unit =
             let Value.New_V (_, label) = Frame.lookup eta x in
             label
           with 
-          | UnboundVariable _ -> Label.L  (* Default to low if not found, adjust based on your security defaults *)
+          | UnboundVariable _ -> Label.L  (* Default to low if not found*)
         in
         if current_label = Label.L && label_prime = Label.H then
           raise SecurityError  (* Raising an error if trying to assign a high-security value to a low-security variable *)

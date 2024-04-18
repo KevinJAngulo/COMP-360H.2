@@ -7,5 +7,5 @@
 {
     "file":     "ifSE.imp",
     "input":    ["false"],
-    "output":   ["false"]
+    "except":   "SecurityError"
 }
