@@ -3,7 +3,8 @@ function main() {
     x = get_bool_s();
 
     while x do {
-        print_int(0) ;
+        var z = 2;
+        print_int(z); 
         x = false; 
     }
 

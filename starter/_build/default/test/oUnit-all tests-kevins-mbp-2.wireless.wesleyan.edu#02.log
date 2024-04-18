@@ -1,0 +1,168 @@
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Start test all tests:0:teams/danner-security:0:explicit.json:1:1.
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Created a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_ff472c_dune/ounit-f25e48-kevins-mbp-2.wireless.wesleyan.edu#02.txt".
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Expected: SecurityError
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Actual: SecurityError
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Test all tests:0:teams/danner-security:0:explicit.json:1:1 is successful.
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Removed a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_ff472c_dune/ounit-f25e48-kevins-mbp-2.wireless.wesleyan.edu#02.txt".
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: End test all tests:0:teams/danner-security:0:explicit.json:1:1.
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Start test all tests:1:teams/KV-security :1:if.json:0:0.
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Created a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_ff472c_dune/ounit-6a8ea5-kevins-mbp-2.wireless.wesleyan.edu#02.txt".
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Expected: SecurityError
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Actual: SecurityError
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Test all tests:1:teams/KV-security :1:if.json:0:0 is successful.
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Removed a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_ff472c_dune/ounit-6a8ea5-kevins-mbp-2.wireless.wesleyan.edu#02.txt".
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: End test all tests:1:teams/KV-security :1:if.json:0:0.
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Start test all tests:1:teams/KV-security :2:plus.json:0:0.
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Created a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_ff472c_dune/ounit-19f104-kevins-mbp-2.wireless.wesleyan.edu#02.txt".
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Expected: SecurityError
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Actual: SecurityError
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Test all tests:1:teams/KV-security :2:plus.json:0:0 is successful.
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Removed a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_ff472c_dune/ounit-19f104-kevins-mbp-2.wireless.wesleyan.edu#02.txt".
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: End test all tests:1:teams/KV-security :2:plus.json:0:0.
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Start test all tests:1:teams/KV-security :5:whileS.json:0:0.
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Created a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_ff472c_dune/ounit-e8bb1d-kevins-mbp-2.wireless.wesleyan.edu#02.txt".
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Expected: SecurityError
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Actual: SecurityError
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Test all tests:1:teams/KV-security :5:whileS.json:0:0 is successful.
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Removed a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_ff472c_dune/ounit-e8bb1d-kevins-mbp-2.wireless.wesleyan.edu#02.txt".
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: End test all tests:1:teams/KV-security :5:whileS.json:0:0.
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Start test all tests:1:teams/KV-security :7:mult.json:0:0.
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Created a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_ff472c_dune/ounit-3e566d-kevins-mbp-2.wireless.wesleyan.edu#02.txt".
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Expected: SecurityError
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Actual: SecurityError
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Test all tests:1:teams/KV-security :7:mult.json:0:0 is successful.
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Removed a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_ff472c_dune/ounit-3e566d-kevins-mbp-2.wireless.wesleyan.edu#02.txt".
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: End test all tests:1:teams/KV-security :7:mult.json:0:0.
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Start test all tests:1:teams/KV-security :8:2funcs.json:0:0.
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Created a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_ff472c_dune/ounit-f69db2-kevins-mbp-2.wireless.wesleyan.edu#02.txt".
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Expected: SecurityError
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Actual: SecurityError
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Test all tests:1:teams/KV-security :8:2funcs.json:0:0 is successful.
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Removed a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_ff472c_dune/ounit-f69db2-kevins-mbp-2.wireless.wesleyan.edu#02.txt".
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: End test all tests:1:teams/KV-security :8:2funcs.json:0:0.
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Start test all tests:2:teams/danner:0:if.json:1:1.
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Created a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_ff472c_dune/ounit-a875f3-kevins-mbp-2.wireless.wesleyan.edu#02.txt".
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Expected: 3 7 9 15 16
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Actual: 3 7 9 15 16
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Test all tests:2:teams/danner:0:if.json:1:1 is successful.
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Removed a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_ff472c_dune/ounit-a875f3-kevins-mbp-2.wireless.wesleyan.edu#02.txt".
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: End test all tests:2:teams/danner:0:if.json:1:1.
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Start test all tests:2:teams/danner:2:blocks.json:1:1.
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Created a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_ff472c_dune/ounit-52c1a3-kevins-mbp-2.wireless.wesleyan.edu#02.txt".
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Expected: 9 7 5 7
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Actual: 9 7 5 7
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Test all tests:2:teams/danner:2:blocks.json:1:1 is successful.
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Removed a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_ff472c_dune/ounit-52c1a3-kevins-mbp-2.wireless.wesleyan.edu#02.txt".
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: End test all tests:2:teams/danner:2:blocks.json:1:1.
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Start test all tests:2:teams/danner:4:effects.json:0:0.
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Created a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_ff472c_dune/ounit-b8d3a4-kevins-mbp-2.wireless.wesleyan.edu#02.txt".
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Expected: 0 1 1 1
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Actual: 0 1 1 1
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Test all tests:2:teams/danner:4:effects.json:0:0 is successful.
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Removed a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_ff472c_dune/ounit-b8d3a4-kevins-mbp-2.wireless.wesleyan.edu#02.txt".
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: End test all tests:2:teams/danner:4:effects.json:0:0.
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Start test all tests:2:teams/danner:4:effects.json:2:2.
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Created a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_ff472c_dune/ounit-e0a46c-kevins-mbp-2.wireless.wesleyan.edu#02.txt".
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Expected: 1 2 3 10
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Actual: 1 2 3 10
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Test all tests:2:teams/danner:4:effects.json:2:2 is successful.
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Removed a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_ff472c_dune/ounit-e0a46c-kevins-mbp-2.wireless.wesleyan.edu#02.txt".
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: End test all tests:2:teams/danner:4:effects.json:2:2.
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Start test all tests:2:teams/danner:5:decs.json:0:0.
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Created a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_ff472c_dune/ounit-92f1f4-kevins-mbp-2.wireless.wesleyan.edu#02.txt".
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Expected: 
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Actual: 
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Test all tests:2:teams/danner:5:decs.json:0:0 is successful.
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Removed a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_ff472c_dune/ounit-92f1f4-kevins-mbp-2.wireless.wesleyan.edu#02.txt".
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: End test all tests:2:teams/danner:5:decs.json:0:0.
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Start test all tests:2:teams/danner:5:decs.json:2:2.
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Created a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_ff472c_dune/ounit-20b785-kevins-mbp-2.wireless.wesleyan.edu#02.txt".
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Expected: 5 true
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Actual: 5 true
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Test all tests:2:teams/danner:5:decs.json:2:2 is successful.
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Removed a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_ff472c_dune/ounit-20b785-kevins-mbp-2.wireless.wesleyan.edu#02.txt".
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: End test all tests:2:teams/danner:5:decs.json:2:2.
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Start test all tests:2:teams/danner:5:decs.json:4:4.
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Created a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_ff472c_dune/ounit-5aae7b-kevins-mbp-2.wireless.wesleyan.edu#02.txt".
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Expected: 5 true
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Actual: 5 true
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Test all tests:2:teams/danner:5:decs.json:4:4 is successful.
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Removed a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_ff472c_dune/ounit-5aae7b-kevins-mbp-2.wireless.wesleyan.edu#02.txt".
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: End test all tests:2:teams/danner:5:decs.json:4:4.
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Start test all tests:2:teams/danner:6:undec.json:1:1.
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Created a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_ff472c_dune/ounit-adb6e4-kevins-mbp-2.wireless.wesleyan.edu#02.txt".
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Expected: UnboundVariable
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Actual: UnboundVariable
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Test all tests:2:teams/danner:6:undec.json:1:1 is successful.
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Removed a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_ff472c_dune/ounit-adb6e4-kevins-mbp-2.wireless.wesleyan.edu#02.txt".
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: End test all tests:2:teams/danner:6:undec.json:1:1.
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Start test all tests:2:teams/danner:6:undec.json:3:3.
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Created a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_ff472c_dune/ounit-575cc8-kevins-mbp-2.wireless.wesleyan.edu#02.txt".
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Expected: UnboundVariable
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Actual: UnboundVariable
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Test all tests:2:teams/danner:6:undec.json:3:3 is successful.
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Removed a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_ff472c_dune/ounit-575cc8-kevins-mbp-2.wireless.wesleyan.edu#02.txt".
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: End test all tests:2:teams/danner:6:undec.json:3:3.
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Start test all tests:2:teams/danner:7:gcd.json:0:0.
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Created a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_ff472c_dune/ounit-f18208-kevins-mbp-2.wireless.wesleyan.edu#02.txt".
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Expected: 12
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Actual: 12
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Test all tests:2:teams/danner:7:gcd.json:0:0 is successful.
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Removed a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_ff472c_dune/ounit-f18208-kevins-mbp-2.wireless.wesleyan.edu#02.txt".
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: End test all tests:2:teams/danner:7:gcd.json:0:0.
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Start test all tests:2:teams/danner:7:gcd.json:2:2.
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Created a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_ff472c_dune/ounit-9e504f-kevins-mbp-2.wireless.wesleyan.edu#02.txt".
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Expected: 12
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Actual: 12
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Test all tests:2:teams/danner:7:gcd.json:2:2 is successful.
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Removed a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_ff472c_dune/ounit-9e504f-kevins-mbp-2.wireless.wesleyan.edu#02.txt".
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: End test all tests:2:teams/danner:7:gcd.json:2:2.
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Start test all tests:2:teams/danner:7:gcd.json:4:4.
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Created a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_ff472c_dune/ounit-12e7c6-kevins-mbp-2.wireless.wesleyan.edu#02.txt".
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Expected: 12
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Actual: 12
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Test all tests:2:teams/danner:7:gcd.json:4:4 is successful.
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Removed a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_ff472c_dune/ounit-12e7c6-kevins-mbp-2.wireless.wesleyan.edu#02.txt".
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: End test all tests:2:teams/danner:7:gcd.json:4:4.
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Start test all tests:2:teams/danner:8:multidec.json:0:0.
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Created a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_ff472c_dune/ounit-1eab65-kevins-mbp-2.wireless.wesleyan.edu#02.txt".
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Expected: MultipleDeclaration
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Actual: MultipleDeclaration
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Test all tests:2:teams/danner:8:multidec.json:0:0 is successful.
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Removed a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_ff472c_dune/ounit-1eab65-kevins-mbp-2.wireless.wesleyan.edu#02.txt".
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: End test all tests:2:teams/danner:8:multidec.json:0:0.
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Start test all tests:2:teams/danner:8:multidec.json:2:2.
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Created a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_ff472c_dune/ounit-958c33-kevins-mbp-2.wireless.wesleyan.edu#02.txt".
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Expected: MultipleDeclaration
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Actual: MultipleDeclaration
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Test all tests:2:teams/danner:8:multidec.json:2:2 is successful.
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Removed a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_ff472c_dune/ounit-958c33-kevins-mbp-2.wireless.wesleyan.edu#02.txt".
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: End test all tests:2:teams/danner:8:multidec.json:2:2.
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Start test all tests:2:teams/danner:9:typeerr.json:1:1.
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Created a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_ff472c_dune/ounit-edb55a-kevins-mbp-2.wireless.wesleyan.edu#02.txt".
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Expected: TypeError
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Actual: TypeError
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Test all tests:2:teams/danner:9:typeerr.json:1:1 is successful.
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Removed a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_ff472c_dune/ounit-edb55a-kevins-mbp-2.wireless.wesleyan.edu#02.txt".
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: End test all tests:2:teams/danner:9:typeerr.json:1:1.
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Start test all tests:2:teams/danner:9:typeerr.json:3:3.
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Created a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_ff472c_dune/ounit-f15389-kevins-mbp-2.wireless.wesleyan.edu#02.txt".
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Expected: TypeError
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Actual: TypeError
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Test all tests:2:teams/danner:9:typeerr.json:3:3 is successful.
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Removed a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_ff472c_dune/ounit-f15389-kevins-mbp-2.wireless.wesleyan.edu#02.txt".
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: End test all tests:2:teams/danner:9:typeerr.json:3:3.
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Start test all tests:2:teams/danner:10:io.json:1:1.
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Created a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_ff472c_dune/ounit-62718e-kevins-mbp-2.wireless.wesleyan.edu#02.txt".
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Expected: 5 true false fred
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Actual: 5 true false fred
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Test all tests:2:teams/danner:10:io.json:1:1 is successful.
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Removed a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_ff472c_dune/ounit-62718e-kevins-mbp-2.wireless.wesleyan.edu#02.txt".
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: End test all tests:2:teams/danner:10:io.json:1:1.
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Start test all tests:2:teams/danner:11:while.json:1:1.
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Created a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_ff472c_dune/ounit-d13413-kevins-mbp-2.wireless.wesleyan.edu#02.txt".
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Expected: 0 1 2 3 4 5
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Actual: 0 1 2 3 4 5
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Test all tests:2:teams/danner:11:while.json:1:1 is successful.
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: Removed a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_ff472c_dune/ounit-d13413-kevins-mbp-2.wireless.wesleyan.edu#02.txt".
+2024-04-18T04:29:58+00:00 kevins-mbp-2.wireless.wesleyan.edu#02 I: End test all tests:2:teams/danner:11:while.json:1:1.
