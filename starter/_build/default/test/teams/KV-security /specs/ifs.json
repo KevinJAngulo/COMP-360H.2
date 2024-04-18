@@ -1,11 +1,10 @@
 {
-    "file":     "ifSE.imp",
+    "file":     "ifs.imp",
     "input":    ["true"],
     "except":   "SecurityError"
 }
-
 {
-    "file":     "ifSE.imp",
+    "file":     "ifs.imp",
     "input":    ["false"],
-    "output":   ["false"]
+    "except":   "SecurityError"
 }

@@ -1,15 +1,13 @@
 function main() {
-    var y = false;
-    var z = true;
+    var y;
     var x = get_bool_s();
 
     if x then {
         y = true;
     }
-    if !y then {
-        z = false;
+    else{
+        y = false;
     }
-    print_bool(z);
-    
+    print_bool(y);
     return;
 }

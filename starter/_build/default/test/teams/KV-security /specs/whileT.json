@@ -1,0 +1,5 @@
+{
+    "file":     "whileT.imp",
+    "input":    ["true"],
+    "except":   "SecurityError"
+}

@@ -1,7 +1,7 @@
 (* COMP 360H Project 2:  Information-tracking interpreter for the language
  * Imp.
  *
- * N. Danner
+ * Valery Corral and Kevin Angulo Lezama.
  *)
 
 module E = Ast.Expression
@@ -410,48 +410,59 @@ let exec (p : Ast.Program.t) : unit =
       with
       | Api.ApiError _ -> raise @@ UndefinedFunction f
   
-and eval = function
-  | Frame.Return _ -> fun _ -> impossible "Cannot evaluate in a Return frame."
-  | Frame.Envs ([], _) -> fun _ -> impossible "exec with empty environment frame."
-  | eta -> fun context -> function
-    | E.Var x -> (Frame.lookup eta x, eta)
-    | E.Num n -> (Value.create_labeled_value (Value.V_Int n) context, eta)
-    | E.Bool b -> (Value.create_labeled_value (Value.V_Bool b) context, eta)
-    | E.Str s -> (Value.create_labeled_value (Value.V_Str s) context, eta)
-    | E.Assign (x, e) ->
-      let (v, eta') = eval eta context e in
-      let (Value.New_V (prim, lbl)) = v in
-      let new_val = Value.create_labeled_value prim lbl in
-      (new_val, Frame.set eta' x new_val)
-    | E.Binop (op, e1, e2) ->
-      let (v, eta') = eval eta context e1 in
-      let (v', eta'') = eval eta' context e2 in
-      (binop op v v', eta'')
-    | E.Neg e ->
-      let (v, eta') = eval eta context e in
-      (
-        match v with
-          | Value.New_V (Value.V_Int n, lbl) -> (Value.create_labeled_value (Value.V_Int (-n)) lbl, eta')
-          | _ -> raise (TypeError "Bad operand type for negation")
-      )
-    | E.Not e ->
-      let (v, eta') = eval eta context e in
-      (
-        match v with
-        | Value.New_V (Value.V_Bool b, lbl) -> (Value.create_labeled_value (Value.V_Bool (not b)) lbl, eta')
-        | _ -> raise (TypeError "Bad operand type for logical not")
-      )
-    | E.Call(f, es) ->
-      let (vs, eta') =
-        List.fold_left
-          (fun (acc_vs, acc_eta) exp ->
-            let (v, updated_eta) = eval acc_eta context exp  (* Ensure eval is called with eta first, then context *)
-            in (v :: acc_vs, updated_eta))
-          ([], eta)
-          es
-      in
-      let result = do_call f (List.rev vs) context  (* Ensure do_call is called with context as the last argument *)
-      in (result, eta')  (* Return the result and the updated environment *)
+  and eval = function
+    | Frame.Return _ -> fun _ -> impossible "Cannot evaluate in a Return frame."
+    | Frame.Envs ([], _) -> fun _ -> impossible "exec with empty environment frame."
+    | eta -> fun context -> function
+      | E.Var x -> (Frame.lookup eta x, eta)
+      | E.Num n -> (Value.create_labeled_value (Value.V_Int n) context, eta)
+      | E.Bool b -> (Value.create_labeled_value (Value.V_Bool b) context, eta)
+      | E.Str s -> (Value.create_labeled_value (Value.V_Str s) context, eta)
+      | E.Assign (x, e) ->
+        let (Value.New_V (v_prime, label_prime), eta') = eval eta context e in
+        (* Retrieve the security label of the variable 'x' if it exists in the environment *)
+        let current_label = 
+          try 
+            let Value.New_V (_, label) = Frame.lookup eta x in
+            label
+          with 
+          | UnboundVariable _ -> Label.L  (* Default to low if not found*)
+        in
+        if current_label = Label.L && label_prime = Label.H then
+          raise SecurityError  (* Raising an error if trying to assign a high-security value to a low-security variable *)
+        else
+          let new_val = Value.create_labeled_value v_prime label_prime in
+          (new_val, Frame.set eta' x new_val)
+      
+      | E.Binop (op, e1, e2) ->
+        let (v, eta') = eval eta context e1 in
+        let (v', eta'') = eval eta' context e2 in
+        (binop op v v', eta'')
+      | E.Neg e ->
+        let (v, eta') = eval eta context e in
+        (
+          match v with
+            | Value.New_V (Value.V_Int n, lbl) -> (Value.create_labeled_value (Value.V_Int (-n)) lbl, eta')
+            | _ -> raise (TypeError "Bad operand type for negation")
+        )
+      | E.Not e ->
+        let (v, eta') = eval eta context e in
+        (
+          match v with
+          | Value.New_V (Value.V_Bool b, lbl) -> (Value.create_labeled_value (Value.V_Bool (not b)) lbl, eta')
+          | _ -> raise (TypeError "Bad operand type for logical not")
+        )
+      | E.Call(f, es) ->
+        let (vs, eta') =
+          List.fold_left
+            (fun (acc_vs, acc_eta) exp ->
+              let (v, updated_eta) = eval acc_eta context exp  (* Ensure eval is called with eta first, then context *)
+              in (v :: acc_vs, updated_eta))
+            ([], eta)
+            es
+        in
+        let result = do_call f (List.rev vs) context  (* Ensure do_call is called with context as the last argument *)
+        in (result, eta')  (* Return the result and the updated environment *)
     
 
 
