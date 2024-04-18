@@ -1,0 +1,5 @@
+{
+    "file":     "block2S.imp",
+    "input":    ["5"],
+    "except":   "SecurityError"
+}

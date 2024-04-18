@@ -1,8 +1,9 @@
 function f() {
-    var i = 2 ;
+    var i;
+    i = get_int_s();
 
     while 9 % i != 0 do {
-        return true ;
+        return i ;
         i = i + 1 ;
     }
 
@@ -12,7 +13,7 @@ function f() {
 function g() {
     var b = f() ;
 
-    return !b ;
+    return b + 5 ;
 }
 
 function main() {

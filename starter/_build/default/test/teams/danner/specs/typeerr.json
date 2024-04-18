@@ -1,0 +1,24 @@
+{
+    "file":     "typeerr00.imp",
+    "input":    [],
+    "except":   "TypeError"
+}
+
+{
+    "file":     "typeerr05.imp",
+    "input":    [],
+    "except":   "TypeError"
+}
+
+{
+    "file":     "typeerr10.imp",
+    "input":    [],
+    "except":   "TypeError"
+}
+
+{
+    "file":     "typeerr15.imp",
+    "input":    [],
+    "except":   "TypeError"
+}
+

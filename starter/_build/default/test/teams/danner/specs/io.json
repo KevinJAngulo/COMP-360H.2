@@ -1,0 +1,16 @@
+{
+    "file":     "io00.imp",
+    "input":    [
+        "5"
+    ],
+    "output":   [
+        "5"
+    ]
+}
+
+{
+    "file":   "io05.imp",
+    "input":  [],
+    "output": ["5", "true", "false", "fred"]
+}
+

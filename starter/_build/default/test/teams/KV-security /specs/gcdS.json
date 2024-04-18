@@ -1,0 +1,5 @@
+{
+    "file":     "gcdS.imp",
+    "input":    ["84","60"],
+    "except":   "SecurityError"
+}

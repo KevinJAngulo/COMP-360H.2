@@ -1,0 +1,5 @@
+{
+    "file":     "mult.imp",
+    "input":    ["3"],
+    "except":   "SecurityError"
+}

@@ -1,12 +1,13 @@
 function is_prime(n) {
     var i = 2 ;
+    var is_composite = false ;
 
     while i < n do {
-        if n % i == 0 then return false ;
+        if n % i == 0 then is_composite = true ;
         i = i + 1 ;
     }
 
-    return true ;
+    return !is_composite ;
 }
 
 function num_primes(n) {

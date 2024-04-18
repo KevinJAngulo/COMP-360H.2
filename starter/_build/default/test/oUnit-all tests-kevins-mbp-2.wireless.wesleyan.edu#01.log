@@ -1,7 +1,0 @@
-2024-04-18T00:19:31+00:00 kevins-mbp-2.wireless.wesleyan.edu#01 I: Start test all tests:0:teams/danner-security:0:explicit.json:0:0.
-2024-04-18T00:19:31+00:00 kevins-mbp-2.wireless.wesleyan.edu#01 I: Created a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_418f56_dune/ounit-fb9735-kevins-mbp-2.wireless.wesleyan.edu#01.txt".
-2024-04-18T00:19:31+00:00 kevins-mbp-2.wireless.wesleyan.edu#01 I: Expected: SecurityError
-2024-04-18T00:19:31+00:00 kevins-mbp-2.wireless.wesleyan.edu#01 I: Actual: SecurityError
-2024-04-18T00:19:31+00:00 kevins-mbp-2.wireless.wesleyan.edu#01 I: Test all tests:0:teams/danner-security:0:explicit.json:0:0 is successful.
-2024-04-18T00:19:31+00:00 kevins-mbp-2.wireless.wesleyan.edu#01 I: Removed a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_418f56_dune/ounit-fb9735-kevins-mbp-2.wireless.wesleyan.edu#01.txt".
-2024-04-18T00:19:31+00:00 kevins-mbp-2.wireless.wesleyan.edu#01 I: End test all tests:0:teams/danner-security:0:explicit.json:0:0.

@@ -1,0 +1,5 @@
+{
+    "file":     "if.imp",
+    "input":    ["true"],
+    "except":   "SecurityError"
+}

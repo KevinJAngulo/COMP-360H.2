@@ -1,0 +1,5 @@
+{
+    "file":     "whileS.imp",
+    "input":    ["true"],
+    "except":   "SecurityError"
+}

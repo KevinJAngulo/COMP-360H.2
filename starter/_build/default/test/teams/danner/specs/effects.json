@@ -1,0 +1,24 @@
+{
+    "file":     "effects00.imp",
+    "input":    [],
+    "output":   ["0", "1", "1", "1"]
+}
+
+{
+    "file":     "effects05.imp",
+    "input":    [],
+    "output":   ["SUCCESS", "true", "true"]
+}
+
+{
+    "file":     "effects10.imp",
+    "input":    [],
+    "output":   ["1", "2", "3", "10"]
+}
+
+{
+    "file":     "effects15.imp",
+    "input":    [],
+    "output":   ["1", "3", "0", "1"]
+}
+

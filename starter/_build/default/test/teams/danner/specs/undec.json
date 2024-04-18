@@ -1,0 +1,30 @@
+{
+    "file":     "undec00.imp",
+    "input":    [],
+    "except":   "UnboundVariable"
+}
+
+{
+    "file":     "undec05.imp",
+    "input":    [],
+    "except":   "UnboundVariable"
+}
+
+{
+    "file":     "undec06.imp",
+    "input":    [],
+    "except":   "UnboundVariable"
+}
+
+{
+    "file":     "undec10.imp",
+    "input":    [],
+    "except":   "UnboundVariable"
+}
+
+{
+    "file":     "undec15.imp",
+    "input":    [],
+    "except":   "UnboundVariable"
+}
+

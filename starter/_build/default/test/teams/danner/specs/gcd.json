@@ -1,0 +1,43 @@
+{
+    "file":     "gcd.imp",
+    "input":    [ "84", "60" ],
+    "output":   [ "12" ]
+}
+
+{
+    "file":     "gcd.imp",
+    "input":    [ "60", "84" ],
+    "output":   [ "12" ]
+}
+
+{
+    "file":     "gcd-effects.imp",
+    "input":    [
+        "84", "60"
+    ],
+    "output":   [
+        "12"
+    ]
+}
+
+{
+    "file":     "gcd-effects.imp",
+    "input":    [
+        "60", "84"
+    ],
+    "output":   [
+        "12"
+    ]
+}
+
+{
+    "file":     "gcd-function.imp",
+    "input":    ["60", "84"],
+    "output":   ["12"]
+}
+
+{
+    "file":     "gcd-function.imp",
+    "input":    ["84", "60"],
+    "output":   ["12"]
+}

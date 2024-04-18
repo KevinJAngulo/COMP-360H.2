@@ -1,0 +1,9 @@
+function main() {
+    var x ;
+    {
+        var y ;
+    }
+    var x ;
+
+    return ;
+}

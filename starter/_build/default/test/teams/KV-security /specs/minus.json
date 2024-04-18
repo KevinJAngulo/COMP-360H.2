@@ -1,0 +1,5 @@
+{
+    "file":     "minus.imp",
+    "input":    ["3"],
+    "except":   "SecurityError"
+}

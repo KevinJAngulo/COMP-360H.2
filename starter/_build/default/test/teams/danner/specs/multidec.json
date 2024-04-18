@@ -1,0 +1,18 @@
+{
+    "file":     "multdec00.imp",
+    "input":    [],
+    "except":   "MultipleDeclaration"
+}
+
+{
+    "file":     "multdec05.imp",
+    "input":    [],
+    "except":   "MultipleDeclaration"
+}
+
+{
+    "file":     "multdec10.imp",
+    "input":    [],
+    "except":   "MultipleDeclaration"
+}
+

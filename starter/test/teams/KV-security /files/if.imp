@@ -1,0 +1,12 @@
+function main() {
+  var x ;
+  x = get_bool_s();
+  if x then{
+   print_int(5) ;
+  } 
+  else{
+   print_int(3) ;
+  }
+
+  return ;
+}

@@ -1,0 +1,18 @@
+function main() {
+  var a ;
+  var b ;
+  a = get_int_s();
+  b = 7 ;
+
+  {
+
+    b = a + 9 ;
+    print_int(a) ;
+    print_int(b) ;
+  }
+
+  print_int(a) ;
+  print_int(b) ;
+
+  return ;
+}
