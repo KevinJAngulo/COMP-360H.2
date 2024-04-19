@@ -1,0 +1,6 @@
+{
+    "file":     "print.imp",
+    "input":    [   "3"
+    ],
+    "except":   "SecurityError"
+}

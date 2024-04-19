@@ -49,9 +49,7 @@ module Label = struct
     | L -> "Low"
 end
 
-
 (* Values. *)
-
 module Value = struct
   type prim = 
     | V_Undefined
@@ -60,7 +58,8 @@ module Value = struct
     | V_Bool of bool
     | V_Str of string
 
-  type t = New_V of prim * Label.t  (* Use Label.t instead of defining it here *)
+  (* New Value with a tyoe Value.prim x Label*)
+  type t = New_V of prim * Label.t  
 
   let create_labeled_value prim label = New_V (prim, label)
 
@@ -81,7 +80,8 @@ end
 
 module Frame = struct
   type env = Value.t IdentMap.t
-  type out = Value.prim list (*This is supposedly where we store the outputs*)
+  (*This is supposedly where we store the outputs, but we won't use it as discussed with prof. Danner*)
+  type out = Value.prim list 
 
   (*According to our semantics, we define the frame to be as follows*)
   type t = 
@@ -91,7 +91,7 @@ module Frame = struct
   (*We will keep the out channel empty as we only needed it to represent mathematically the Non-Interference Theoream *)
   let empty_out : out = [] 
 
-  (* Add an output to the current frame's output list. We won't need this as explained by professor Danner.
+  (* Add an output to the current frame's output list. We won't need this as explained by prof. Danner.
 
   let add_output (out : out) (value : Value.prim) : out =
     value :: out  
@@ -159,7 +159,11 @@ end
  *
  * A client makes changes to the defaults by setting `in_channel`,
  * `out_channel`, and `show_prompts`.
+ *
+ * The API now checks whether a value is high or low and if it can either be printed or      UPDATE
+ * raise a security error.
  *)
+
 module Api = struct
   exception ApiError of string
 
@@ -406,12 +410,13 @@ let exec (p : Ast.Program.t) : unit =
       let eta' = exec_many eta body context in
       begin
         match eta' with
-        | Frame.Return (v, _) -> v  (* Assuming Frame.Return also includes an output list now *)
+        (* Assuming Frame.Return also includes an output list now *)
+        | Frame.Return (v, _) -> v  
         | _ -> impossible "function returned with non-Return frame."
       end
     with
     | Not_found -> 
-      try Api.do_call f vs  (* Assuming Api.do_call does not handle context *)
+      try Api.do_call f vs  
       with
       | Api.ApiError _ -> raise @@ UndefinedFunction f
   
@@ -424,17 +429,19 @@ let exec (p : Ast.Program.t) : unit =
       | E.Bool b -> (Value.create_labeled_value (Value.V_Bool b) context, eta)
       | E.Str s -> (Value.create_labeled_value (Value.V_Str s) context, eta)
       | E.Assign (x, e) ->
-        let (Value.New_V (v_prime, label_prime), eta') = eval eta context e in
         (* Retrieve the security label of the variable 'x' if it exists in the environment *)
+        let (Value.New_V (v_prime, label_prime), eta') = eval eta context e in
         let current_label = 
           try 
             let Value.New_V (_, label) = Frame.lookup eta x in
             label
           with 
-          | UnboundVariable _ -> Label.L  (* Default to low if not found*)
+          (* Default to low if not found*)
+          | UnboundVariable _ -> Label.L  
         in
         if current_label = Label.L && label_prime = Label.H then
-          raise SecurityError  (* Raising an error if trying to assign a high-security value to a low-security variable *)
+          (* Raising an error if trying to assign a high-security value to a low-security variable. No secure upgrade*)
+          raise SecurityError  
         else
           let new_val = Value.create_labeled_value v_prime label_prime in
           (new_val, Frame.set eta' x new_val)
@@ -461,21 +468,23 @@ let exec (p : Ast.Program.t) : unit =
         let (vs, eta') =
           List.fold_left
             (fun (acc_vs, acc_eta) exp ->
-              let (v, updated_eta) = eval acc_eta context exp  (* Ensure eval is called with eta first, then context *)
+              let (v, updated_eta) = eval acc_eta context exp  
               in (v :: acc_vs, updated_eta))
             ([], eta)
             es
         in
-        let result = do_call f (List.rev vs) context  (* Ensure do_call is called with context as the last argument *)
-        in (result, eta')  (* Return the result and the updated environment *)
+        let result = do_call f (List.rev vs) context
+        (* Return the result and the updated environment *)  
+        in (result, eta')  
     
 
-
+  (*Declares variables*)
   and do_decs  (eta : Frame.t) (decs : (Ast.Id.t * Ast.Expression.t option) list) (context : Label.t) : Frame.t =
     match decs with
     | [] -> eta
     | (x, None) :: decs ->
-      let eta' = Frame.declare eta x (Value.create_labeled_value Value.V_Undefined context)
+      (*Declares variables with Labels based on security context*)
+      let eta' = Frame.declare eta x (Value.create_labeled_value Value.V_Undefined context) 
       in do_decs  eta' decs context
     | (x, Some e) :: decs ->
       let (v, eta') = eval  eta context e
@@ -494,8 +503,10 @@ let exec (p : Ast.Program.t) : unit =
       let eta' = Frame.push eta in
       begin
         match exec_many eta' ss context with
-        | Frame.Return (v, _) -> Frame.Return (v, Frame.empty_out)  (* Return an empty output frame*)
-        | eta'' -> Frame.pop eta''  (* Pop the top environment off after executing the block, returning to the previous environment *)
+        (* Return an empty output frame, since the output is irrelevant in the interpreter, as discussed with prof. Danner*)
+        | Frame.Return (v, _) -> Frame.Return (v, Frame.empty_out)  
+        (* Pop the top environment off after executing the block, returning to the previous environment *)
+        | eta'' -> Frame.pop eta''  
       end
     | S.If(e, s1, s2) ->
       let (v, eta') = eval eta context e in
@@ -518,10 +529,13 @@ let exec (p : Ast.Program.t) : unit =
           let eta'' = exec_one eta' new_context body in
           begin
             match eta'' with
-            | Frame.Return _ as ret -> ret  (* Return immediately if a return frame is encountered *)
-            | _ -> dowhile eta''  (* Otherwise, continue looping *)
+            (* Return immediately if a return frame is encountered *)
+            | Frame.Return _ as ret -> ret  
+            (* Otherwise, continue looping *)
+            | _ -> dowhile eta''  
           end
-        | Value.New_V (Value.V_Bool false, _) -> eta'  (* Exit loop when condition is false *)
+        (* Exit loop when condition is false *)
+        | Value.New_V (Value.V_Bool false, _) -> eta'  
         | _ -> raise (TypeError "While test not a boolean value")
       in dowhile eta
     | S.Return (Some e) ->
@@ -541,7 +555,8 @@ let exec (p : Ast.Program.t) : unit =
         | eta' -> exec_many eta' ss context  
       end
     in
-      let main_context = Label.L  (* Set the security context for the main function to Low *)
+      (* Set the security context for the main function to Low *)
+      let main_context = Label.L  
     in
       let _ = eval Frame.base main_context (E.Call ("main", [])) in
       ()
