@@ -1,0 +1,21 @@
+function other(a,b){
+    if a>0 then{
+        return (1,b);
+    }
+    else{
+        b = b+1;
+    }
+    other((a-1), b);
+}
+
+function main(){
+    var v = get_int_s();
+    var z;
+    var x;
+    x,z = other(v, z);
+    if x = 1 then{
+        x=1;
+    }
+    else{print_int(z)}
+
+}

@@ -1,0 +1,15 @@
+function other(a,b){
+    if a<b then{
+        return 1;
+    }
+    else{
+        return 0;
+    }
+}
+
+function main(){
+    var v = get_int_s();
+    var z = 5;
+   print_int(other(x,y));
+
+}

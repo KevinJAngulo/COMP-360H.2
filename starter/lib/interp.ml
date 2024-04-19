@@ -81,21 +81,26 @@ end
 
 module Frame = struct
   type env = Value.t IdentMap.t
-  type out = Value.prim list
+  type out = Value.prim list (*This is supposedly where we store the outputs*)
 
+  (*According to our semantics, we define the frame to be as follows*)
   type t = 
   | Envs of env list * out 
   | Return of Value.t * out
 
-  let empty_out : out = []
+  (*We will keep the out channel empty as we only needed it to represent mathematically the Non-Interference Theoream *)
+  let empty_out : out = [] 
 
-  (* Add an output to the current frame's output list *)
+  (* Add an output to the current frame's output list. We won't need this as explained by professor Danner.
+
   let add_output (out : out) (value : Value.prim) : out =
-    value :: out  (* Append new output to the list *)
+    value :: out  
+
   let add_outputs (eta : t) (additional_out : out) : t =
     match eta with
     | Envs (envs, out) -> Envs (envs, out @ additional_out)  (* Append new outputs *)
     | Return (_, _) -> failwith "Cannot add outputs to a return frame"
+  *)
 
   let base : t = Envs ([IdentMap.empty], empty_out)
 
@@ -489,7 +494,7 @@ let exec (p : Ast.Program.t) : unit =
       let eta' = Frame.push eta in
       begin
         match exec_many eta' ss context with
-        | Frame.Return (v, _) -> Frame.Return (v, Frame.empty_out)  (* If a return frame is encountered, propagate it up immediately *)
+        | Frame.Return (v, _) -> Frame.Return (v, Frame.empty_out)  (* Return an empty output frame*)
         | eta'' -> Frame.pop eta''  (* Pop the top environment off after executing the block, returning to the previous environment *)
       end
     | S.If(e, s1, s2) ->

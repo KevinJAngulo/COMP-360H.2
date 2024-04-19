@@ -4,6 +4,8 @@
     "except":   "SecurityError"
 }
 
+// The text below will fail based on our current semantics and the way we defined the interpreter. However, that's what we would realistically expect.
+
 {
     "file":     "ifSE.imp",
     "input":    ["false"],

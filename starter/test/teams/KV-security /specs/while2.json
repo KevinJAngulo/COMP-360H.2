@@ -1,0 +1,12 @@
+{
+    "file":     "while2.imp",
+    "input":    [   "3"
+    ],
+    "except":   "SecurityError"
+}
+{
+    "file":     "while2.imp",
+    "input":    [   "10"
+    ],
+    "except":   "SecurityError"
+}
