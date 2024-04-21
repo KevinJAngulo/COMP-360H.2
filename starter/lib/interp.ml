@@ -553,7 +553,7 @@ let exec (p : Ast.Program.t) : unit =
         match exec_one eta context s with 
         | Frame.Return (v,_) -> Frame.Return (v,Frame.empty_out)  
         | eta' -> exec_many eta' ss context  
-      end
+      end 
     in
       (* Set the security context for the main function to Low *)
       let main_context = Label.L  
