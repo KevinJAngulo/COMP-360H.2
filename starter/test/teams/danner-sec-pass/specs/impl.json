@@ -1,0 +1,23 @@
+{
+    "file":     "impl00.imp",
+    "input":    ["0"],
+    "except":   "SecurityError"
+}
+
+{
+    "file":     "impl00.imp",
+    "input":    ["1"],
+    "except":   "SecurityError"
+}
+
+{
+    "file":     "impl10.imp",
+    "input":    ["true"],
+    "except":   "SecurityError"
+}
+
+{
+    "file":     "impl10.imp",
+    "input":    ["false"],
+    "except":   "SecurityError"
+}

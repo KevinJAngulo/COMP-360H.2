@@ -1,0 +1,25 @@
+{
+    "file":     "noflow50.imp",
+    "input":    ["true"],
+    "output":   ["0", "true"]
+}
+
+{
+    "file":     "noflow50.imp",
+    "input":    ["false"],
+    "output":   ["0", "true"]
+}
+
+{
+    "file":     "noflow55.imp",
+    "input":    ["true"],
+    "output":   ["true", "0", "true"]
+}
+
+{
+    "file":     "noflow55.imp",
+    "input":    ["false"],
+    "output":   ["false", "0", "true"]
+}
+
+

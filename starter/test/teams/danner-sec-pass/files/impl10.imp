@@ -1,0 +1,20 @@
+function print_false() {
+    print_bool(false) ;
+
+    return ;
+}
+
+function print_true() {
+    print_bool(true) ;
+
+    return ;
+}
+
+function main() {
+    var x = get_bool_s() ;
+
+    if x then print_true() ;
+    else print_false() ;
+
+    return ;
+}

@@ -1,0 +1,8 @@
+function main() {
+  var x ;
+
+  x = get_int_s() ;
+  print_int(x + 3) ;
+
+  return ;
+}

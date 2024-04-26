@@ -1,0 +1,23 @@
+/* f(x) = true,  x ≥ 0
+ *        false, x < 0
+ */
+function f(x) {
+    var b = true ;
+    var e = true ;
+    var sum = 0 ;
+
+    /* This is a hidden flow when x < 0, so should be rejected.  But
+     * when x ≥ 0, we return true(L) even under NSU.
+     */
+    while e do {
+        if sum + x < sum then {
+            b = false ;
+            e = false ;
+        }
+        return b ;
+    }
+
+    /* But there is no bad flow here when x ≥ 0; interesting.
+     */
+    return b ;
+}

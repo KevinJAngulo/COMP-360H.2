@@ -1,0 +1,29 @@
+function f(x) {
+  var y = false ;
+  var z = true ;
+
+  /* Suppose we only track the security context.  Then when we get to this
+  *  point, y = false(L) and z = false(L).  And:
+  *  - x = true(H)  => first test true, second test false
+  *                 => y = true(H), z = true(L).
+  *  - x = false(H) => first test false, second test true
+  *                 => z = false(L) (b/c !y = true(L)).
+  *  
+  *  With NSU, when x = true(H) the evaluation of y = true fails.  But when
+  *  x = false(H), the evaluation of z = false succeeds with z = false(L),
+  *  and we leak the information that x = false.
+  */
+  if x then y = true ;
+  if !y then z = false ;
+
+  return z ;
+ 
+}
+
+function main() {
+  var x = get_bool_s() ;
+
+  print_bool(f(x)) ;
+
+  return ;
+}

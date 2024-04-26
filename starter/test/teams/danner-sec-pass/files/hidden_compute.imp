@@ -1,0 +1,25 @@
+/* If x is H, then i is incremented under an H context, so is H, and
+ * therefore this program should fail under NSU when i is incremented.
+ * If NSU is not enforced, then i will still be H, but the program won't
+ * fail becuse we print y securely.
+ */
+function f(x) {
+    var e = true ;
+    var i = 0 ;
+
+    while e do {
+        while i < x do {
+            i = i + 1 ;
+        }
+        e = false ;
+    }
+
+    return i ;
+}
+
+function main() {
+    var x = get_int_s() ;
+    var y = f(x) ;
+
+    print_int_s(y) ;
+}

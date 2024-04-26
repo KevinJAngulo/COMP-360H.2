@@ -1,0 +1,21 @@
+function f(y) {
+    if y then {
+        print_bool(true) ;
+        return true ;
+    }
+
+    return false ;
+}
+
+function main() {
+    var x = get_bool_s() ;
+
+    if f(x) then {
+        skip ;
+    }
+    else {
+        print_bool(true) ;
+    }
+
+    return ;
+}

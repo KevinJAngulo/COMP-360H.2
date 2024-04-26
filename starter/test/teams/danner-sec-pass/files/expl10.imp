@@ -1,0 +1,9 @@
+function main() {
+  var x, y ;
+
+  x = get_int_s() ;
+  y = x + 3 ;
+  print_int(y) ;
+
+  return ;
+}

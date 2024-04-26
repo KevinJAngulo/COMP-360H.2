@@ -1,0 +1,39 @@
+function f(x) {
+  var y = false ;
+  var z = true ;
+
+  /* Suppose we only track the security context.  Then when we get to this
+  *  point, y = false(L) and z = false(L).  And:
+  *  - x = true(H)  => first test true, second test false
+  *                 => y = true(H), z = true(L).
+  *  - x = false(H) => first test false, second test true
+  *                 => z = false(L) (b/c !y = true(L)).
+  *  
+  *  With NSU, when x = true(H) the evaluation of y = true fails, and when
+  *  x = false(H), the evaluation of y = y fails.  So maybe the way to make
+  *  NSU really work is to implement skip so that it effects a trivial
+  *  assignment of a low variable?  Or just change the semantics of skip so 
+  *  that it can only be executed in a low context?  That seems extreme.
+  *  Unfortunately, A&F don't ever define skip, so I don't know what they
+  *  intend by it.
+  */
+  if x then {
+    y = true ;
+  }
+  else y = y ;
+  if !y then {
+    z = false ;
+  }
+  else z = z ;
+
+  return z ;
+ 
+}
+
+function main() {
+  var x = get_bool_s() ;
+
+  print_bool(f(x)) ;
+
+  return ;
+}
