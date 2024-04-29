@@ -1,0 +1,7 @@
+function main() {
+    var y = 5;
+    var z; 
+    var x = get_int_s() ;
+    print_int(z = y + x);
+    return ;
+}

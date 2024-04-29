@@ -1,0 +1,18 @@
+{
+    "file":     "earlyret50.imp",
+    "input":    ["false"],
+    "except":   "SecurityError"
+}
+
+{
+    "file":     "earlyret55.imp",
+    "input":    ["true"],
+    "output":   ["true"]
+}
+
+{
+    "file":     "earlyret55.imp",
+    "input":    ["false"],
+    "output":   ["true"]
+}
+

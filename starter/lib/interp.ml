@@ -445,7 +445,6 @@ let exec (p : Ast.Program.t) : unit =
         else
           let new_val = Value.create_labeled_value v_prime label_prime in
           (new_val, Frame.set eta' x new_val)
-      
       | E.Binop (op, e1, e2) ->
         let (v, eta') = eval eta context e1 in
         let (v', eta'') = eval eta' context e2 in

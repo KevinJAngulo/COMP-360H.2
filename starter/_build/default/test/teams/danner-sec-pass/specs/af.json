@@ -1,0 +1,24 @@
+{
+    "file":     "af00.imp",
+    "input":    ["true"],
+    "except":   "SecurityError"
+}
+
+{
+    "file":     "af05.imp",
+    "input":    ["true"],
+    "except":   "SecurityError"
+}
+
+{
+    "file":     "af05.imp",
+    "input":    ["false"],
+    "except":   "SecurityError"
+}
+
+{
+    "file":     "af10.imp",
+    "input":    ["true"],
+    "except":   "SecurityError"
+}
+

@@ -21,7 +21,6 @@ function f(x) {
     y = true ;
   }
   else y = y ;
-  
   if !y then {
     z = false ;
   }

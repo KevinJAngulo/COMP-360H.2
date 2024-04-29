@@ -1,0 +1,15 @@
+function f(y) {
+    if y then return ;
+
+    print_bool(false) ;
+
+    return ;
+}
+
+function main() {
+    var x = get_bool_s() ;
+
+    f(x) ;
+
+    return ;
+}

@@ -1,0 +1,29 @@
+/* f(x) = true,  x ≥ 0
+ *        false, x < 0
+ */
+function f(x) {
+    var b = true ;
+    var e = true ;
+    var sum = 0 ;
+
+    /* This is an implicit flow when x < 0, so should be rejected.
+     */
+    while e do {
+        if sum + x < sum then {
+            b = false ;
+            e = false ;
+
+            return b ;
+        }
+    }
+
+    /* But there is no bad flow here when x ≥ 0? Interesting.
+     */
+    return b ;
+}
+
+function main() {
+    print_bool(get_int_s()) ;
+
+    return ;
+}

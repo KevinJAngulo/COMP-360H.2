@@ -1,238 +1,385 @@
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Start test all tests:0:teams/danner-security:0:explicit.json:0:0.
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Created a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_97d927_dune/ounit-b72c17-Kevins-MacBook-Pro-2.local#01.txt".
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Expected: SecurityError
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Actual: SecurityError
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Test all tests:0:teams/danner-security:0:explicit.json:0:0 is successful.
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Removed a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_97d927_dune/ounit-b72c17-Kevins-MacBook-Pro-2.local#01.txt".
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: End test all tests:0:teams/danner-security:0:explicit.json:0:0.
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Start test all tests:1:teams/KV-security :0:whileT.json:0:0.
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Created a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_97d927_dune/ounit-a565e1-Kevins-MacBook-Pro-2.local#01.txt".
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Expected: SecurityError
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Actual: SecurityError
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Test all tests:1:teams/KV-security :0:whileT.json:0:0 is successful.
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Removed a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_97d927_dune/ounit-a565e1-Kevins-MacBook-Pro-2.local#01.txt".
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: End test all tests:1:teams/KV-security :0:whileT.json:0:0.
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Start test all tests:1:teams/KV-security :2:gcdS.json:0:0.
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Created a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_97d927_dune/ounit-a2df0c-Kevins-MacBook-Pro-2.local#01.txt".
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Expected: SecurityError
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Actual: SecurityError
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Test all tests:1:teams/KV-security :2:gcdS.json:0:0 is successful.
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Removed a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_97d927_dune/ounit-a2df0c-Kevins-MacBook-Pro-2.local#01.txt".
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: End test all tests:1:teams/KV-security :2:gcdS.json:0:0.
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Start test all tests:1:teams/KV-security :4:plus.json:0:0.
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Created a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_97d927_dune/ounit-b64801-Kevins-MacBook-Pro-2.local#01.txt".
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Expected: SecurityError
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Actual: SecurityError
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Test all tests:1:teams/KV-security :4:plus.json:0:0 is successful.
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Removed a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_97d927_dune/ounit-b64801-Kevins-MacBook-Pro-2.local#01.txt".
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: End test all tests:1:teams/KV-security :4:plus.json:0:0.
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Start test all tests:1:teams/KV-security :5:block2S.json:0:0.
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Created a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_97d927_dune/ounit-f90ea6-Kevins-MacBook-Pro-2.local#01.txt".
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Expected: SecurityError
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Actual: SecurityError
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Test all tests:1:teams/KV-security :5:block2S.json:0:0 is successful.
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Removed a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_97d927_dune/ounit-f90ea6-Kevins-MacBook-Pro-2.local#01.txt".
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: End test all tests:1:teams/KV-security :5:block2S.json:0:0.
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Start test all tests:1:teams/KV-security :6:ovoif.json:1:1.
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Created a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_97d927_dune/ounit-4a75ce-Kevins-MacBook-Pro-2.local#01.txt".
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Expected: SecurityError
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Actual: SecurityError
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Test all tests:1:teams/KV-security :6:ovoif.json:1:1 is successful.
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Removed a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_97d927_dune/ounit-4a75ce-Kevins-MacBook-Pro-2.local#01.txt".
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: End test all tests:1:teams/KV-security :6:ovoif.json:1:1.
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Start test all tests:1:teams/KV-security :9:whileS.json:0:0.
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Created a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_97d927_dune/ounit-d7720e-Kevins-MacBook-Pro-2.local#01.txt".
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Expected: SecurityError
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Actual: SecurityError
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Test all tests:1:teams/KV-security :9:whileS.json:0:0 is successful.
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Removed a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_97d927_dune/ounit-d7720e-Kevins-MacBook-Pro-2.local#01.txt".
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: End test all tests:1:teams/KV-security :9:whileS.json:0:0.
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Start test all tests:1:teams/KV-security :10:ifSE.json:0:0.
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Created a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_97d927_dune/ounit-174131-Kevins-MacBook-Pro-2.local#01.txt".
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Expected: SecurityError
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Actual: SecurityError
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Test all tests:1:teams/KV-security :10:ifSE.json:0:0 is successful.
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Removed a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_97d927_dune/ounit-174131-Kevins-MacBook-Pro-2.local#01.txt".
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: End test all tests:1:teams/KV-security :10:ifSE.json:0:0.
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Start test all tests:1:teams/KV-security :12:while2.json:0:0.
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Created a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_97d927_dune/ounit-a5727c-Kevins-MacBook-Pro-2.local#01.txt".
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Expected: SecurityError
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Actual: SecurityError
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Test all tests:1:teams/KV-security :12:while2.json:0:0 is successful.
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Removed a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_97d927_dune/ounit-a5727c-Kevins-MacBook-Pro-2.local#01.txt".
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: End test all tests:1:teams/KV-security :12:while2.json:0:0.
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Start test all tests:1:teams/KV-security :13:print.json:0:0.
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Created a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_97d927_dune/ounit-5a3c90-Kevins-MacBook-Pro-2.local#01.txt".
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Expected: SecurityError
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Actual: SecurityError
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Test all tests:1:teams/KV-security :13:print.json:0:0 is successful.
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Removed a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_97d927_dune/ounit-5a3c90-Kevins-MacBook-Pro-2.local#01.txt".
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: End test all tests:1:teams/KV-security :13:print.json:0:0.
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Start test all tests:1:teams/KV-security :15:earlyretS.json:0:0.
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Created a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_97d927_dune/ounit-e5b90e-Kevins-MacBook-Pro-2.local#01.txt".
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Expected: SecurityError
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Actual: SecurityError
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Test all tests:1:teams/KV-security :15:earlyretS.json:0:0 is successful.
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Removed a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_97d927_dune/ounit-e5b90e-Kevins-MacBook-Pro-2.local#01.txt".
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: End test all tests:1:teams/KV-security :15:earlyretS.json:0:0.
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Start test all tests:1:teams/KV-security :17:plusR.json:0:0.
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Created a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_97d927_dune/ounit-56583d-Kevins-MacBook-Pro-2.local#01.txt".
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Expected: 5 9
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Actual: 5 9
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Test all tests:1:teams/KV-security :17:plusR.json:0:0 is successful.
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Removed a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_97d927_dune/ounit-56583d-Kevins-MacBook-Pro-2.local#01.txt".
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: End test all tests:1:teams/KV-security :17:plusR.json:0:0.
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Start test all tests:2:teams/danner:0:if.json:0:0.
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Created a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_97d927_dune/ounit-c04a39-Kevins-MacBook-Pro-2.local#01.txt".
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Expected: 0 2
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Actual: 0 2
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Test all tests:2:teams/danner:0:if.json:0:0 is successful.
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Removed a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_97d927_dune/ounit-c04a39-Kevins-MacBook-Pro-2.local#01.txt".
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: End test all tests:2:teams/danner:0:if.json:0:0.
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Start test all tests:2:teams/danner:1:undeffn.json:0:0.
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Created a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_97d927_dune/ounit-1fbfe4-Kevins-MacBook-Pro-2.local#01.txt".
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Expected: UndefinedFunction
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Actual: UndefinedFunction
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Test all tests:2:teams/danner:1:undeffn.json:0:0 is successful.
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Removed a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_97d927_dune/ounit-1fbfe4-Kevins-MacBook-Pro-2.local#01.txt".
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: End test all tests:2:teams/danner:1:undeffn.json:0:0.
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Start test all tests:2:teams/danner:2:earlyret.json:1:1.
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Created a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_97d927_dune/ounit-eafa1e-Kevins-MacBook-Pro-2.local#01.txt".
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Expected: true
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Actual: true
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Test all tests:2:teams/danner:2:earlyret.json:1:1 is successful.
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Removed a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_97d927_dune/ounit-eafa1e-Kevins-MacBook-Pro-2.local#01.txt".
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: End test all tests:2:teams/danner:2:earlyret.json:1:1.
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Start test all tests:2:teams/danner:2:earlyret.json:3:3.
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Created a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_97d927_dune/ounit-5ad7bf-Kevins-MacBook-Pro-2.local#01.txt".
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Expected: false
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Actual: false
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Test all tests:2:teams/danner:2:earlyret.json:3:3 is successful.
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Removed a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_97d927_dune/ounit-5ad7bf-Kevins-MacBook-Pro-2.local#01.txt".
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: End test all tests:2:teams/danner:2:earlyret.json:3:3.
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Start test all tests:2:teams/danner:3:blocks.json:1:1.
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Created a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_97d927_dune/ounit-c3acc7-Kevins-MacBook-Pro-2.local#01.txt".
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Expected: 9 7 5 7
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Actual: 9 7 5 7
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Test all tests:2:teams/danner:3:blocks.json:1:1 is successful.
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Removed a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_97d927_dune/ounit-c3acc7-Kevins-MacBook-Pro-2.local#01.txt".
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: End test all tests:2:teams/danner:3:blocks.json:1:1.
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Start test all tests:2:teams/danner:5:effects.json:0:0.
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Created a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_97d927_dune/ounit-52579d-Kevins-MacBook-Pro-2.local#01.txt".
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Expected: 0 1 1 1
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Actual: 0 1 1 1
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Test all tests:2:teams/danner:5:effects.json:0:0 is successful.
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Removed a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_97d927_dune/ounit-52579d-Kevins-MacBook-Pro-2.local#01.txt".
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: End test all tests:2:teams/danner:5:effects.json:0:0.
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Start test all tests:2:teams/danner:5:effects.json:2:2.
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Created a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_97d927_dune/ounit-4680c4-Kevins-MacBook-Pro-2.local#01.txt".
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Expected: 1 2 3 10
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Actual: 1 2 3 10
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Test all tests:2:teams/danner:5:effects.json:2:2 is successful.
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Removed a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_97d927_dune/ounit-4680c4-Kevins-MacBook-Pro-2.local#01.txt".
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: End test all tests:2:teams/danner:5:effects.json:2:2.
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Start test all tests:2:teams/danner:6:decs.json:0:0.
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Created a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_97d927_dune/ounit-42c96d-Kevins-MacBook-Pro-2.local#01.txt".
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Expected: 
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Actual: 
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Test all tests:2:teams/danner:6:decs.json:0:0 is successful.
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Removed a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_97d927_dune/ounit-42c96d-Kevins-MacBook-Pro-2.local#01.txt".
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: End test all tests:2:teams/danner:6:decs.json:0:0.
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Start test all tests:2:teams/danner:6:decs.json:2:2.
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Created a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_97d927_dune/ounit-415e07-Kevins-MacBook-Pro-2.local#01.txt".
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Expected: 5 true
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Actual: 5 true
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Test all tests:2:teams/danner:6:decs.json:2:2 is successful.
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Removed a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_97d927_dune/ounit-415e07-Kevins-MacBook-Pro-2.local#01.txt".
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: End test all tests:2:teams/danner:6:decs.json:2:2.
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Start test all tests:2:teams/danner:6:decs.json:4:4.
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Created a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_97d927_dune/ounit-ab330e-Kevins-MacBook-Pro-2.local#01.txt".
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Expected: 5 true
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Actual: 5 true
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Test all tests:2:teams/danner:6:decs.json:4:4 is successful.
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Removed a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_97d927_dune/ounit-ab330e-Kevins-MacBook-Pro-2.local#01.txt".
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: End test all tests:2:teams/danner:6:decs.json:4:4.
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Start test all tests:2:teams/danner:7:primes.json:1:1.
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Created a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_97d927_dune/ounit-548c44-Kevins-MacBook-Pro-2.local#01.txt".
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Expected: 5
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Actual: 5
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Test all tests:2:teams/danner:7:primes.json:1:1 is successful.
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Removed a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_97d927_dune/ounit-548c44-Kevins-MacBook-Pro-2.local#01.txt".
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: End test all tests:2:teams/danner:7:primes.json:1:1.
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Start test all tests:2:teams/danner:8:undec.json:1:1.
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Created a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_97d927_dune/ounit-d98658-Kevins-MacBook-Pro-2.local#01.txt".
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Expected: UnboundVariable
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Actual: UnboundVariable
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Test all tests:2:teams/danner:8:undec.json:1:1 is successful.
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Removed a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_97d927_dune/ounit-d98658-Kevins-MacBook-Pro-2.local#01.txt".
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: End test all tests:2:teams/danner:8:undec.json:1:1.
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Start test all tests:2:teams/danner:8:undec.json:3:3.
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Created a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_97d927_dune/ounit-d7b5d2-Kevins-MacBook-Pro-2.local#01.txt".
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Expected: UnboundVariable
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Actual: UnboundVariable
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Test all tests:2:teams/danner:8:undec.json:3:3 is successful.
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Removed a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_97d927_dune/ounit-d7b5d2-Kevins-MacBook-Pro-2.local#01.txt".
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: End test all tests:2:teams/danner:8:undec.json:3:3.
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Start test all tests:2:teams/danner:9:gcd.json:0:0.
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Created a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_97d927_dune/ounit-961739-Kevins-MacBook-Pro-2.local#01.txt".
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Expected: 12
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Actual: 12
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Test all tests:2:teams/danner:9:gcd.json:0:0 is successful.
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Removed a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_97d927_dune/ounit-961739-Kevins-MacBook-Pro-2.local#01.txt".
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: End test all tests:2:teams/danner:9:gcd.json:0:0.
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Start test all tests:2:teams/danner:9:gcd.json:2:2.
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Created a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_97d927_dune/ounit-96fa17-Kevins-MacBook-Pro-2.local#01.txt".
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Expected: 12
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Actual: 12
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Test all tests:2:teams/danner:9:gcd.json:2:2 is successful.
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Removed a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_97d927_dune/ounit-96fa17-Kevins-MacBook-Pro-2.local#01.txt".
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: End test all tests:2:teams/danner:9:gcd.json:2:2.
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Start test all tests:2:teams/danner:9:gcd.json:4:4.
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Created a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_97d927_dune/ounit-8f8c81-Kevins-MacBook-Pro-2.local#01.txt".
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Expected: 12
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Actual: 12
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Test all tests:2:teams/danner:9:gcd.json:4:4 is successful.
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Removed a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_97d927_dune/ounit-8f8c81-Kevins-MacBook-Pro-2.local#01.txt".
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: End test all tests:2:teams/danner:9:gcd.json:4:4.
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Start test all tests:2:teams/danner:10:multidec.json:0:0.
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Created a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_97d927_dune/ounit-f13d27-Kevins-MacBook-Pro-2.local#01.txt".
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Expected: MultipleDeclaration
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Actual: MultipleDeclaration
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Test all tests:2:teams/danner:10:multidec.json:0:0 is successful.
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Removed a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_97d927_dune/ounit-f13d27-Kevins-MacBook-Pro-2.local#01.txt".
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: End test all tests:2:teams/danner:10:multidec.json:0:0.
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Start test all tests:2:teams/danner:10:multidec.json:2:2.
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Created a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_97d927_dune/ounit-fc25a4-Kevins-MacBook-Pro-2.local#01.txt".
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Expected: MultipleDeclaration
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Actual: MultipleDeclaration
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Test all tests:2:teams/danner:10:multidec.json:2:2 is successful.
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Removed a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_97d927_dune/ounit-fc25a4-Kevins-MacBook-Pro-2.local#01.txt".
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: End test all tests:2:teams/danner:10:multidec.json:2:2.
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Start test all tests:2:teams/danner:11:typeerr.json:1:1.
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Created a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_97d927_dune/ounit-2755ce-Kevins-MacBook-Pro-2.local#01.txt".
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Expected: TypeError
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Actual: TypeError
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Test all tests:2:teams/danner:11:typeerr.json:1:1 is successful.
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Removed a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_97d927_dune/ounit-2755ce-Kevins-MacBook-Pro-2.local#01.txt".
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: End test all tests:2:teams/danner:11:typeerr.json:1:1.
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Start test all tests:2:teams/danner:11:typeerr.json:3:3.
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Created a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_97d927_dune/ounit-835cf0-Kevins-MacBook-Pro-2.local#01.txt".
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Expected: TypeError
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Actual: TypeError
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Test all tests:2:teams/danner:11:typeerr.json:3:3 is successful.
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Removed a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_97d927_dune/ounit-835cf0-Kevins-MacBook-Pro-2.local#01.txt".
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: End test all tests:2:teams/danner:11:typeerr.json:3:3.
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Start test all tests:2:teams/danner:12:io.json:1:1.
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Created a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_97d927_dune/ounit-88babf-Kevins-MacBook-Pro-2.local#01.txt".
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Expected: 5 true false fred
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Actual: 5 true false fred
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Test all tests:2:teams/danner:12:io.json:1:1 is successful.
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Removed a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_97d927_dune/ounit-88babf-Kevins-MacBook-Pro-2.local#01.txt".
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: End test all tests:2:teams/danner:12:io.json:1:1.
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Start test all tests:2:teams/danner:13:while.json:1:1.
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Created a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_97d927_dune/ounit-3768af-Kevins-MacBook-Pro-2.local#01.txt".
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Expected: 0 1 2 3 4 5
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Actual: 0 1 2 3 4 5
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Test all tests:2:teams/danner:13:while.json:1:1 is successful.
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: Removed a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_97d927_dune/ounit-3768af-Kevins-MacBook-Pro-2.local#01.txt".
-2024-04-21T19:08:02+00:00 Kevins-MacBook-Pro-2.local#01 I: End test all tests:2:teams/danner:13:while.json:1:1.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Start test all tests:0:teams/danner-security:0:explicit.json:0:0.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Created a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_92c63c_dune/ounit-575f18-Kevins-MacBook-Pro-2.local#01.txt".
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Expected: SecurityError
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Actual: SecurityError
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Test all tests:0:teams/danner-security:0:explicit.json:0:0 is successful.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Removed a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_92c63c_dune/ounit-575f18-Kevins-MacBook-Pro-2.local#01.txt".
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: End test all tests:0:teams/danner-security:0:explicit.json:0:0.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Start test all tests:1:teams/KV-security :0:whileT.json:0:0.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Created a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_92c63c_dune/ounit-c00f1d-Kevins-MacBook-Pro-2.local#01.txt".
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Expected: SecurityError
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Actual: SecurityError
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Test all tests:1:teams/KV-security :0:whileT.json:0:0 is successful.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Removed a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_92c63c_dune/ounit-c00f1d-Kevins-MacBook-Pro-2.local#01.txt".
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: End test all tests:1:teams/KV-security :0:whileT.json:0:0.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Start test all tests:1:teams/KV-security :1:ifs.json:1:1.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Created a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_92c63c_dune/ounit-fe827e-Kevins-MacBook-Pro-2.local#01.txt".
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Expected: SecurityError
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Actual: SecurityError
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Test all tests:1:teams/KV-security :1:ifs.json:1:1 is successful.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Removed a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_92c63c_dune/ounit-fe827e-Kevins-MacBook-Pro-2.local#01.txt".
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: End test all tests:1:teams/KV-security :1:ifs.json:1:1.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Start test all tests:1:teams/KV-security :3:if.json:0:0.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Created a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_92c63c_dune/ounit-892bd2-Kevins-MacBook-Pro-2.local#01.txt".
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Expected: SecurityError
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Actual: SecurityError
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Test all tests:1:teams/KV-security :3:if.json:0:0 is successful.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Removed a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_92c63c_dune/ounit-892bd2-Kevins-MacBook-Pro-2.local#01.txt".
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: End test all tests:1:teams/KV-security :3:if.json:0:0.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Start test all tests:1:teams/KV-security :5:block2S.json:0:0.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Created a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_92c63c_dune/ounit-3d54e3-Kevins-MacBook-Pro-2.local#01.txt".
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Expected: SecurityError
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Actual: SecurityError
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Test all tests:1:teams/KV-security :5:block2S.json:0:0 is successful.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Removed a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_92c63c_dune/ounit-3d54e3-Kevins-MacBook-Pro-2.local#01.txt".
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: End test all tests:1:teams/KV-security :5:block2S.json:0:0.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Start test all tests:1:teams/KV-security :6:ovoif.json:1:1.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Created a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_92c63c_dune/ounit-402f27-Kevins-MacBook-Pro-2.local#01.txt".
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Expected: SecurityError
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Actual: SecurityError
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Test all tests:1:teams/KV-security :6:ovoif.json:1:1 is successful.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Removed a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_92c63c_dune/ounit-402f27-Kevins-MacBook-Pro-2.local#01.txt".
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: End test all tests:1:teams/KV-security :6:ovoif.json:1:1.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Start test all tests:1:teams/KV-security :7:minus.json:0:0.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Created a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_92c63c_dune/ounit-a6dfe1-Kevins-MacBook-Pro-2.local#01.txt".
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Expected: SecurityError
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Actual: SecurityError
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Test all tests:1:teams/KV-security :7:minus.json:0:0 is successful.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Removed a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_92c63c_dune/ounit-a6dfe1-Kevins-MacBook-Pro-2.local#01.txt".
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: End test all tests:1:teams/KV-security :7:minus.json:0:0.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Start test all tests:1:teams/KV-security :10:ifSE.json:0:0.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Created a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_92c63c_dune/ounit-b1bfa0-Kevins-MacBook-Pro-2.local#01.txt".
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Expected: SecurityError
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Actual: SecurityError
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Test all tests:1:teams/KV-security :10:ifSE.json:0:0 is successful.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Removed a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_92c63c_dune/ounit-b1bfa0-Kevins-MacBook-Pro-2.local#01.txt".
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: End test all tests:1:teams/KV-security :10:ifSE.json:0:0.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Start test all tests:1:teams/KV-security :10:ifSE.json:1:1.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Created a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_92c63c_dune/ounit-0cbf53-Kevins-MacBook-Pro-2.local#01.txt".
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Expected: SecurityError
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Actual: No exception raised
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 E: Test all tests:1:teams/KV-security :10:ifSE.json:1:1 has failed.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 E: expected: SecurityError but got: No exception raised in test all tests:1:teams/KV-security :10:ifSE.json:1:1.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 E: Raised at OUnitAssert.assert_failure in file "src/lib/ounit2/advanced/oUnitAssert.ml", line 45, characters 2-27
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 E: Called from OUnitRunner.run_one_test.(fun) in file "src/lib/ounit2/advanced/oUnitRunner.ml", line 83, characters 13-26
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 E: 
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Removed a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_92c63c_dune/ounit-0cbf53-Kevins-MacBook-Pro-2.local#01.txt".
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: End test all tests:1:teams/KV-security :10:ifSE.json:1:1.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Start test all tests:1:teams/KV-security :12:while2.json:0:0.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Created a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_92c63c_dune/ounit-1b6506-Kevins-MacBook-Pro-2.local#01.txt".
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Expected: SecurityError
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Actual: SecurityError
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Test all tests:1:teams/KV-security :12:while2.json:0:0 is successful.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Removed a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_92c63c_dune/ounit-1b6506-Kevins-MacBook-Pro-2.local#01.txt".
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: End test all tests:1:teams/KV-security :12:while2.json:0:0.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Start test all tests:1:teams/KV-security :13:print.json:0:0.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Created a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_92c63c_dune/ounit-ab7291-Kevins-MacBook-Pro-2.local#01.txt".
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Expected: SecurityError
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Actual: SecurityError
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Test all tests:1:teams/KV-security :13:print.json:0:0 is successful.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Removed a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_92c63c_dune/ounit-ab7291-Kevins-MacBook-Pro-2.local#01.txt".
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: End test all tests:1:teams/KV-security :13:print.json:0:0.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Start test all tests:1:teams/KV-security :15:earlyretS.json:0:0.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Created a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_92c63c_dune/ounit-7cc4fd-Kevins-MacBook-Pro-2.local#01.txt".
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Expected: SecurityError
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Actual: SecurityError
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Test all tests:1:teams/KV-security :15:earlyretS.json:0:0 is successful.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Removed a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_92c63c_dune/ounit-7cc4fd-Kevins-MacBook-Pro-2.local#01.txt".
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: End test all tests:1:teams/KV-security :15:earlyretS.json:0:0.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Start test all tests:1:teams/KV-security :17:plusR.json:0:0.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Created a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_92c63c_dune/ounit-b56652-Kevins-MacBook-Pro-2.local#01.txt".
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Expected: 5 9
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Actual: 5 9
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Test all tests:1:teams/KV-security :17:plusR.json:0:0 is successful.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Removed a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_92c63c_dune/ounit-b56652-Kevins-MacBook-Pro-2.local#01.txt".
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: End test all tests:1:teams/KV-security :17:plusR.json:0:0.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Start test all tests:2:teams/danner-sec-pass:0:explicit.json:0:0.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Created a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_92c63c_dune/ounit-f3b23e-Kevins-MacBook-Pro-2.local#01.txt".
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Expected: SecurityError
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Actual: SecurityError
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Test all tests:2:teams/danner-sec-pass:0:explicit.json:0:0 is successful.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Removed a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_92c63c_dune/ounit-f3b23e-Kevins-MacBook-Pro-2.local#01.txt".
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: End test all tests:2:teams/danner-sec-pass:0:explicit.json:0:0.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Start test all tests:2:teams/danner-sec-pass:0:explicit.json:2:2.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Created a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_92c63c_dune/ounit-e664b6-Kevins-MacBook-Pro-2.local#01.txt".
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Expected: SecurityError
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Actual: SecurityError
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Test all tests:2:teams/danner-sec-pass:0:explicit.json:2:2 is successful.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Removed a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_92c63c_dune/ounit-e664b6-Kevins-MacBook-Pro-2.local#01.txt".
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: End test all tests:2:teams/danner-sec-pass:0:explicit.json:2:2.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Start test all tests:2:teams/danner-sec-pass:1:impl.json:0:0.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Created a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_92c63c_dune/ounit-f18c28-Kevins-MacBook-Pro-2.local#01.txt".
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Expected: SecurityError
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Actual: SecurityError
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Test all tests:2:teams/danner-sec-pass:1:impl.json:0:0 is successful.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Removed a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_92c63c_dune/ounit-f18c28-Kevins-MacBook-Pro-2.local#01.txt".
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: End test all tests:2:teams/danner-sec-pass:1:impl.json:0:0.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Start test all tests:2:teams/danner-sec-pass:1:impl.json:2:2.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Created a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_92c63c_dune/ounit-aeb971-Kevins-MacBook-Pro-2.local#01.txt".
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Expected: SecurityError
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Actual: SecurityError
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Test all tests:2:teams/danner-sec-pass:1:impl.json:2:2 is successful.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Removed a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_92c63c_dune/ounit-aeb971-Kevins-MacBook-Pro-2.local#01.txt".
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: End test all tests:2:teams/danner-sec-pass:1:impl.json:2:2.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Start test all tests:2:teams/danner-sec-pass:2:noflow.json:0:0.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Created a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_92c63c_dune/ounit-6804a4-Kevins-MacBook-Pro-2.local#01.txt".
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Expected: true
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Actual: true
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Test all tests:2:teams/danner-sec-pass:2:noflow.json:0:0 is successful.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Removed a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_92c63c_dune/ounit-6804a4-Kevins-MacBook-Pro-2.local#01.txt".
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: End test all tests:2:teams/danner-sec-pass:2:noflow.json:0:0.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Start test all tests:2:teams/danner-sec-pass:2:noflow.json:2:2.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Created a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_92c63c_dune/ounit-ce7202-Kevins-MacBook-Pro-2.local#01.txt".
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Expected: false true false
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Actual: false true false
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Test all tests:2:teams/danner-sec-pass:2:noflow.json:2:2 is successful.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Removed a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_92c63c_dune/ounit-ce7202-Kevins-MacBook-Pro-2.local#01.txt".
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: End test all tests:2:teams/danner-sec-pass:2:noflow.json:2:2.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Start test all tests:2:teams/danner-sec-pass:3:io.json:1:1.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Created a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_92c63c_dune/ounit-12382e-Kevins-MacBook-Pro-2.local#01.txt".
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Expected: 0
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Actual: 0
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Test all tests:2:teams/danner-sec-pass:3:io.json:1:1 is successful.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Removed a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_92c63c_dune/ounit-12382e-Kevins-MacBook-Pro-2.local#01.txt".
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: End test all tests:2:teams/danner-sec-pass:3:io.json:1:1.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Start test all tests:2:teams/danner-sec-pass:3:io.json:3:3.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Created a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_92c63c_dune/ounit-caf960-Kevins-MacBook-Pro-2.local#01.txt".
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Expected: 0
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Actual: 0
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Test all tests:2:teams/danner-sec-pass:3:io.json:3:3 is successful.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Removed a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_92c63c_dune/ounit-caf960-Kevins-MacBook-Pro-2.local#01.txt".
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: End test all tests:2:teams/danner-sec-pass:3:io.json:3:3.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Start test all tests:2:teams/danner-sec-pass:4:af.json:1:1.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Created a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_92c63c_dune/ounit-44501d-Kevins-MacBook-Pro-2.local#01.txt".
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Expected: SecurityError
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Actual: SecurityError
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Test all tests:2:teams/danner-sec-pass:4:af.json:1:1 is successful.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Removed a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_92c63c_dune/ounit-44501d-Kevins-MacBook-Pro-2.local#01.txt".
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: End test all tests:2:teams/danner-sec-pass:4:af.json:1:1.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Start test all tests:3:teams/danner-sec-fail:0:earlyret.json:0:0.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Created a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_92c63c_dune/ounit-d3eecd-Kevins-MacBook-Pro-2.local#01.txt".
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Expected: SecurityError
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Actual: No exception raised
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 E: Test all tests:3:teams/danner-sec-fail:0:earlyret.json:0:0 has failed.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 E: expected: SecurityError but got: No exception raised in test all tests:3:teams/danner-sec-fail:0:earlyret.json:0:0.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 E: Raised at OUnitAssert.assert_failure in file "src/lib/ounit2/advanced/oUnitAssert.ml", line 45, characters 2-27
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 E: Called from OUnitRunner.run_one_test.(fun) in file "src/lib/ounit2/advanced/oUnitRunner.ml", line 83, characters 13-26
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 E: 
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Removed a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_92c63c_dune/ounit-d3eecd-Kevins-MacBook-Pro-2.local#01.txt".
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: End test all tests:3:teams/danner-sec-fail:0:earlyret.json:0:0.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Start test all tests:3:teams/danner-sec-fail:0:earlyret.json:1:1.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Created a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_92c63c_dune/ounit-2d6320-Kevins-MacBook-Pro-2.local#01.txt".
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 E: Test all tests:3:teams/danner-sec-fail:0:earlyret.json:1:1 exited with an error.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 E: SecurityError in test all tests:3:teams/danner-sec-fail:0:earlyret.json:1:1.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 E: Raised at Imp__Interp.Api.api.(fun) in file "lib/interp.ml", line 188, characters 8-27
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 E: Called from Imp__Interp.Api.do_call in file "lib/interp.ml", line 332, characters 6-28
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 E: Called from Imp__Interp.exec.do_call in file "lib/interp.ml", line 419, characters 10-26
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 E: Called from Imp__Interp.exec.eval.(fun) in file "lib/interp.ml", line 476, characters 21-52
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 E: Called from Imp__Interp.exec.exec_one.(fun) in file "lib/interp.ml", line 501, characters 22-40
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 E: Called from Imp__Interp.exec.exec_many in file "lib/interp.ml", line 553, characters 14-36
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 E: Called from Imp__Interp.exec.exec_one.(fun) in file "lib/interp.ml", line 505, characters 14-39
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 E: Called from Imp__Interp.exec.exec_many in file "lib/interp.ml", line 553, characters 14-36
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 E: Called from Imp__Interp.exec.do_call in file "lib/interp.ml", line 410, characters 17-43
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 E: Called from Imp__Interp.exec.eval.(fun) in file "lib/interp.ml", line 476, characters 21-52
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 E: Called from Imp__Interp.exec.exec_one.(fun) in file "lib/interp.ml", line 512, characters 22-40
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 E: Called from Imp__Interp.exec.exec_many in file "lib/interp.ml", line 553, characters 14-36
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 E: Called from Imp__Interp.exec.do_call in file "lib/interp.ml", line 410, characters 17-43
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 E: Called from Imp__Interp.exec.eval.(fun) in file "lib/interp.ml", line 476, characters 21-52
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 E: Called from Imp__Interp.exec in file "lib/interp.ml", line 561, characters 14-64
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 E: Called from Dune__exe__Test_interp.iotest in file "test/test_interp.ml", line 71, characters 14-39
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 E: Called from OUnitRunner.run_one_test.(fun) in file "src/lib/ounit2/advanced/oUnitRunner.ml", line 83, characters 13-26
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 E: 
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Removed a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_92c63c_dune/ounit-2d6320-Kevins-MacBook-Pro-2.local#01.txt".
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: End test all tests:3:teams/danner-sec-fail:0:earlyret.json:1:1.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Start test all tests:3:teams/danner-sec-fail:0:earlyret.json:2:2.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Created a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_92c63c_dune/ounit-f7ab0c-Kevins-MacBook-Pro-2.local#01.txt".
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Expected: true
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Actual: true
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Test all tests:3:teams/danner-sec-fail:0:earlyret.json:2:2 is successful.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Removed a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_92c63c_dune/ounit-f7ab0c-Kevins-MacBook-Pro-2.local#01.txt".
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: End test all tests:3:teams/danner-sec-fail:0:earlyret.json:2:2.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Start test all tests:3:teams/danner-sec-fail:1:noflow.json:3:3.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Created a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_92c63c_dune/ounit-19f331-Kevins-MacBook-Pro-2.local#01.txt".
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 E: Test all tests:3:teams/danner-sec-fail:1:noflow.json:3:3 exited with an error.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 E: SecurityError in test all tests:3:teams/danner-sec-fail:1:noflow.json:3:3.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 E: Raised at Imp__Interp.Api.api.(fun) in file "lib/interp.ml", line 212, characters 8-27
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 E: Called from Imp__Interp.Api.do_call in file "lib/interp.ml", line 332, characters 6-28
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 E: Called from Imp__Interp.exec.do_call in file "lib/interp.ml", line 419, characters 10-26
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 E: Called from Imp__Interp.exec.eval.(fun) in file "lib/interp.ml", line 476, characters 21-52
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 E: Called from Imp__Interp.exec.exec_one.(fun) in file "lib/interp.ml", line 501, characters 22-40
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 E: Called from Imp__Interp.exec.exec_many in file "lib/interp.ml", line 553, characters 14-36
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 E: Called from Imp__Interp.exec.exec_one.(fun) in file "lib/interp.ml", line 505, characters 14-39
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 E: Called from Imp__Interp.exec.exec_many in file "lib/interp.ml", line 553, characters 14-36
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 E: Called from Imp__Interp.exec.do_call in file "lib/interp.ml", line 410, characters 17-43
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 E: Called from Imp__Interp.exec.eval.(fun) in file "lib/interp.ml", line 476, characters 21-52
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 E: Called from Imp__Interp.exec in file "lib/interp.ml", line 561, characters 14-64
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 E: Called from Dune__exe__Test_interp.iotest in file "test/test_interp.ml", line 71, characters 14-39
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 E: Called from OUnitRunner.run_one_test.(fun) in file "src/lib/ounit2/advanced/oUnitRunner.ml", line 83, characters 13-26
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 E: 
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Removed a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_92c63c_dune/ounit-19f331-Kevins-MacBook-Pro-2.local#01.txt".
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: End test all tests:3:teams/danner-sec-fail:1:noflow.json:3:3.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Start test all tests:3:teams/danner-sec-fail:2:af.json:1:1.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Created a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_92c63c_dune/ounit-d172ab-Kevins-MacBook-Pro-2.local#01.txt".
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Expected: SecurityError
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Actual: No exception raised
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 E: Test all tests:3:teams/danner-sec-fail:2:af.json:1:1 has failed.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 E: expected: SecurityError but got: No exception raised in test all tests:3:teams/danner-sec-fail:2:af.json:1:1.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 E: Raised at OUnitAssert.assert_failure in file "src/lib/ounit2/advanced/oUnitAssert.ml", line 45, characters 2-27
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 E: Called from OUnitRunner.run_one_test.(fun) in file "src/lib/ounit2/advanced/oUnitRunner.ml", line 83, characters 13-26
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 E: 
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Removed a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_92c63c_dune/ounit-d172ab-Kevins-MacBook-Pro-2.local#01.txt".
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: End test all tests:3:teams/danner-sec-fail:2:af.json:1:1.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Start test all tests:4:teams/danner:0:if.json:1:1.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Created a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_92c63c_dune/ounit-118e3c-Kevins-MacBook-Pro-2.local#01.txt".
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Expected: 3 7 9 15 16
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Actual: 3 7 9 15 16
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Test all tests:4:teams/danner:0:if.json:1:1 is successful.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Removed a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_92c63c_dune/ounit-118e3c-Kevins-MacBook-Pro-2.local#01.txt".
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: End test all tests:4:teams/danner:0:if.json:1:1.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Start test all tests:4:teams/danner:2:earlyret.json:0:0.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Created a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_92c63c_dune/ounit-fa407f-Kevins-MacBook-Pro-2.local#01.txt".
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Expected: true
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Actual: true
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Test all tests:4:teams/danner:2:earlyret.json:0:0 is successful.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Removed a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_92c63c_dune/ounit-fa407f-Kevins-MacBook-Pro-2.local#01.txt".
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: End test all tests:4:teams/danner:2:earlyret.json:0:0.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Start test all tests:4:teams/danner:2:earlyret.json:2:2.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Created a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_92c63c_dune/ounit-ffd1a2-Kevins-MacBook-Pro-2.local#01.txt".
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Expected: false
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Actual: false
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Test all tests:4:teams/danner:2:earlyret.json:2:2 is successful.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Removed a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_92c63c_dune/ounit-ffd1a2-Kevins-MacBook-Pro-2.local#01.txt".
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: End test all tests:4:teams/danner:2:earlyret.json:2:2.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Start test all tests:4:teams/danner:2:earlyret.json:3:3.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Created a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_92c63c_dune/ounit-bd11fa-Kevins-MacBook-Pro-2.local#01.txt".
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Expected: false
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Actual: false
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Test all tests:4:teams/danner:2:earlyret.json:3:3 is successful.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Removed a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_92c63c_dune/ounit-bd11fa-Kevins-MacBook-Pro-2.local#01.txt".
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: End test all tests:4:teams/danner:2:earlyret.json:3:3.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Start test all tests:4:teams/danner:3:blocks.json:1:1.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Created a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_92c63c_dune/ounit-87a344-Kevins-MacBook-Pro-2.local#01.txt".
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Expected: 9 7 5 7
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Actual: 9 7 5 7
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Test all tests:4:teams/danner:3:blocks.json:1:1 is successful.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Removed a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_92c63c_dune/ounit-87a344-Kevins-MacBook-Pro-2.local#01.txt".
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: End test all tests:4:teams/danner:3:blocks.json:1:1.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Start test all tests:4:teams/danner:5:effects.json:1:1.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Created a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_92c63c_dune/ounit-935344-Kevins-MacBook-Pro-2.local#01.txt".
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Expected: SUCCESS true true
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Actual: SUCCESS true true
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Test all tests:4:teams/danner:5:effects.json:1:1 is successful.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Removed a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_92c63c_dune/ounit-935344-Kevins-MacBook-Pro-2.local#01.txt".
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: End test all tests:4:teams/danner:5:effects.json:1:1.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Start test all tests:4:teams/danner:5:effects.json:2:2.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Created a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_92c63c_dune/ounit-621380-Kevins-MacBook-Pro-2.local#01.txt".
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Expected: 1 2 3 10
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Actual: 1 2 3 10
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Test all tests:4:teams/danner:5:effects.json:2:2 is successful.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Removed a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_92c63c_dune/ounit-621380-Kevins-MacBook-Pro-2.local#01.txt".
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: End test all tests:4:teams/danner:5:effects.json:2:2.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Start test all tests:4:teams/danner:6:decs.json:1:1.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Created a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_92c63c_dune/ounit-d4d7ed-Kevins-MacBook-Pro-2.local#01.txt".
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Expected: 5
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Actual: 5
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Test all tests:4:teams/danner:6:decs.json:1:1 is successful.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Removed a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_92c63c_dune/ounit-d4d7ed-Kevins-MacBook-Pro-2.local#01.txt".
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: End test all tests:4:teams/danner:6:decs.json:1:1.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Start test all tests:4:teams/danner:6:decs.json:3:3.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Created a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_92c63c_dune/ounit-b32d2b-Kevins-MacBook-Pro-2.local#01.txt".
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Expected: 5 true
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Actual: 5 true
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Test all tests:4:teams/danner:6:decs.json:3:3 is successful.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Removed a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_92c63c_dune/ounit-b32d2b-Kevins-MacBook-Pro-2.local#01.txt".
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: End test all tests:4:teams/danner:6:decs.json:3:3.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Start test all tests:4:teams/danner:7:primes.json:0:0.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Created a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_92c63c_dune/ounit-cf5812-Kevins-MacBook-Pro-2.local#01.txt".
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Expected: 5
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Actual: 5
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Test all tests:4:teams/danner:7:primes.json:0:0 is successful.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Removed a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_92c63c_dune/ounit-cf5812-Kevins-MacBook-Pro-2.local#01.txt".
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: End test all tests:4:teams/danner:7:primes.json:0:0.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Start test all tests:4:teams/danner:8:undec.json:0:0.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Created a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_92c63c_dune/ounit-d50108-Kevins-MacBook-Pro-2.local#01.txt".
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Expected: UnboundVariable
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Actual: UnboundVariable
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Test all tests:4:teams/danner:8:undec.json:0:0 is successful.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Removed a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_92c63c_dune/ounit-d50108-Kevins-MacBook-Pro-2.local#01.txt".
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: End test all tests:4:teams/danner:8:undec.json:0:0.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Start test all tests:4:teams/danner:8:undec.json:2:2.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Created a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_92c63c_dune/ounit-4acfe0-Kevins-MacBook-Pro-2.local#01.txt".
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Expected: UnboundVariable
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Actual: UnboundVariable
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Test all tests:4:teams/danner:8:undec.json:2:2 is successful.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Removed a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_92c63c_dune/ounit-4acfe0-Kevins-MacBook-Pro-2.local#01.txt".
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: End test all tests:4:teams/danner:8:undec.json:2:2.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Start test all tests:4:teams/danner:8:undec.json:4:4.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Created a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_92c63c_dune/ounit-0a2e52-Kevins-MacBook-Pro-2.local#01.txt".
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Expected: UnboundVariable
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Actual: UnboundVariable
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Test all tests:4:teams/danner:8:undec.json:4:4 is successful.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Removed a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_92c63c_dune/ounit-0a2e52-Kevins-MacBook-Pro-2.local#01.txt".
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: End test all tests:4:teams/danner:8:undec.json:4:4.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Start test all tests:4:teams/danner:9:gcd.json:1:1.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Created a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_92c63c_dune/ounit-135e0e-Kevins-MacBook-Pro-2.local#01.txt".
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Expected: 12
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Actual: 12
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Test all tests:4:teams/danner:9:gcd.json:1:1 is successful.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Removed a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_92c63c_dune/ounit-135e0e-Kevins-MacBook-Pro-2.local#01.txt".
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: End test all tests:4:teams/danner:9:gcd.json:1:1.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Start test all tests:4:teams/danner:9:gcd.json:3:3.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Created a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_92c63c_dune/ounit-cada77-Kevins-MacBook-Pro-2.local#01.txt".
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Expected: 12
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Actual: 12
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Test all tests:4:teams/danner:9:gcd.json:3:3 is successful.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Removed a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_92c63c_dune/ounit-cada77-Kevins-MacBook-Pro-2.local#01.txt".
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: End test all tests:4:teams/danner:9:gcd.json:3:3.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Start test all tests:4:teams/danner:9:gcd.json:5:5.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Created a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_92c63c_dune/ounit-31ed5e-Kevins-MacBook-Pro-2.local#01.txt".
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Expected: 12
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Actual: 12
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Test all tests:4:teams/danner:9:gcd.json:5:5 is successful.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Removed a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_92c63c_dune/ounit-31ed5e-Kevins-MacBook-Pro-2.local#01.txt".
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: End test all tests:4:teams/danner:9:gcd.json:5:5.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Start test all tests:4:teams/danner:10:multidec.json:1:1.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Created a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_92c63c_dune/ounit-16045f-Kevins-MacBook-Pro-2.local#01.txt".
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Expected: MultipleDeclaration
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Actual: MultipleDeclaration
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Test all tests:4:teams/danner:10:multidec.json:1:1 is successful.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Removed a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_92c63c_dune/ounit-16045f-Kevins-MacBook-Pro-2.local#01.txt".
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: End test all tests:4:teams/danner:10:multidec.json:1:1.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Start test all tests:4:teams/danner:11:typeerr.json:0:0.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Created a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_92c63c_dune/ounit-07ddc5-Kevins-MacBook-Pro-2.local#01.txt".
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Expected: TypeError
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Actual: TypeError
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Test all tests:4:teams/danner:11:typeerr.json:0:0 is successful.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Removed a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_92c63c_dune/ounit-07ddc5-Kevins-MacBook-Pro-2.local#01.txt".
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: End test all tests:4:teams/danner:11:typeerr.json:0:0.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Start test all tests:4:teams/danner:11:typeerr.json:2:2.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Created a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_92c63c_dune/ounit-161d08-Kevins-MacBook-Pro-2.local#01.txt".
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Expected: TypeError
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Actual: TypeError
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Test all tests:4:teams/danner:11:typeerr.json:2:2 is successful.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Removed a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_92c63c_dune/ounit-161d08-Kevins-MacBook-Pro-2.local#01.txt".
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: End test all tests:4:teams/danner:11:typeerr.json:2:2.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Start test all tests:4:teams/danner:12:io.json:0:0.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Created a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_92c63c_dune/ounit-7e7d85-Kevins-MacBook-Pro-2.local#01.txt".
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Expected: 5
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Actual: 5
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Test all tests:4:teams/danner:12:io.json:0:0 is successful.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Removed a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_92c63c_dune/ounit-7e7d85-Kevins-MacBook-Pro-2.local#01.txt".
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: End test all tests:4:teams/danner:12:io.json:0:0.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Start test all tests:4:teams/danner:13:while.json:0:0.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Created a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_92c63c_dune/ounit-3a0b58-Kevins-MacBook-Pro-2.local#01.txt".
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Expected: 1
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Actual: 1
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Test all tests:4:teams/danner:13:while.json:0:0 is successful.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Removed a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_92c63c_dune/ounit-3a0b58-Kevins-MacBook-Pro-2.local#01.txt".
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: End test all tests:4:teams/danner:13:while.json:0:0.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Start test all tests:4:teams/danner:13:while.json:2:2.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Created a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_92c63c_dune/ounit-4b4c93-Kevins-MacBook-Pro-2.local#01.txt".
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Expected: 1 2 3 2 3 3 Finished.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Actual: 1 2 3 2 3 3 Finished.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Test all tests:4:teams/danner:13:while.json:2:2 is successful.
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: Removed a temporary file: "/var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/build_92c63c_dune/ounit-4b4c93-Kevins-MacBook-Pro-2.local#01.txt".
+2024-04-29T20:46:01+00:00 Kevins-MacBook-Pro-2.local#01 I: End test all tests:4:teams/danner:13:while.json:2:2.

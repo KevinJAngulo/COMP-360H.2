@@ -21,13 +21,171 @@
 #        }
 #  ; instrument_with = []
 #  }
-$ /Users/kevinj_angulo/.opam/5.1.1/bin/ocamlc.opt -config > /var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/dune_711fc1_output
+$ /Users/kevinj_angulo/.opam/5.1.1/bin/ocamlc.opt -config > /var/folders/8q/8kg6dnyj0317_y7lhxbzkpdh0000gn/T/dune_561bd3_output
 $ (cd _build/default/test && ./test_interp.exe)
-> ..............F......................................................
+> ...............F.........................F.FE.EE.EEFF............................................
+> ==============================================================================
+> Error: all tests:3:teams/danner-sec-fail:1:noflow.json:3:3.
+>
+> File "/Users/kevinj_angulo/Documents/Comp360H/Assignment 2/COMP-360H.2/starter/_build/default/test/oUnit-all tests-Kevins-MacBook-Pro-2.local#01.log", line 203, characters 1-1:
+> Error: all tests:3:teams/danner-sec-fail:1:noflow.json:3:3 (in the log).
+>
+> Raised at Imp__Interp.Api.api.(fun) in file "lib/interp.ml", line 212, characters 8-27
+> Called from Imp__Interp.Api.do_call in file "lib/interp.ml", line 332, characters 6-28
+> Called from Imp__Interp.exec.do_call in file "lib/interp.ml", line 419, characters 10-26
+> Called from Imp__Interp.exec.eval.(fun) in file "lib/interp.ml", line 476, characters 21-52
+> Called from Imp__Interp.exec.exec_one.(fun) in file "lib/interp.ml", line 501, characters 22-40
+> Called from Imp__Interp.exec.exec_many in file "lib/interp.ml", line 553, characters 14-36
+> Called from Imp__Interp.exec.exec_one.(fun) in file "lib/interp.ml", line 505, characters 14-39
+> Called from Imp__Interp.exec.exec_many in file "lib/interp.ml", line 553, characters 14-36
+> Called from Imp__Interp.exec.do_call in file "lib/interp.ml", line 410, characters 17-43
+> Called from Imp__Interp.exec.eval.(fun) in file "lib/interp.ml", line 476, characters 21-52
+> Called from Imp__Interp.exec in file "lib/interp.ml", line 561, characters 14-64
+> Called from Dune__exe__Test_interp.iotest in file "test/test_interp.ml", line 71, characters 14-39
+> Called from OUnitRunner.run_one_test.(fun) in file "src/lib/ounit2/advanced/oUnitRunner.ml", line 83, characters 13-26
+>
+> SecurityError
+> ------------------------------------------------------------------------------
+> ==============================================================================
+> Error: all tests:3:teams/danner-sec-fail:1:noflow.json:2:2.
+>
+> File "/Users/kevinj_angulo/Documents/Comp360H/Assignment 2/COMP-360H.2/starter/_build/default/test/oUnit-all tests-Kevins-MacBook-Pro-2.local#02.log", line 201, characters 1-1:
+> Error: all tests:3:teams/danner-sec-fail:1:noflow.json:2:2 (in the log).
+>
+> Raised at Imp__Interp.Api.api.(fun) in file "lib/interp.ml", line 212, characters 8-27
+> Called from Imp__Interp.Api.do_call in file "lib/interp.ml", line 332, characters 6-28
+> Called from Imp__Interp.exec.do_call in file "lib/interp.ml", line 419, characters 10-26
+> Called from Imp__Interp.exec.eval.(fun) in file "lib/interp.ml", line 476, characters 21-52
+> Called from Imp__Interp.exec.exec_one.(fun) in file "lib/interp.ml", line 501, characters 22-40
+> Called from Imp__Interp.exec.exec_many in file "lib/interp.ml", line 553, characters 14-36
+> Called from Imp__Interp.exec.exec_one.(fun) in file "lib/interp.ml", line 505, characters 14-39
+> Called from Imp__Interp.exec.exec_many in file "lib/interp.ml", line 553, characters 14-36
+> Called from Imp__Interp.exec.do_call in file "lib/interp.ml", line 410, characters 17-43
+> Called from Imp__Interp.exec.eval.(fun) in file "lib/interp.ml", line 476, characters 21-52
+> Called from Imp__Interp.exec in file "lib/interp.ml", line 561, characters 14-64
+> Called from Dune__exe__Test_interp.iotest in file "test/test_interp.ml", line 71, characters 14-39
+> Called from OUnitRunner.run_one_test.(fun) in file "src/lib/ounit2/advanced/oUnitRunner.ml", line 83, characters 13-26
+>
+> SecurityError
+> ------------------------------------------------------------------------------
+> ==============================================================================
+> Error: all tests:3:teams/danner-sec-fail:1:noflow.json:1:1.
+>
+> File "/Users/kevinj_angulo/Documents/Comp360H/Assignment 2/COMP-360H.2/starter/_build/default/test/oUnit-all tests-Kevins-MacBook-Pro-2.local#02.log", line 181, characters 1-1:
+> Error: all tests:3:teams/danner-sec-fail:1:noflow.json:1:1 (in the log).
+>
+> Raised at Imp__Interp.Api.api.(fun) in file "lib/interp.ml", line 212, characters 8-27
+> Called from Imp__Interp.Api.do_call in file "lib/interp.ml", line 332, characters 6-28
+> Called from Imp__Interp.exec.do_call in file "lib/interp.ml", line 419, characters 10-26
+> Called from Imp__Interp.exec.eval.(fun) in file "lib/interp.ml", line 476, characters 21-52
+> Called from Imp__Interp.exec.exec_one.(fun) in file "lib/interp.ml", line 501, characters 22-40
+> Called from Imp__Interp.exec.exec_many in file "lib/interp.ml", line 553, characters 14-36
+> Called from Imp__Interp.exec.exec_one.(fun) in file "lib/interp.ml", line 505, characters 14-39
+> Called from Imp__Interp.exec.exec_many in file "lib/interp.ml", line 553, characters 14-36
+> Called from Imp__Interp.exec.do_call in file "lib/interp.ml", line 410, characters 17-43
+> Called from Imp__Interp.exec.eval.(fun) in file "lib/interp.ml", line 476, characters 21-52
+> Called from Imp__Interp.exec in file "lib/interp.ml", line 561, characters 14-64
+> Called from Dune__exe__Test_interp.iotest in file "test/test_interp.ml", line 71, characters 14-39
+> Called from OUnitRunner.run_one_test.(fun) in file "src/lib/ounit2/advanced/oUnitRunner.ml", line 83, characters 13-26
+>
+> SecurityError
+> ------------------------------------------------------------------------------
+> ==============================================================================
+> Error: all tests:3:teams/danner-sec-fail:1:noflow.json:0:0.
+>
+> File "/Users/kevinj_angulo/Documents/Comp360H/Assignment 2/COMP-360H.2/starter/_build/default/test/oUnit-all tests-Kevins-MacBook-Pro-2.local#02.log", line 161, characters 1-1:
+> Error: all tests:3:teams/danner-sec-fail:1:noflow.json:0:0 (in the log).
+>
+> Raised at Imp__Interp.Api.api.(fun) in file "lib/interp.ml", line 212, characters 8-27
+> Called from Imp__Interp.Api.do_call in file "lib/interp.ml", line 332, characters 6-28
+> Called from Imp__Interp.exec.do_call in file "lib/interp.ml", line 419, characters 10-26
+> Called from Imp__Interp.exec.eval.(fun) in file "lib/interp.ml", line 476, characters 21-52
+> Called from Imp__Interp.exec.exec_one.(fun) in file "lib/interp.ml", line 501, characters 22-40
+> Called from Imp__Interp.exec.exec_many in file "lib/interp.ml", line 553, characters 14-36
+> Called from Imp__Interp.exec.exec_one.(fun) in file "lib/interp.ml", line 505, characters 14-39
+> Called from Imp__Interp.exec.exec_many in file "lib/interp.ml", line 553, characters 14-36
+> Called from Imp__Interp.exec.do_call in file "lib/interp.ml", line 410, characters 17-43
+> Called from Imp__Interp.exec.eval.(fun) in file "lib/interp.ml", line 476, characters 21-52
+> Called from Imp__Interp.exec in file "lib/interp.ml", line 561, characters 14-64
+> Called from Dune__exe__Test_interp.iotest in file "test/test_interp.ml", line 71, characters 14-39
+> Called from OUnitRunner.run_one_test.(fun) in file "src/lib/ounit2/advanced/oUnitRunner.ml", line 83, characters 13-26
+>
+> SecurityError
+> ------------------------------------------------------------------------------
+> ==============================================================================
+> Error: all tests:3:teams/danner-sec-fail:0:earlyret.json:1:1.
+>
+> File "/Users/kevinj_angulo/Documents/Comp360H/Assignment 2/COMP-360H.2/starter/_build/default/test/oUnit-all tests-Kevins-MacBook-Pro-2.local#01.log", line 172, characters 1-1:
+> Error: all tests:3:teams/danner-sec-fail:0:earlyret.json:1:1 (in the log).
+>
+> Raised at Imp__Interp.Api.api.(fun) in file "lib/interp.ml", line 188, characters 8-27
+> Called from Imp__Interp.Api.do_call in file "lib/interp.ml", line 332, characters 6-28
+> Called from Imp__Interp.exec.do_call in file "lib/interp.ml", line 419, characters 10-26
+> Called from Imp__Interp.exec.eval.(fun) in file "lib/interp.ml", line 476, characters 21-52
+> Called from Imp__Interp.exec.exec_one.(fun) in file "lib/interp.ml", line 501, characters 22-40
+> Called from Imp__Interp.exec.exec_many in file "lib/interp.ml", line 553, characters 14-36
+> Called from Imp__Interp.exec.exec_one.(fun) in file "lib/interp.ml", line 505, characters 14-39
+> Called from Imp__Interp.exec.exec_many in file "lib/interp.ml", line 553, characters 14-36
+> Called from Imp__Interp.exec.do_call in file "lib/interp.ml", line 410, characters 17-43
+> Called from Imp__Interp.exec.eval.(fun) in file "lib/interp.ml", line 476, characters 21-52
+> Called from Imp__Interp.exec.exec_one.(fun) in file "lib/interp.ml", line 512, characters 22-40
+> Called from Imp__Interp.exec.exec_many in file "lib/interp.ml", line 553, characters 14-36
+> Called from Imp__Interp.exec.do_call in file "lib/interp.ml", line 410, characters 17-43
+> Called from Imp__Interp.exec.eval.(fun) in file "lib/interp.ml", line 476, characters 21-52
+> Called from Imp__Interp.exec in file "lib/interp.ml", line 561, characters 14-64
+> Called from Dune__exe__Test_interp.iotest in file "test/test_interp.ml", line 71, characters 14-39
+> Called from OUnitRunner.run_one_test.(fun) in file "src/lib/ounit2/advanced/oUnitRunner.ml", line 83, characters 13-26
+>
+> SecurityError
+> ------------------------------------------------------------------------------
+> ==============================================================================
+> Error: all tests:3:teams/danner-sec-fail:2:af.json:1:1.
+>
+> File "/Users/kevinj_angulo/Documents/Comp360H/Assignment 2/COMP-360H.2/starter/_build/default/test/oUnit-all tests-Kevins-MacBook-Pro-2.local#01.log", line 225, characters 1-1:
+> Error: all tests:3:teams/danner-sec-fail:2:af.json:1:1 (in the log).
+>
+> Raised at OUnitAssert.assert_failure in file "src/lib/ounit2/advanced/oUnitAssert.ml", line 45, characters 2-27
+> Called from OUnitRunner.run_one_test.(fun) in file "src/lib/ounit2/advanced/oUnitRunner.ml", line 83, characters 13-26
+>
+> expected: SecurityError but got: No exception raised
+> ------------------------------------------------------------------------------
+> ==============================================================================
+> Error: all tests:3:teams/danner-sec-fail:2:af.json:0:0.
+>
+> File "/Users/kevinj_angulo/Documents/Comp360H/Assignment 2/COMP-360H.2/starter/_build/default/test/oUnit-all tests-Kevins-MacBook-Pro-2.local#02.log", line 223, characters 1-1:
+> Error: all tests:3:teams/danner-sec-fail:2:af.json:0:0 (in the log).
+>
+> Raised at OUnitAssert.assert_failure in file "src/lib/ounit2/advanced/oUnitAssert.ml", line 45, characters 2-27
+> Called from OUnitRunner.run_one_test.(fun) in file "src/lib/ounit2/advanced/oUnitRunner.ml", line 83, characters 13-26
+>
+> expected: SecurityError but got: No exception raised
+> ------------------------------------------------------------------------------
+> ==============================================================================
+> Error: all tests:3:teams/danner-sec-fail:0:earlyret.json:0:0.
+>
+> File "/Users/kevinj_angulo/Documents/Comp360H/Assignment 2/COMP-360H.2/starter/_build/default/test/oUnit-all tests-Kevins-MacBook-Pro-2.local#01.log", line 163, characters 1-1:
+> Error: all tests:3:teams/danner-sec-fail:0:earlyret.json:0:0 (in the log).
+>
+> Raised at OUnitAssert.assert_failure in file "src/lib/ounit2/advanced/oUnitAssert.ml", line 45, characters 2-27
+> Called from OUnitRunner.run_one_test.(fun) in file "src/lib/ounit2/advanced/oUnitRunner.ml", line 83, characters 13-26
+>
+> expected: SecurityError but got: No exception raised
+> ------------------------------------------------------------------------------
+> ==============================================================================
+> Error: all tests:2:teams/danner-sec-pass:4:af.json:2:2.
+>
+> File "/Users/kevinj_angulo/Documents/Comp360H/Assignment 2/COMP-360H.2/starter/_build/default/test/oUnit-all tests-Kevins-MacBook-Pro-2.local#02.log", line 145, characters 1-1:
+> Error: all tests:2:teams/danner-sec-pass:4:af.json:2:2 (in the log).
+>
+> Raised at OUnitAssert.assert_failure in file "src/lib/ounit2/advanced/oUnitAssert.ml", line 45, characters 2-27
+> Called from OUnitRunner.run_one_test.(fun) in file "src/lib/ounit2/advanced/oUnitRunner.ml", line 83, characters 13-26
+>
+> expected: SecurityError but got: No exception raised
+> ------------------------------------------------------------------------------
 > ==============================================================================
 > Error: all tests:1:teams/KV-security :10:ifSE.json:1:1.
 >
-> File "/Users/kevinj_angulo/Documents/Comp360H/Assignment 2/COMP-360H.2/starter/_build/default/test/oUnit-all tests-Kevins-MacBook-Pro-2.local#02.log", line 54, characters 1-1:
+> File "/Users/kevinj_angulo/Documents/Comp360H/Assignment 2/COMP-360H.2/starter/_build/default/test/oUnit-all tests-Kevins-MacBook-Pro-2.local#01.log", line 61, characters 1-1:
 > Error: all tests:1:teams/KV-security :10:ifSE.json:1:1 (in the log).
 >
 > Raised at OUnitAssert.assert_failure in file "src/lib/ounit2/advanced/oUnitAssert.ml", line 45, characters 2-27
@@ -35,6 +193,6 @@ $ (cd _build/default/test && ./test_interp.exe)
 >
 > expected: SecurityError but got: No exception raised
 > ------------------------------------------------------------------------------
-> Ran: 69 tests in: 0.17 seconds.
-> FAILED: Cases: 69 Tried: 69 Errors: 0 Failures: 1 Skip:  0 Todo: 0 Timeouts: 0.
+> Ran: 97 tests in: 0.20 seconds.
+> FAILED: Cases: 97 Tried: 97 Errors: 5 Failures: 5 Skip:  0 Todo: 0 Timeouts: 0.
 [1]

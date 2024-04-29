@@ -1,0 +1,18 @@
+/* There program satisfies non-interference:  no matter what is entered
+ * for x, the program always prints true.  I.e., if ss is the body of 
+ * `main`, then
+ *   ss ├ ([{}], []) -> ([{x → b}], [true, 0])
+ * where b is the value entered as secure input.
+ */
+function main() {
+    var x = get_bool_s() ;
+
+    if x then {
+        print_int(0) ;
+    }
+    else {
+        print_int(0) ;
+    }
+
+    print(true) ;
+}

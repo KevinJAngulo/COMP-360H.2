@@ -1,0 +1,5 @@
+{
+    "file":     "test.imp",
+    "input":    ["2"],
+    "expect":   "SecurityError"
+}

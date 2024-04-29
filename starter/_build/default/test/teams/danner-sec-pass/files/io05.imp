@@ -1,0 +1,5 @@
+function main() {
+    print_int_s(get_int()) ;
+
+    return ;
+}
